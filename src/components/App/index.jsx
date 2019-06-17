@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 
-import PrimaryButton from '../PrimaryButton';
-
 import Typography from '@material-ui/core/Typography';
+
+import CustomButton from '../CustomButton';
 
 class App extends Component {
   render() {
@@ -10,10 +10,10 @@ class App extends Component {
       <Fragment>
         <Typography variant="h2">Hello World</Typography>
         <br />
-        <PrimaryButton text="Next" />
-        <PrimaryButton text="" />
-        <PrimaryButton text="" />
-        <PrimaryButton text="Next" />
+        <CustomButton text="Next" type="primary" />
+        <CustomButton text="Master" type="primary" />
+        <CustomButton text="" type="primary" />
+        <CustomButton text="" type="secondary" />
       </Fragment>
     );
   }
