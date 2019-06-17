@@ -16,13 +16,13 @@ const theme = createMuiTheme({
   }
 });
 
-const PrimaryButton = () => {
+const PrimaryButton = props => {
   const classes = useStyles();
 
   return (
     <ThemeProvider theme={theme}>
       <Button variant="contained" color="primary" className={classes.color}>
-        Primary Button
+        {props.text || 'Primary'}
       </Button>
     </ThemeProvider>
   );

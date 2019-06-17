@@ -10,12 +10,10 @@ class App extends Component {
       <Fragment>
         <Typography variant="h2">Hello World</Typography>
         <br />
-        <div>
-          <PrimaryButton />
-          <PrimaryButton />
-          <PrimaryButton />
-          <PrimaryButton />
-        </div>
+        <PrimaryButton text="Next" />
+        <PrimaryButton text="" />
+        <PrimaryButton text="" />
+        <PrimaryButton text="Next" />
       </Fragment>
     );
   }
