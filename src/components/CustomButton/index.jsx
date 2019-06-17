@@ -2,7 +2,7 @@ import React from 'react';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
-import { green, lightBlue } from '@material-ui/core/colors';
+import { green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   color: {
@@ -12,8 +12,7 @@ const useStyles = makeStyles(theme => ({
 
 const theme = createMuiTheme({
   palette: {
-    primary: green,
-    secondary: lightBlue
+    primary: green
   }
 });
 
@@ -24,10 +23,10 @@ const CustomButton = props => {
     <ThemeProvider theme={theme}>
       <Button
         variant="contained"
-        color={props.type || 'primary'}
-        className={classes.color}
+        color={props.type === 'primary' ? props.type : ''}
+        className={props.type === 'primary' ? classes.color : ''}
       >
-        {props.text || props.type}
+        {props.text || props.type || 'Default'}
       </Button>
     </ThemeProvider>
   );

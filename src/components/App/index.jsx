@@ -10,10 +10,8 @@ class App extends Component {
       <Fragment>
         <Typography variant="h2">Hello World</Typography>
         <br />
-        <CustomButton text="Next" type="primary" />
-        <CustomButton text="Master" type="primary" />
-        <CustomButton text="" type="primary" />
-        <CustomButton text="" type="secondary" />
+        <CustomButton type="primary" />
+        <CustomButton type="secondary" />
       </Fragment>
     );
   }
