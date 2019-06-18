@@ -14,7 +14,7 @@ const CustomButton = props => {
   return (
     <Button
       variant="contained"
-      color={props.type === 'primary' ? props.type : ''}
+      color={props.type === 'primary' ? props.type : 'default'}
       className={props.type === 'primary' ? classes.color : ''}
     >
       {props.text || props.type || 'Default'}
