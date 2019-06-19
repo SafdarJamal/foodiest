@@ -12,14 +12,12 @@ class App extends Component {
     console.log(firebase);
 
     return (
-      <div>
-        <ThemeProvider theme={theme}>
-          <Typography variant="h2">Hello World</Typography>
-          <br />
-          <CustomButton type="primary" />
-          <CustomButton type="secondary" />
-        </ThemeProvider>
-      </div>
+      <ThemeProvider theme={theme}>
+        <Typography variant="h2">Hello World</Typography>
+        <br />
+        <CustomButton type="primary" />
+        <CustomButton type="secondary" />
+      </ThemeProvider>
     );
   }
 }
