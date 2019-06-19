@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from '../../config/firebase';
+import Firebase from '../../firebase';
 
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
@@ -9,7 +9,7 @@ import CustomButton from '../CustomButton';
 
 class App extends Component {
   render() {
-    console.log(firebase);
+    console.log(Firebase);
 
     return (
       <ThemeProvider theme={theme}>
