@@ -18,7 +18,7 @@ class App extends Component {
           Hello World
         </Typography>
         <br />
-        <CustomButton type="primary" />
+        <CustomButton type="primary" variant="outlined" />
         <CustomButton type="secondary" />
       </ThemeProvider>
     );
