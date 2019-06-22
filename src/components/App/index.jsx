@@ -4,13 +4,19 @@ import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 
 import Typography from '@material-ui/core/Typography';
+
+import Header from '../Header';
 import CustomButton from '../CustomButton';
 
 class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Typography variant="h2">Hello World</Typography>
+        <Header />
+        <br />
+        <Typography style={{ marginTop: 60 }} variant="h2">
+          Hello World
+        </Typography>
         <br />
         <CustomButton type="primary" />
         <CustomButton type="secondary" />
