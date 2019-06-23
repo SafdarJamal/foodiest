@@ -23,11 +23,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ButtonAppBar() {
+const Header = () => {
   const classes = useStyles();
 
   return (
-    <AppBar color="default" position="fixed" className={classes.root}>
+    <AppBar color="" position="fixed" className={classes.root}>
       <Toolbar>
         <IconButton
           edge="start"
@@ -37,20 +37,16 @@ export default function ButtonAppBar() {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" className={classes.title}>
+        <Typography variant="h3" className={classes.title}>
           Foodist
         </Typography>
-        <OutlinedButton
-          className={classes.button}
-          text="Sign in"
-          type="primary"
-        />
-        <OutlinedButton
-          className={classes.button}
-          text="Sign up"
-          type="default"
-        />
+        <div className={classes.button}>
+          <OutlinedButton text="Sign in" type="primary" />
+        </div>
+        <OutlinedButton text="Sign up" type="secondary" />
       </Toolbar>
     </AppBar>
   );
-}
+};
+
+export default Header;
