@@ -15,9 +15,17 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <Header />
-        <Container style={{ marginTop: 100 }}>
+        <Container style={{ marginTop: 125 }}>
           <Paper>
             <Typography variant="h2">Hello World</Typography>
+            <br />
+            <Typography variant="overline">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Consequatur placeat inventore itaque omnis exercitationem corporis
+              provident modi dolore adipisci consequuntur facere sint nobis
+              soluta debitis fugit, quibusdam quae, fuga maiores.
+            </Typography>
+            <br />
             <br />
             <CustomButton type="primary" variant="outlined" />
             <CustomButton type="secondary" />

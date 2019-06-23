@@ -13,6 +13,7 @@ const OutlinedButton = props => {
 
   return (
     <Button
+      size={props.size}
       variant="outlined"
       color={props.type === 'primary' ? props.type : 'default'}
       className={props.type === 'primary' ? classes.color : ''}
