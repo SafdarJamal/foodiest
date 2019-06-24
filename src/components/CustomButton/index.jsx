@@ -16,6 +16,7 @@ const CustomButton = props => {
       variant="contained"
       color={props.type === 'primary' ? props.type : 'default'}
       className={props.type === 'primary' ? classes.color : ''}
+      size={props.size}
     >
       {props.text || props.type || 'Default'}
     </Button>

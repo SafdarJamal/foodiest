@@ -17,18 +17,17 @@ class App extends Component {
         <Header />
         <Container style={{ marginTop: 125 }}>
           <Paper>
-            <Typography variant="h2">Hello World</Typography>
-            <br />
-            <Typography variant="overline">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequatur placeat inventore itaque omnis exercitationem corporis
-              provident modi dolore adipisci consequuntur facere sint nobis
-              soluta debitis fugit, quibusdam quae, fuga maiores.
+            <Typography variant="h1" style={{ marginTop: 250 }}>
+              Foodiest is the easy way to get
+              <br />
+              the food you love delivered.
             </Typography>
+            <Typography variant="subtitle1" style={{ marginTop: 25 }}>
+              Find food you love from local restaurants and chain favorites
+            </Typography>
+
             <br />
-            <br />
-            <CustomButton type="primary" variant="outlined" />
-            <CustomButton type="secondary" />
+            <CustomButton text="Get started" type="primary" size="large" />
           </Paper>
         </Container>
       </ThemeProvider>

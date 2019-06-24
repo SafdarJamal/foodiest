@@ -40,7 +40,7 @@ const Header = () => {
             src={logo}
             className={classes.img}
             alt="Foodiest"
-            height="70"
+            height="50"
             title="We Love Foodies"
           />
         </div>
