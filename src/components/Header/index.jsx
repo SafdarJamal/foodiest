@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
-import logo from '../../assets/images/foodiest.png';
+import logo from '../../assets/images/logo.png';
 import OutlinedButton from '../OutlinedButton';
 
 const useStyles = makeStyles(theme => ({
@@ -40,14 +40,14 @@ const Header = () => {
             src={logo}
             className={classes.img}
             alt="Foodiest"
-            height="75"
+            height="70"
             title="We Love Foodies"
           />
         </div>
         <div className={classes.button}>
-          <OutlinedButton size="medium" text="Sign in" type="primary" />
+          <OutlinedButton size="large" text="Sign in" type="primary" />
         </div>
-        <OutlinedButton size="medium" text="Sign up" type="secondary" />
+        <OutlinedButton size="large" text="Sign up" type="secondary" />
       </Toolbar>
     </AppBar>
   );
