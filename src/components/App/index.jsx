@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <Header />
-        <Container style={{ marginTop: 125 }}>
+        <Container style={{ marginTop: 100 }}>
           <Paper>
             <Typography variant="h1" style={{ marginTop: 250 }}>
               Foodiest is the easy way to get
