@@ -3,19 +3,21 @@ import React, { Component } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+// import Typography from '@material-ui/core/Typography';
+// import Container from '@material-ui/core/Container';
 
 import Header from '../Header';
-import CustomButton from '../CustomButton';
-import Paper from '../Paper';
+// import CustomButton from '../CustomButton';
+// import Paper from '../Paper';
+// import SignIn from '../SignIn';
+import Landing from '../Landing';
 
 class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
         <Header />
-        <Container style={{ marginTop: 100 }}>
+        {/* <Container style={{ marginTop: 100 }}>
           <Paper>
             <Typography variant="h1" style={{ marginTop: 250 }}>
               Foodiest is the easy way to get
@@ -29,7 +31,8 @@ class App extends Component {
             <br />
             <CustomButton text="Get started" type="primary" size="large" />
           </Paper>
-        </Container>
+        </Container> */}
+        <Landing />
       </ThemeProvider>
     );
   }
