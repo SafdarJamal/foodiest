@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <AppBar
-      elevation="2"
+      elevation={2}
       color="default"
       position="fixed"
       className={classes.root}

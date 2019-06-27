@@ -20,7 +20,7 @@ export default props => {
   return (
     <div>
       <Paper
-        elevation="2"
+        elevation={2}
         className={`${classes.root} ${classes.paperContainer}`}
       >
         {props.children}
