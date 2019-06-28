@@ -1,10 +1,5 @@
-import app from 'firebase/app';
-import firebaseConfig from '../config/firebaseConfig';
+import FirebaseContext, { withFirebase } from './context';
+import Firebase from './firebase';
 
-class Firebase {
-  constructor() {
-    app.initializeApp(firebaseConfig);
-  }
-}
-
+export { FirebaseContext, withFirebase };
 export default Firebase;
