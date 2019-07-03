@@ -25,6 +25,7 @@ const InputField = props => {
 
   const handleChange = propName => event => {
     setValues({ ...values, [propName]: event.target.value });
+    props.validate(event.target.value);
   };
 
   const handleClickShowPassword = () => {

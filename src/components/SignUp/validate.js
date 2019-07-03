@@ -1,83 +1,12 @@
-let form = document.getElementById('form');
-let fName = document.getElementById('fName');
-let lName = document.getElementById('lName');
-let email = document.getElementById('email');
-let password = document.getElementById('password');
-let showHideEl = document.getElementById('show-hide');
-let loginB = document.getElementById('login-button');
-let signupB = document.getElementById('signup-button');
-let verifyB = document.getElementById('verify');
-let passwordResetB = document.getElementById('reset-password');
-let fbLoginB = document.getElementById('fb');
-let loginMenu = document.getElementById('loginMenu');
-let userMenu = document.getElementById('userMenu');
-let profilePic = document.getElementById('profile-pic');
-let userName = document.getElementById('userName');
-let logoutB = document.getElementById('logout-button');
-
-/**
- * Feedback elements
- */
-
-let f = document.getElementById('f-feedback');
-let l = document.getElementById('l-feedback');
-let e = document.getElementById('e-feedback');
-let p = document.getElementById('p-feedback');
-
-function validateFName() {
-  const regex = /^[A-Za-z]?([\ ]?[A-Za-z])+$/;
-  const field = fName.value;
-  let flag = true;
-  if (field === '') {
-    flag = false;
-    fName.className = 'form-control negative';
-    f.innerHTML = 'Please fill out this field !';
-    f.className = 'feedback now-invalid';
-    return false;
-  } else if (field.indexOf(' ') === 0) {
-    flag = false;
-    fName.className = 'form-control negative';
-    f.innerHTML = 'Invalid username !';
-    f.className = 'feedback now-invalid';
+function validateName(value) {
+  const regex = /^[A-Za-z]?([ ]?[A-Za-z])+$/;
+  const field = value;
+  console.log(value);
+  if (field.indexOf(' ') === 0) {
     return false;
   } else if (!field.match(regex)) {
-    flag = false;
-    fName.className = 'form-control negative';
-    f.innerHTML = 'Invalid username !';
-    f.className = 'feedback now-invalid';
     return false;
   } else {
-    f.className = 'feedback';
-    fName.className = 'form-control positive';
-    return true;
-  }
-}
-
-function validateLName() {
-  const regex = /^[A-Za-z]?([\ ]?[A-Za-z])+$/;
-  const field = lName.value;
-  let flag = true;
-  if (field === '') {
-    flag = false;
-    lName.className = 'form-control negative';
-    l.innerHTML = 'Please fill out this field !';
-    l.className = 'feedback now-invalid';
-    return false;
-  } else if (field.indexOf(' ') === 0) {
-    flag = false;
-    lName.className = 'form-control negative';
-    l.innerHTML = 'Invalid username !';
-    l.className = 'feedback now-invalid';
-    return false;
-  } else if (!field.match(regex)) {
-    flag = false;
-    lName.className = 'form-control negative';
-    l.innerHTML = 'Invalid username !';
-    l.className = 'feedback now-invalid';
-    return false;
-  } else {
-    l.className = 'feedback';
-    lName.className = 'form-control positive';
     return true;
   }
 }
@@ -139,18 +68,15 @@ function validatePassword() {
 }
 
 function validateSignupForm() {
-  const a = validateFName();
-  const b = validateLName();
-  const c = validateEmail();
-  const d = validatePassword();
+  const a = validateName();
+  const b = validateEmail();
+  const c = validatePassword();
 
   if (a === false) {
     return false;
   } else if (b === false) {
     return false;
   } else if (c === false) {
-    return false;
-  } else if (d === false) {
     return false;
   } else {
     return true;
@@ -171,8 +97,7 @@ function validateLoginForm() {
 }
 
 export {
-  validateFName,
-  validateLName,
+  validateName,
   validateEmail,
   validatePassword,
   validateSignupForm,
