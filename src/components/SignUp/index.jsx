@@ -4,6 +4,7 @@ import Paper from '../Paper';
 import Typography from '@material-ui/core/Typography';
 import InputField from '../InputField';
 import CustomButton from '../CustomButton';
+import Progress from '../Progress';
 
 import { validateName, validateEmail, validatePassword } from './validate';
 
@@ -54,6 +55,7 @@ class SignUp extends Component {
   render() {
     return (
       <Container style={{ marginTop: 100, width: 600 }}>
+        <Progress />
         <Paper class0="root">
           <Typography variant="h1" align="center">
             Sign Up
