@@ -21,7 +21,7 @@ export default props => {
     <div>
       <Paper
         elevation={2}
-        className={`${classes.root} ${classes.paperContainer}`}
+        className={`${classes[props.class0]} ${classes[props.class1]}`}
       >
         {props.children}
       </Paper>

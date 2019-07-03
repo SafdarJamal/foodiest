@@ -13,9 +13,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Header />
         {/* <Landing /> */}
-        <div style={{ marginTop: 100 }}>
-          <SignIn />
-        </div>
+        <SignIn />
       </ThemeProvider>
     );
   }

@@ -7,7 +7,7 @@ import CustomButton from '../CustomButton';
 const Landing = () => {
   return (
     <Container style={{ marginTop: 100 }}>
-      <Paper>
+      <Paper class0="root" class1="paperContainer">
         <Typography variant="h1" style={{ marginTop: 250 }}>
           Foodiest is the easy way to get
           <br />
