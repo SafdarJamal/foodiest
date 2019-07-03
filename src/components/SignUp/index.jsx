@@ -85,8 +85,13 @@ class SignUp extends Component {
             InputProps={true}
             validate={this.confirmPassword}
           />
-          <div style={{ textAlign: 'right' }}>
-            <CustomButton type="primary" text="Next" size="large" />
+          <div style={{ textAlign: 'right', marginTop: 15, marginRight: 6 }}>
+            <CustomButton
+              variant="contained"
+              type="primary"
+              text="Sign me up"
+              size="large"
+            />
           </div>
         </Paper>
       </Container>

@@ -16,7 +16,12 @@ class SignIn extends Component {
           <InputField label="Email" type="email" />
           <InputField label="Passowrd" type="password" InputProps={true} />
           <div style={{ textAlign: 'right' }}>
-            <CustomButton type="primary" text="Next" size="large" />
+            <CustomButton
+              variant="contained"
+              type="primary"
+              text="Next"
+              size="large"
+            />
           </div>
         </Paper>
       </Container>

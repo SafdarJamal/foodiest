@@ -6,7 +6,7 @@ import unnamed from '../../assets/images/UberEats.jpg';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(3, 2)
+    padding: theme.spacing(4, 3)
   },
   paperContainer: {
     backgroundImage: `url(${unnamed})`,

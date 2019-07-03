@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
 import logo from '../../assets/images/logo.png';
-import OutlinedButton from '../OutlinedButton';
+import CustomButton from '../CustomButton';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,9 +45,19 @@ const Header = () => {
           />
         </div>
         <div className={classes.button}>
-          <OutlinedButton size="large" text="Sign in" type="primary" />
+          <CustomButton
+            variant="outlined"
+            size="large"
+            text="Sign in"
+            type="primary"
+          />
         </div>
-        <OutlinedButton size="large" text="Sign up" type="secondary" />
+        <CustomButton
+          variant="outlined"
+          size="large"
+          text="Sign up"
+          type="secondary"
+        />
       </Toolbar>
     </AppBar>
   );
