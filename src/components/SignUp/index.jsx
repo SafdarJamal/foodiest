@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import InputField from '../InputField';
 import CustomButton from '../CustomButton';
 
-import { validateName } from './validate';
+import { validateName, validateEmail } from './validate';
 
 class SignUp extends Component {
   validateFName(value) {
@@ -15,6 +15,11 @@ class SignUp extends Component {
 
   validateLName(value) {
     const result = validateName(value);
+    console.log(result);
+  }
+
+  validateEmail(value) {
+    const result = validateEmail(value);
     console.log(result);
   }
 
@@ -35,7 +40,11 @@ class SignUp extends Component {
             type="text"
             validate={this.validateLName}
           />
-          <InputField label="Email" type="email" />
+          <InputField
+            label="Email"
+            type="email"
+            validate={this.validateEmail}
+          />
           <InputField label="Passowrd" type="password" InputProps={true} />
           <InputField
             label="Confirm Passowrd"
