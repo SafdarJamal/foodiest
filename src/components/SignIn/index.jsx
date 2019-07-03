@@ -15,11 +15,19 @@ class SignIn extends Component {
           </Typography>
           <InputField label="Email" type="email" />
           <InputField label="Passowrd" type="password" InputProps={true} />
-          <div style={{ textAlign: 'right' }}>
+          <div style={{ marginTop: 25 }}>
+            <span style={{ marginRight: '160px', marginLeft: 8 }}>
+              <CustomButton
+                variant="outlined"
+                type="secondary"
+                text="Create account"
+                size="large"
+              />
+            </span>
             <CustomButton
               variant="contained"
               type="primary"
-              text="Next"
+              text="Sign me in"
               size="large"
             />
           </div>

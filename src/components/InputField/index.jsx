@@ -5,6 +5,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -53,7 +54,15 @@ const InputField = props => {
                   aria-label="Toggle password visibility"
                   onClick={handleClickShowPassword}
                 >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  {values.showPassword ? (
+                    <Tooltip title="Hide password">
+                      <Visibility />
+                    </Tooltip>
+                  ) : (
+                    <Tooltip title="Show password">
+                      <VisibilityOff />
+                    </Tooltip>
+                  )}
                 </IconButton>
               </InputAdornment>
             )

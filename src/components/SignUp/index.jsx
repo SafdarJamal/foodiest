@@ -85,7 +85,15 @@ class SignUp extends Component {
             InputProps={true}
             validate={this.confirmPassword}
           />
-          <div style={{ textAlign: 'right', marginTop: 15, marginRight: 6 }}>
+          <div style={{ marginTop: 25 }}>
+            <span style={{ marginRight: '160px', marginLeft: 8 }}>
+              <CustomButton
+                variant="outlined"
+                type="secondary"
+                text="Sign in instead"
+                size="large"
+              />
+            </span>
             <CustomButton
               variant="contained"
               type="primary"

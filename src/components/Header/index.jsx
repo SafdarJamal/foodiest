@@ -45,19 +45,9 @@ const Header = () => {
           />
         </div>
         <div className={classes.button}>
-          <CustomButton
-            variant="outlined"
-            size="large"
-            text="Sign in"
-            type="primary"
-          />
+          <CustomButton size="large" text="Sign in" type="primary" />
         </div>
-        <CustomButton
-          variant="outlined"
-          size="large"
-          text="Sign up"
-          type="secondary"
-        />
+        <CustomButton size="large" text="Sign up" type="secondary" />
       </Toolbar>
     </AppBar>
   );
