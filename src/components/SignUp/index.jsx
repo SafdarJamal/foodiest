@@ -5,9 +5,20 @@ import Typography from '@material-ui/core/Typography';
 import InputField from '../InputField';
 import CustomButton from '../CustomButton';
 
-import { validateName, validateEmail } from './validate';
+import { validateName, validateEmail, validatePassword } from './validate';
 
 class SignUp extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      password: null
+    };
+
+    this.validatePassword = this.validatePassword.bind(this);
+    this.confirmPassword = this.confirmPassword.bind(this);
+  }
+
   validateFName(value) {
     const result = validateName(value);
     console.log(result);
@@ -20,6 +31,23 @@ class SignUp extends Component {
 
   validateEmail(value) {
     const result = validateEmail(value);
+    console.log(result);
+  }
+
+  validatePassword(value) {
+    const result = validatePassword(value);
+    console.log(result);
+    if (result) {
+      this.setState({ password: value });
+    }
+  }
+
+  confirmPassword(value) {
+    const { password } = this.state;
+    let result = false;
+    if (value === password) {
+      result = true;
+    }
     console.log(result);
   }
 
@@ -45,11 +73,17 @@ class SignUp extends Component {
             type="email"
             validate={this.validateEmail}
           />
-          <InputField label="Passowrd" type="password" InputProps={true} />
+          <InputField
+            label="Passowrd"
+            type="password"
+            InputProps={true}
+            validate={this.validatePassword}
+          />
           <InputField
             label="Confirm Passowrd"
             type="password"
             InputProps={true}
+            validate={this.confirmPassword}
           />
           <div style={{ textAlign: 'right' }}>
             <CustomButton type="primary" text="Next" size="large" />

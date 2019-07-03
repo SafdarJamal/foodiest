@@ -26,38 +26,25 @@ function validateEmail(value) {
   }
 }
 
-// function validatePassword() {
-//   const regex = /^[a-zA-Z0-9.-_#*+/$@%,-?!]([\.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
-//   const field = password.value;
-//   let flag = true;
-//   if (!field.match(regex)) {
-//     flag = false;
-//     if (field === '') {
-//       password.className = 'form-control negative';
-//       p.innerHTML = 'Please fill out this field !';
-//       p.className = 'feedback now-invalid';
-//       return false;
-//     } else if (field.indexOf(' ') !== -1) {
-//       password.className = 'form-control negative';
-//       p.innerHTML = 'Can not contain spaces !';
-//       p.className = 'feedback now-invalid';
-//       return false;
-//     } else if (field.length < 8) {
-//       password.className = 'form-control negative';
-//       p.innerHTML = 'At least 8 characters long !';
-//       p.className = 'feedback now-invalid';
-//       return false;
-//     }
-//     password.className = 'form-control negative';
-//     p.innerHTML = 'Invalid characters !';
-//     p.className = 'feedback now-invalid';
-//     return false;
-//   } else {
-//     p.className = 'feedback';
-//     password.className = 'form-control positive';
-//     return true;
-//   }
-// }
+function validatePassword(value) {
+  const regex = /^[a-zA-Z0-9.-_#*+/$@%,-?!]([\.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
+  const field = value;
+  if (!field.match(regex)) {
+    if (field === '') {
+      return false;
+    } else if (field.indexOf(' ') !== -1) {
+      // p.innerHTML = 'Can not contain spaces !';
+      return false;
+    } else if (field.length < 8) {
+      // p.innerHTML = 'At least 8 characters long !';
+      return false;
+    }
+    // p.innerHTML = 'Invalid characters !';
+    return false;
+  } else {
+    return true;
+  }
+}
 
 // function validateSignupForm() {
 //   const a = validateName();
@@ -90,8 +77,8 @@ function validateEmail(value) {
 
 export {
   validateName,
-  validateEmail
-  // validatePassword,
+  validateEmail,
+  validatePassword
   // validateSignupForm,
   // validateLoginForm
 };
