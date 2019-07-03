@@ -35,7 +35,7 @@ const InputField = props => {
   return (
     <form className={classes.container} noValidate autoComplete="off">
       <TextField
-        id="outlined-name"
+        id={props.label}
         label={props.label}
         className={classes.textField}
         value={values.inputValue}
@@ -61,7 +61,7 @@ const InputField = props => {
         }
         // required
         // error
-        helperText="some important text"
+        // helperText="some important text"
       />
     </form>
   );

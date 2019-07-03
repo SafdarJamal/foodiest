@@ -12,7 +12,7 @@ function validateName(value) {
 }
 
 function validateEmail(value) {
-  const regex = /^\w+([\.-]?\w+)*@[a-zA-Z0-9]([\.-]?[a-zA-Z0-9])*(\.[a-zA-Z]{2,4})+$/;
+  const regex = /^\w+([.-]?\w+)*@[a-zA-Z0-9]([.-]?[a-zA-Z0-9])*(\.[a-zA-Z]{2,4})+$/;
   const field = value;
   console.log(value);
   if (!field.match(regex)) {
@@ -27,7 +27,7 @@ function validateEmail(value) {
 }
 
 function validatePassword(value) {
-  const regex = /^[a-zA-Z0-9.-_#*+/$@%,-?!]([\.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
+  const regex = /^[a-zA-Z0-9.-_#*+/$@%,-?!]([.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
   const field = value;
   if (!field.match(regex)) {
     if (field === '') {
