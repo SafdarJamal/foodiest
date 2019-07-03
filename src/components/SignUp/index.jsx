@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import InputField from '../InputField';
 import CustomButton from '../CustomButton';
 
-class SignIn extends Component {
+class SignUp extends Component {
   render() {
     return (
       <Container style={{ marginTop: 100, width: 600 }}>
@@ -13,8 +13,15 @@ class SignIn extends Component {
           <Typography variant="h1" align="center">
             Sign Up
           </Typography>
+          <InputField label="First Name" type="text" />
+          <InputField label="Last Name" type="text" />
           <InputField label="Email" type="email" />
           <InputField label="Passowrd" type="password" InputProps={true} />
+          <InputField
+            label="Confirm Passowrd"
+            type="password"
+            InputProps={true}
+          />
           <div style={{ textAlign: 'right' }}>
             <CustomButton type="primary" text="Next" size="large" />
           </div>
@@ -24,4 +31,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default SignUp;
