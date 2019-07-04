@@ -8,7 +8,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
-import restaurateur from '../../assets/images/burger.jpg';
+import restaurateur from '../../assets/images/restaurateur.jpg';
 import foodie from '../../assets/images/foodie.jpg';
 
 const useStyles = makeStyles(theme => ({
