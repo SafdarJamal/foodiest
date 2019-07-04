@@ -57,52 +57,55 @@ class SignUp extends Component {
       <Container style={{ marginTop: 100, width: 600 }}>
         <Progress />
         <Paper class0="root">
-          <Typography variant="h1" align="center">
-            Sign Up
-          </Typography>
-          <InputField
-            label="First Name"
-            type="text"
-            validate={this.validateFName}
-          />
-          <InputField
-            label="Last Name"
-            type="text"
-            validate={this.validateLName}
-          />
-          <InputField
-            label="Email"
-            type="email"
-            validate={this.validateEmail}
-          />
-          <InputField
-            label="Passowrd"
-            type="password"
-            InputProps={true}
-            validate={this.validatePassword}
-          />
-          <InputField
-            label="Confirm Passowrd"
-            type="password"
-            InputProps={true}
-            validate={this.confirmPassword}
-          />
-          <div style={{ marginTop: 25 }}>
-            <span style={{ marginRight: '160px', marginLeft: 8 }}>
+          <form noValidate autoComplete="off">
+            <Typography variant="h1" align="center">
+              Sign Up
+            </Typography>
+            <br />
+            <InputField
+              label="First Name"
+              type="text"
+              validate={this.validateFName}
+            />
+            <InputField
+              label="Last Name"
+              type="text"
+              validate={this.validateLName}
+            />
+            <InputField
+              label="Email"
+              type="email"
+              validate={this.validateEmail}
+            />
+            <InputField
+              label="Passowrd"
+              type="password"
+              InputProps={true}
+              validate={this.validatePassword}
+            />
+            <InputField
+              label="Confirm Passowrd"
+              type="password"
+              InputProps={true}
+              validate={this.confirmPassword}
+            />
+            <div style={{ marginTop: 25 }}>
+              <span style={{ marginRight: '160px', marginLeft: 8 }}>
+                <CustomButton
+                  variant="outlined"
+                  type="secondary"
+                  text="Sign in instead"
+                  size="large"
+                />
+              </span>
               <CustomButton
-                variant="outlined"
-                type="secondary"
-                text="Sign in instead"
+                variant="contained"
+                type="primary"
+                text="Sign me up"
                 size="large"
               />
-            </span>
-            <CustomButton
-              variant="contained"
-              type="primary"
-              text="Sign me up"
-              size="large"
-            />
-          </div>
+            </div>
+          </form>
         </Paper>
       </Container>
     );
