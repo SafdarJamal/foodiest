@@ -6,7 +6,12 @@ import InputField from '../InputField';
 import CustomButton from '../CustomButton';
 import Progress from '../Progress';
 
-import { validateName, validateEmail, validatePassword } from './validate';
+import {
+  validateName,
+  validateEmail,
+  validatePassword,
+  validateSignUpForm
+} from './validate';
 
 class SignUp extends Component {
   constructor(props) {
@@ -52,6 +57,11 @@ class SignUp extends Component {
     console.log(result);
   }
 
+  signMeUp() {
+    console.log('===>>>');
+    console.log(validateSignUpForm());
+  }
+
   render() {
     return (
       <Container style={{ marginTop: 100, width: 600 }}>
@@ -66,6 +76,7 @@ class SignUp extends Component {
               label="First Name"
               type="text"
               validate={this.validateFName}
+              // errorMessage="Invalid name"
             />
             <InputField
               label="Last Name"
@@ -78,13 +89,13 @@ class SignUp extends Component {
               validate={this.validateEmail}
             />
             <InputField
-              label="Passowrd"
+              label="Password"
               type="password"
               InputProps={true}
               validate={this.validatePassword}
             />
             <InputField
-              label="Confirm Passowrd"
+              label="Confirm Password"
               type="password"
               InputProps={true}
               validate={this.confirmPassword}
@@ -103,6 +114,7 @@ class SignUp extends Component {
                 type="primary"
                 text="Sign me up"
                 size="large"
+                clickMethod={this.signMeUp}
               />
             </div>
           </form>

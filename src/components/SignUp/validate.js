@@ -33,52 +33,64 @@ function validatePassword(value) {
     if (field === '') {
       return false;
     } else if (field.indexOf(' ') !== -1) {
-      // p.innerHTML = 'Can not contain spaces !';
       return false;
     } else if (field.length < 8) {
-      // p.innerHTML = 'At least 8 characters long !';
       return false;
     }
-    // p.innerHTML = 'Invalid characters !';
     return false;
   } else {
     return true;
   }
 }
 
-// function validateSignupForm() {
-//   const a = validateName();
-//   const b = validateEmail();
-//   const c = validatePassword();
+function validateSignUpForm() {
+  const fName = document.getElementById('first-name').value;
+  const lName = document.getElementById('last-name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const confPassword = document.getElementById('confirm-password').value;
 
-//   if (a === false) {
-//     return false;
-//   } else if (b === false) {
-//     return false;
-//   } else if (c === false) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// }
+  const a = validateName(fName);
+  const b = validateName(lName);
+  const c = validateEmail(email);
+  const d = validatePassword(password);
+  const e = confPassword === password;
 
-// function validateLoginForm() {
-//   const a = validateEmail();
-//   const b = validatePassword();
+  console.log(a, b, c, d, e);
 
-//   if (a === false) {
-//     return false;
-//   } else if (b === false) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// }
+  if (a === false) {
+    return false;
+  } else if (b === false) {
+    return false;
+  } else if (c === false) {
+    return false;
+  } else if (d === false) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function validateSignInForm() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const a = validateEmail(email);
+  const b = validatePassword(password);
+
+  if (a === false) {
+    return false;
+  } else if (b === false) {
+    return false;
+  } else {
+    return true;
+  }
+}
 
 export {
   validateName,
   validateEmail,
-  validatePassword
-  // validateSignupForm,
-  // validateLoginForm
+  validatePassword,
+  validateSignUpForm,
+  validateSignInForm
 };

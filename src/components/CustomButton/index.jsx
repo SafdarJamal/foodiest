@@ -7,6 +7,7 @@ const CustomButton = props => {
       variant={props.variant}
       color={props.type === 'primary' ? props.type : 'default'}
       size={props.size}
+      onClick={props.clickMethod}
     >
       {props.text || props.type || 'Default'}
     </Button>

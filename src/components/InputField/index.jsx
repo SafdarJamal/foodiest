@@ -36,7 +36,7 @@ const InputField = props => {
   return (
     <div className={classes.container}>
       <TextField
-        id={props.label}
+        id={props.label.toLowerCase().replace(/ /g, '-')}
         label={props.label}
         className={classes.textField}
         value={values.inputValue}
@@ -69,8 +69,8 @@ const InputField = props => {
           }
         }
         // required
-        // error
-        // helperText="some important text"
+        error={props.errorMessage}
+        helperText={props.errorMessage && props.errorMessage}
       />
     </div>
   );
