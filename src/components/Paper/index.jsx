@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
   },
   paperContainer: {
     backgroundImage: `url(${unnamed})`,
-    height: '650px'
+    height: '560px'
   }
 }));
 

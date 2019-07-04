@@ -18,7 +18,12 @@ const Landing = () => {
         </Typography>
 
         <br />
-        <CustomButton text="Get started" type="primary" size="large" />
+        <CustomButton
+          variant="contained"
+          text="Get started"
+          type="primary"
+          size="large"
+        />
       </Paper>
     </Container>
   );
