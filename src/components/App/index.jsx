@@ -6,7 +6,8 @@ import theme from '../../theme';
 import Header from '../Header';
 // import Landing from '../Landing';
 // import SignIn from '../SignIn';
-import SignUp from '../SignUp';
+// import SignUp from '../SignUp';
+import AccountType from '../AccountType';
 
 class App extends Component {
   render() {
@@ -15,7 +16,8 @@ class App extends Component {
         <Header />
         {/* <Landing /> */}
         {/* <SignIn /> */}
-        <SignUp />
+        {/* <SignUp /> */}
+        <AccountType />
       </ThemeProvider>
     );
   }

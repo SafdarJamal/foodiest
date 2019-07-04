@@ -54,7 +54,7 @@ function validateSignUpForm() {
   const b = validateName(lName);
   const c = validateEmail(email);
   const d = validatePassword(password);
-  const e = confPassword === password;
+  const e = d === true ? confPassword === password : false;
 
   console.log(a, b, c, d, e);
 

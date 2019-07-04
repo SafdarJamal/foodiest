@@ -58,7 +58,6 @@ class SignUp extends Component {
   }
 
   signMeUp() {
-    console.log('===>>>');
     console.log(validateSignUpForm());
   }
 
@@ -73,6 +72,7 @@ class SignUp extends Component {
             </Typography>
             <br />
             <InputField
+              focus={true}
               label="First Name"
               type="text"
               validate={this.validateFName}

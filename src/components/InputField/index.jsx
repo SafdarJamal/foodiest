@@ -36,6 +36,7 @@ const InputField = props => {
   return (
     <div className={classes.container}>
       <TextField
+        autoFocus={props.focus}
         id={props.label.toLowerCase().replace(/ /g, '-')}
         label={props.label}
         className={classes.textField}
