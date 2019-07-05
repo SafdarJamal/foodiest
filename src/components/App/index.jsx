@@ -4,7 +4,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 
 import Header from '../Header';
-import Landing from '../Landing';
+// import Landing from '../Landing';
 // import SignIn from '../SignIn';
 // import SignUp from '../SignUp';
 import AccountType from '../AccountType';
@@ -14,10 +14,10 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <Header />
-        <Landing />
+        {/* <Landing /> */}
         {/* <SignIn /> */}
         {/* <SignUp /> */}
-        {/* <AccountType /> */}
+        <AccountType />
       </ThemeProvider>
     );
   }
