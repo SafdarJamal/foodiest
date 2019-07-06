@@ -5,9 +5,10 @@ import theme from '../../theme';
 
 import Header from '../Header';
 // import Landing from '../Landing';
-// import SignIn from '../SignIn';
+// import AccountType from '../AccountType';
 // import SignUp from '../SignUp';
-import AccountType from '../AccountType';
+// import SignIn from '../SignIn';
+import EmailVerification from '../EmailVerification';
 
 class App extends Component {
   render() {
@@ -15,9 +16,10 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Header />
         {/* <Landing /> */}
-        {/* <SignIn /> */}
+        {/* <AccountType /> */}
         {/* <SignUp /> */}
-        <AccountType />
+        {/* <SignIn /> */}
+        <EmailVerification />
       </ThemeProvider>
     );
   }
