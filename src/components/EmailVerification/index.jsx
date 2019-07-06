@@ -2,7 +2,6 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Paper from '../Paper';
 import Typography from '@material-ui/core/Typography';
-import InputField from '../InputField';
 import CustomButton from '../CustomButton';
 import Progress from '../Progress';
 
@@ -16,22 +15,23 @@ const EmailVerification = () => {
             Email Verification
           </Typography>
           <br />
-          <InputField label="Email" type="email" />
-          <div style={{ marginTop: 25 }}>
-            <span style={{ marginRight: '160px', marginLeft: 8 }}>
-              <CustomButton
-                variant="outlined"
-                type="secondary"
-                text="Sign in instead"
-                size="large"
-              />
-            </span>
+          <br />
+          <Typography variant="subtitle1" align="center">
+            Check your inbox to verify your email
+            <br />
+            Click the link in the email and you'll be good to go.
+          </Typography>
+          <div style={{ marginTop: 25, textAlign: 'center' }}>
             <CustomButton
               variant="contained"
               type="primary"
-              text="Sign me up"
+              text="Resend"
               size="large"
-              // clickMethod={this.signMeUp}
+              clickMethod={() =>
+                alert(
+                  'Verification link has been sent to your provided email address, check you mailbox.'
+                )
+              }
             />
           </div>
         </form>
