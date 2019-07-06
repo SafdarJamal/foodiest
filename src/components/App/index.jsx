@@ -8,7 +8,8 @@ import Header from '../Header';
 // import AccountType from '../AccountType';
 // import SignUp from '../SignUp';
 // import SignIn from '../SignIn';
-import EmailVerification from '../EmailVerification';
+// import EmailVerification from '../EmailVerification';
+import PasswordReset from '../PasswordReset';
 
 class App extends Component {
   render() {
@@ -19,7 +20,8 @@ class App extends Component {
         {/* <AccountType /> */}
         {/* <SignUp /> */}
         {/* <SignIn /> */}
-        <EmailVerification />
+        {/* <EmailVerification /> */}
+        <PasswordReset />
       </ThemeProvider>
     );
   }

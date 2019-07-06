@@ -29,7 +29,7 @@ const EmailVerification = () => {
               size="large"
               clickMethod={() =>
                 alert(
-                  'Verification link has been sent to your provided email address, check you mailbox.'
+                  'Verification link has been send to your provided email address, check you mailbox.'
                 )
               }
             />

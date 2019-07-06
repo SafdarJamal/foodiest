@@ -13,25 +13,29 @@ const PasswordReset = () => {
       <Paper class0="root">
         <form noValidate autoComplete="off">
           <Typography variant="h1" align="center">
-            Reset Password
+            Forgot your Password?
           </Typography>
           <br />
+          <br />
           <InputField label="Email" type="email" />
+          <Typography variant="subtitle1" align="center">
+            We'll send you a link to reset your password.
+          </Typography>
+          <br />
           <div style={{ marginTop: 25 }}>
-            <span style={{ marginRight: '160px', marginLeft: 8 }}>
+            <span style={{ marginRight: '90px', marginLeft: 8 }}>
               <CustomButton
                 variant="outlined"
                 type="secondary"
-                text="Sign in instead"
+                text="Back to Sign in"
                 size="large"
               />
             </span>
             <CustomButton
               variant="contained"
               type="primary"
-              text="Sign me up"
+              text="Email me reset link"
               size="large"
-              // clickMethod={this.signMeUp}
             />
           </div>
         </form>
