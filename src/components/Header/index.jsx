@@ -45,7 +45,12 @@ const Header = () => {
           />
         </div>
         <div className={classes.button}>
-          <CustomButton size="large" text="Sign in" type="secondary" />
+          <CustomButton
+            variant="outlined"
+            size="large"
+            text="Sign in"
+            type="secondary"
+          />
         </div>
         <CustomButton
           variant="contained"

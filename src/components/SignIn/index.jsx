@@ -6,6 +6,7 @@ import InputField from '../InputField';
 import CustomButton from '../CustomButton';
 import Progress from '../Progress';
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 
 import {
   validateEmail,
@@ -59,6 +60,25 @@ class SignIn extends Component {
                   InputProps={true}
                   validate={this.validatePassword}
                 />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                style={{
+                  textAlign: 'right',
+                  marginRight: 10,
+                  cursor: 'pointer'
+                }}
+              >
+                <Link
+                  variant="subtitle1"
+                  color="default"
+                  onClick={() => {
+                    alert("I'm a button.");
+                  }}
+                >
+                  Forgot Password?
+                </Link>
               </Grid>
               <Grid
                 container

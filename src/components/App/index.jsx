@@ -7,7 +7,7 @@ import Header from '../Header';
 import Landing from '../Landing';
 // import AccountType from '../AccountType';
 // import SignUp from '../SignUp';
-// import SignIn from '../SignIn';
+import SignIn from '../SignIn';
 // import EmailVerification from '../EmailVerification';
 // import PasswordReset from '../PasswordReset';
 
@@ -16,10 +16,10 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <Header />
-        <Landing />
+        {/* <Landing /> */}
         {/* <AccountType /> */}
         {/* <SignUp /> */}
-        {/* <SignIn /> */}
+        <SignIn />
         {/* <EmailVerification /> */}
         {/* <PasswordReset /> */}
       </ThemeProvider>
