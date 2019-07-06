@@ -10,6 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 import restaurateur from '../../assets/images/restaurateur.jpg';
 import foodie from '../../assets/images/foodie.jpg';
+import Progress from '../Progress';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,6 +29,7 @@ const AccountType = () => {
 
   return (
     <Container style={{ marginTop: 100, width: 600 }}>
+      <Progress />
       <Paper class0="root">
         <Typography variant="h1" align="center">
           Account Type

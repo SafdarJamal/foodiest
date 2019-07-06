@@ -4,24 +4,31 @@ import Paper from '../Paper';
 import Typography from '@material-ui/core/Typography';
 import CustomButton from '../CustomButton';
 import Progress from '../Progress';
+import Grid from '@material-ui/core/Grid';
 
 const EmailVerification = () => {
   return (
     <Container style={{ marginTop: 100, width: 600 }}>
       <Progress />
       <Paper class0="root">
-        <form noValidate autoComplete="off">
-          <Typography variant="h1" align="center">
-            Email Verification
-          </Typography>
-          <br />
-          <br />
-          <Typography variant="subtitle1" align="center">
-            Check your inbox to verify your email
-            <br />
-            Click the link in the email and you'll be good to go.
-          </Typography>
-          <div style={{ marginTop: 25, textAlign: 'center' }}>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <Typography
+              variant="h1"
+              align="center"
+              style={{ marginBottom: 20 }}
+            >
+              Email Verification
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subtitle1" align="center">
+              Check your inbox to verify your email
+              <br />
+              Click the link in the email and you'll be good to go.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} style={{ marginTop: 25, textAlign: 'center' }}>
             <CustomButton
               variant="contained"
               type="primary"
@@ -33,8 +40,8 @@ const EmailVerification = () => {
                 )
               }
             />
-          </div>
-        </form>
+          </Grid>
+        </Grid>
       </Paper>
     </Container>
   );

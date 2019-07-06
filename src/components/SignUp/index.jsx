@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import InputField from '../InputField';
 import CustomButton from '../CustomButton';
 import Progress from '../Progress';
+import Grid from '@material-ui/core/Grid';
 
 import {
   validateName,
@@ -58,65 +59,92 @@ class SignUp extends Component {
   }
 
   signMeUp() {
-    console.log(validateSignUpForm());
+    const result = validateSignUpForm();
+    console.log(result);
   }
 
   render() {
     return (
-      <Container style={{ marginTop: 100, width: 600 }}>
+      <Container style={{ marginTop: 125, width: 600 }}>
         <Progress />
         <Paper class0="root">
           <form noValidate autoComplete="off">
-            <Typography variant="h1" align="center">
-              Sign Up
-            </Typography>
-            <br />
-            <InputField
-              focus={true}
-              label="First Name"
-              type="text"
-              validate={this.validateFName}
-              // errorMessage="Invalid name"
-            />
-            <InputField
-              label="Last Name"
-              type="text"
-              validate={this.validateLName}
-            />
-            <InputField
-              label="Email"
-              type="email"
-              validate={this.validateEmail}
-            />
-            <InputField
-              label="Password"
-              type="password"
-              InputProps={true}
-              validate={this.validatePassword}
-            />
-            <InputField
-              label="Confirm Password"
-              type="password"
-              InputProps={true}
-              validate={this.confirmPassword}
-            />
-            <div style={{ marginTop: 25 }}>
-              <span style={{ marginRight: '160px', marginLeft: 8 }}>
-                <CustomButton
-                  variant="outlined"
-                  type="secondary"
-                  text="Sign in instead"
-                  size="large"
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <Typography
+                  variant="h1"
+                  align="center"
+                  style={{ marginBottom: 20 }}
+                >
+                  Sign Up
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <InputField
+                  focus={true}
+                  label="First Name"
+                  type="text"
+                  validate={this.validateFName}
+                  // errorMessage="Invalid name"
                 />
-              </span>
-              <CustomButton
-                variant="contained"
-                type="primary"
-                text="Sign me up"
-                size="large"
-                clickMethod={this.signMeUp}
-              />
-            </div>
+              </Grid>
+              <Grid item xs={12}>
+                <InputField
+                  label="Last Name"
+                  type="text"
+                  validate={this.validateLName}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <InputField
+                  label="Email"
+                  type="email"
+                  validate={this.validateEmail}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <InputField
+                  label="Password"
+                  type="password"
+                  InputProps={true}
+                  validate={this.validatePassword}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <InputField
+                  label="Confirm Password"
+                  type="password"
+                  InputProps={true}
+                  validate={this.confirmPassword}
+                />
+              </Grid>
+              <Grid
+                container
+                style={{ marginTop: 25, marginLeft: 12, marginRight: 12 }}
+              >
+                <Grid item xs={6}>
+                  <div style={{ textAlign: 'left' }}>
+                    <CustomButton
+                      variant="outlined"
+                      type="secondary"
+                      text="Sign in instead"
+                      size="large"
+                    />
+                  </div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div style={{ textAlign: 'right' }}>
+                    <CustomButton
+                      variant="contained"
+                      type="primary"
+                      text="Sign me up"
+                      size="large"
+                      clickMethod={this.signMeUp}
+                    />
+                  </div>
+                </Grid>
+              </Grid>
+            </Grid>
           </form>
         </Paper>
       </Container>
