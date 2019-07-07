@@ -11,13 +11,12 @@ import Landing from '../Landing';
 // import EmailVerification from '../EmailVerification';
 // import PasswordReset from '../PasswordReset';
 // import Home from '../Home';
-// import Drawer from '../Drawer';
 
 class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Header />
+        <Header isLanding={true} />
         <Landing />
         {/* <AccountType /> */}
         {/* <SignUp /> */}
@@ -25,7 +24,6 @@ class App extends Component {
         {/* <EmailVerification /> */}
         {/* <PasswordReset /> */}
         {/* <Home /> */}
-        {/* <Drawer /> */}
       </ThemeProvider>
     );
   }

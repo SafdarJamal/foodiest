@@ -62,22 +62,24 @@ export default props => {
             />
           </Typography>
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <div className={classes.menuButton}>
+          {props.isLanding && (
+            <div className={classes.sectionDesktop}>
+              <div className={classes.menuButton}>
+                <CustomButton
+                  variant="outlined"
+                  size="large"
+                  text="Sign in"
+                  type="secondary"
+                />
+              </div>
               <CustomButton
-                variant="outlined"
+                variant="contained"
                 size="large"
-                text="Sign in"
-                type="secondary"
+                text="Sign up"
+                type="primary"
               />
             </div>
-            <CustomButton
-              variant="contained"
-              size="large"
-              text="Sign up"
-              type="primary"
-            />
-          </div>
+          )}
         </Toolbar>
       </AppBar>
     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import AppBar from './AppBar';
 import Drawer from './Drawer';
 
-const Header = () => {
+const Header = props => {
   const [open, setOpen] = React.useState(false);
 
   function handleDrawerOpen() {
@@ -16,6 +16,7 @@ const Header = () => {
   return (
     <div>
       <AppBar
+        isLanding={props.isLanding}
         handleDrawerOpen={handleDrawerOpen}
         handleDrawerClose={handleDrawerClose}
         isOpen={open}
