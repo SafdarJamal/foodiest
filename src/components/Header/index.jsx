@@ -7,6 +7,7 @@ import CustomButton from '../CustomButton';
 import logo from '../../assets/images/logo.png';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -23,21 +24,35 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Home = () => {
+const Home = props => {
   const classes = useStyles();
 
   return (
     <div className={classes.grow}>
       <AppBar position="fixed" color="default" elevation={2}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+          {props.isOpen === true ? (
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={props.handleDrawerClose}
+            >
+              <ChevronLeftIcon />
+            </IconButton>
+          ) : (
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={props.handleDrawerOpen}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
+
           <Typography style={{ cursor: 'pointer' }} variant="h2" noWrap>
             <img
               src={logo}
