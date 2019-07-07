@@ -11,21 +11,21 @@ import Landing from '../Landing';
 // import EmailVerification from '../EmailVerification';
 // import PasswordReset from '../PasswordReset';
 // import Home from '../Home';
-import Drawer from '../Drawer';
+// import Drawer from '../Drawer';
 
 class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        {/* <Header /> */}
-        {/* <Landing /> */}
+        <Header />
+        <Landing />
         {/* <AccountType /> */}
         {/* <SignUp /> */}
         {/* <SignIn /> */}
         {/* <EmailVerification /> */}
         {/* <PasswordReset /> */}
         {/* <Home /> */}
-        <Drawer />
+        {/* <Drawer /> */}
       </ThemeProvider>
     );
   }

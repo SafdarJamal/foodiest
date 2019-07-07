@@ -9,7 +9,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AccountBoxIcon from '@material-ui/icons/AccountCircle';
 import NearMeRoundedIcon from '@material-ui/icons/NearMeRounded';
-import Header from '../Header';
 
 const drawerWidth = 240;
 
@@ -33,31 +32,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default () => {
+export default props => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-
-  function handleDrawerOpen() {
-    setOpen(true);
-  }
-
-  function handleDrawerClose() {
-    setOpen(false);
-  }
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Header
-        handleDrawerOpen={handleDrawerOpen}
-        handleDrawerClose={handleDrawerClose}
-        isOpen={open}
-      />
       <Drawer
         className={classes.drawer}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={props.isOpen}
         classes={{
           paper: classes.drawerPaper
         }}
