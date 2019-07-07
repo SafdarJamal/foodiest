@@ -34,6 +34,11 @@ const useStyles = makeStyles(theme => ({
 
 export default props => {
   const classes = useStyles();
+  const [selectedIndex, setSelectedIndex] = React.useState();
+
+  function handleListItemClick(event, index) {
+    setSelectedIndex(index);
+  }
 
   return (
     <div className={classes.root}>
@@ -50,14 +55,22 @@ export default props => {
         <div className={classes.drawerHeader}>{/* <h1>Hello World</h1> */}</div>
         <Divider />
         <List>
-          <ListItem button>
+          <ListItem
+            button
+            selected={selectedIndex === 0}
+            onClick={event => handleListItemClick(event, 0)}
+          >
             <ListItemIcon>
               <AccountBoxIcon />
             </ListItemIcon>
             <ListItemText primary="Sign In" />
           </ListItem>
           <Divider />
-          <ListItem button>
+          <ListItem
+            button
+            selected={selectedIndex === 1}
+            onClick={event => handleListItemClick(event, 1)}
+          >
             <ListItemIcon>
               <NearMeRoundedIcon />
             </ListItemIcon>
