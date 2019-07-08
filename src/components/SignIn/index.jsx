@@ -74,7 +74,7 @@ class SignIn extends Component {
               >
                 <Link
                   component={RouterLink}
-                  to="/reset-password"
+                  to="/password-reset"
                   variant="subtitle1"
                   color="default"
                 >

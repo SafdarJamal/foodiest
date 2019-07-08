@@ -25,7 +25,7 @@ class App extends Component {
           <Route path={ROUTES.SIGNUP} component={SignUp} />
           <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
           <Route path={ROUTES.SIGNIN} component={SignIn} />
-          <Route path={ROUTES.RESET_PASSWORD} component={PasswordReset} />
+          <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
           <Route path={ROUTES.HOME} component={Home} />
         </ThemeProvider>
       </Router>
