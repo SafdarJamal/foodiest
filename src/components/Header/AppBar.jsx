@@ -9,6 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
+import { Link } from 'react-router-dom';
+
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1
@@ -54,30 +56,36 @@ export default props => {
           )}
 
           <Typography style={{ cursor: 'pointer' }} variant="h2" noWrap>
-            <img
-              src={logo}
-              alt="Foodiest"
-              height="58"
-              title="We Love Foodies"
-            />
+            <Link to="/">
+              <img
+                src={logo}
+                alt="Foodiest"
+                height="58"
+                title="We Love Foodies"
+              />
+            </Link>
           </Typography>
           <div className={classes.grow} />
           {props.isLanding && (
             <div className={classes.sectionDesktop}>
               <div className={classes.menuButton}>
-                <CustomButton
-                  variant="outlined"
-                  size="large"
-                  text="Sign in"
-                  type="secondary"
-                />
+                <Link to="/signin" style={{ textDecoration: 'none' }}>
+                  <CustomButton
+                    variant="outlined"
+                    size="large"
+                    text="Sign in"
+                    type="secondary"
+                  />
+                </Link>
               </div>
-              <CustomButton
-                variant="contained"
-                size="large"
-                text="Sign up"
-                type="primary"
-              />
+              <Link to="/signup" style={{ textDecoration: 'none' }}>
+                <CustomButton
+                  variant="contained"
+                  size="large"
+                  text="Sign up"
+                  type="primary"
+                />
+              </Link>
             </div>
           )}
         </Toolbar>
