@@ -1,9 +1,9 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import Paper from '../Paper';
+import Paper from '../UI/Paper';
 import Typography from '@material-ui/core/Typography';
-import CustomButton from '../CustomButton';
-import Progress from '../Progress';
+import CustomButton from '../UI/CustomButton';
+import Progress from '../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 
 const EmailVerification = () => {

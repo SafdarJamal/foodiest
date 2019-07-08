@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import CustomButton from '../CustomButton';
+import CustomButton from '../UI/CustomButton';
 import Grid from '@material-ui/core/Grid';
 import heroImage from '../../assets/images/UberEats.jpg';
 
