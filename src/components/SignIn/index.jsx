@@ -14,7 +14,7 @@ import {
   validateEmail,
   validatePassword,
   validateSignInForm
-} from '../SignUp/validate';
+} from '../../utils/validate';
 
 class SignIn extends Component {
   validateEmail(value) {

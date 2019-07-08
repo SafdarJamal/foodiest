@@ -14,7 +14,7 @@ import {
   validateEmail,
   validatePassword,
   validateSignUpForm
-} from '../validate';
+} from '../../../utils/validate';
 
 class SignUpFoodie extends Component {
   constructor(props) {

@@ -7,7 +7,7 @@ import CustomButton from '../UI/CustomButton';
 import Progress from '../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 
-import { validateEmail } from '../SignUp/validate';
+import { validateEmail } from '../../utils/validate';
 
 import { Link } from 'react-router-dom';
 
