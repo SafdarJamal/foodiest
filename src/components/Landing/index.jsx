@@ -6,6 +6,8 @@ import CustomButton from '../CustomButton';
 import Grid from '@material-ui/core/Grid';
 import heroImage from '../../assets/images/UberEats.jpg';
 
+import { Link } from 'react-router-dom';
+
 const Landing = () => {
   return (
     <Container style={{ marginTop: 125 }}>
@@ -20,12 +22,14 @@ const Landing = () => {
             </Typography>
 
             <br />
-            <CustomButton
-              variant="contained"
-              text="Get started"
-              type="primary"
-              size="large"
-            />
+            <Link to="/signup" style={{ textDecoration: 'none' }}>
+              <CustomButton
+                variant="contained"
+                text="Get started"
+                type="primary"
+                size="large"
+              />
+            </Link>
           </Grid>
           <Grid item xs={7}>
             <img src={heroImage} alt="BurgerImage" height="650" width="111%" />

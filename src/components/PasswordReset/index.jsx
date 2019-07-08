@@ -9,6 +9,8 @@ import Grid from '@material-ui/core/Grid';
 
 import { validateEmail } from '../SignUp/validate';
 
+import { Link } from 'react-router-dom';
+
 class PasswordReset extends Component {
   validateEmail(value) {
     const result = validateEmail(value);
@@ -49,12 +51,14 @@ class PasswordReset extends Component {
               >
                 <Grid item xs={6}>
                   <div style={{ textAlign: 'left' }}>
-                    <CustomButton
-                      variant="outlined"
-                      type="secondary"
-                      text="Back to Sign in"
-                      size="large"
-                    />
+                    <Link to="/signin" style={{ textDecoration: 'none' }}>
+                      <CustomButton
+                        variant="outlined"
+                        type="secondary"
+                        text="Back to Sign in"
+                        size="large"
+                      />
+                    </Link>
                   </div>
                 </Grid>
                 <Grid item xs={6}>

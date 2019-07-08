@@ -7,6 +7,8 @@ import CustomButton from '../CustomButton';
 import Progress from '../Progress';
 import Grid from '@material-ui/core/Grid';
 
+import { Link } from 'react-router-dom';
+
 import {
   validateName,
   validateEmail,
@@ -124,12 +126,14 @@ class SignUp extends Component {
               >
                 <Grid item xs={6}>
                   <div style={{ textAlign: 'left' }}>
-                    <CustomButton
-                      variant="outlined"
-                      type="secondary"
-                      text="Sign in instead"
-                      size="large"
-                    />
+                    <Link to="/signin" style={{ textDecoration: 'none' }}>
+                      <CustomButton
+                        variant="outlined"
+                        type="secondary"
+                        text="Sign in instead"
+                        size="large"
+                      />
+                    </Link>
                   </div>
                 </Grid>
                 <Grid item xs={6}>

@@ -8,6 +8,8 @@ import Progress from '../Progress';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 
+import { Link as RouterLink } from 'react-router-dom';
+
 import {
   validateEmail,
   validatePassword,
@@ -71,11 +73,10 @@ class SignIn extends Component {
                 }}
               >
                 <Link
+                  component={RouterLink}
+                  to="/reset-password"
                   variant="subtitle1"
                   color="default"
-                  onClick={() => {
-                    alert("I'm a button.");
-                  }}
                 >
                   Forgot Password?
                 </Link>
@@ -86,12 +87,14 @@ class SignIn extends Component {
               >
                 <Grid item xs={6}>
                   <div style={{ textAlign: 'left' }}>
-                    <CustomButton
-                      variant="outlined"
-                      type="secondary"
-                      text="Create account"
-                      size="large"
-                    />
+                    <RouterLink to="/signup" style={{ textDecoration: 'none' }}>
+                      <CustomButton
+                        variant="outlined"
+                        type="secondary"
+                        text="Create account"
+                        size="large"
+                      />
+                    </RouterLink>
                   </div>
                 </Grid>
                 <Grid item xs={6}>
