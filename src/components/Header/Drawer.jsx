@@ -10,6 +10,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AccountBoxIcon from '@material-ui/icons/AccountCircle';
 import NearMeRoundedIcon from '@material-ui/icons/NearMeRounded';
 
+import { Link } from 'react-router-dom';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -55,27 +57,33 @@ export default props => {
         <div className={classes.drawerHeader}>{/* <h1>Hello World</h1> */}</div>
         <Divider />
         <List>
-          <ListItem
-            button
-            selected={selectedIndex === 0}
-            onClick={event => handleListItemClick(event, 0)}
-          >
-            <ListItemIcon>
-              <AccountBoxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Sign In" />
-          </ListItem>
+          <Link to="/signin" style={{ textDecoration: 'none' }}>
+            <ListItem
+              button
+              selected={selectedIndex === 0}
+              onClick={event => handleListItemClick(event, 0)}
+            >
+              <ListItemIcon>
+                <AccountBoxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Sign In" />
+            </ListItem>
+          </Link>
+
           <Divider />
-          <ListItem
-            button
-            selected={selectedIndex === 1}
-            onClick={event => handleListItemClick(event, 1)}
-          >
-            <ListItemIcon>
-              <NearMeRoundedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Sign Up" />
-          </ListItem>
+
+          <Link to="/signup" style={{ textDecoration: 'none' }}>
+            <ListItem
+              button
+              selected={selectedIndex === 1}
+              onClick={event => handleListItemClick(event, 1)}
+            >
+              <ListItemIcon>
+                <NearMeRoundedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Sign Up" />
+            </ListItem>
+          </Link>
         </List>
         <Divider />
       </Drawer>
