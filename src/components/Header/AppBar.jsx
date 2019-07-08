@@ -78,7 +78,7 @@ export default props => {
                   />
                 </Link>
               </div>
-              <Link to="/signup" style={{ textDecoration: 'none' }}>
+              <Link to="/signup/type" style={{ textDecoration: 'none' }}>
                 <CustomButton
                   variant="contained"
                   size="large"

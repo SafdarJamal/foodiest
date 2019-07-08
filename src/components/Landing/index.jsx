@@ -22,7 +22,7 @@ const Landing = () => {
             </Typography>
 
             <br />
-            <Link to="/signup" style={{ textDecoration: 'none' }}>
+            <Link to="/signup/type" style={{ textDecoration: 'none' }}>
               <CustomButton
                 variant="contained"
                 text="Get started"

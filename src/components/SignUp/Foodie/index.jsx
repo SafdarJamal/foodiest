@@ -1,22 +1,43 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
-import Paper from '../UI/Paper';
+import Paper from '../../UI/Paper';
 import Typography from '@material-ui/core/Typography';
-import InputField from '../UI/InputField';
-import CustomButton from '../UI/CustomButton';
-import Progress from '../UI/Progress';
+import InputField from '../../UI/InputField';
+import CustomButton from '../../UI/CustomButton';
+import Progress from '../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
 
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import {
+  validateName,
   validateEmail,
   validatePassword,
-  validateSignInForm
-} from '../SignUp/validate';
+  validateSignUpForm
+} from '../validate';
 
-class SignIn extends Component {
+class SignUpFoodie extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      password: null
+    };
+
+    this.validatePassword = this.validatePassword.bind(this);
+    this.confirmPassword = this.confirmPassword.bind(this);
+  }
+
+  validateFName(value) {
+    const result = validateName(value);
+    console.log(result);
+  }
+
+  validateLName(value) {
+    const result = validateName(value);
+    console.log(result);
+  }
+
   validateEmail(value) {
     const result = validateEmail(value);
     console.log(result);
@@ -25,10 +46,22 @@ class SignIn extends Component {
   validatePassword(value) {
     const result = validatePassword(value);
     console.log(result);
+    if (result) {
+      this.setState({ password: value });
+    }
   }
 
-  signMeIn() {
-    const result = validateSignInForm();
+  confirmPassword(value) {
+    const { password } = this.state;
+    let result = false;
+    if (value === password) {
+      result = true;
+    }
+    console.log(result);
+  }
+
+  signMeUp() {
+    const result = validateSignUpForm();
     console.log(result);
   }
 
@@ -45,8 +78,24 @@ class SignIn extends Component {
                   align="center"
                   style={{ marginBottom: 20 }}
                 >
-                  Sign In
+                  Sign Up
                 </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <InputField
+                  focus={true}
+                  label="First Name"
+                  type="text"
+                  validate={this.validateFName}
+                  // errorMessage="Invalid name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <InputField
+                  label="Last Name"
+                  type="text"
+                  validate={this.validateLName}
+                />
               </Grid>
               <Grid item xs={12}>
                 <InputField
@@ -63,18 +112,13 @@ class SignIn extends Component {
                   validate={this.validatePassword}
                 />
               </Grid>
-              <Grid
-                item
-                xs={12}
-                style={{
-                  textAlign: 'right',
-                  marginRight: 10,
-                  cursor: 'pointer'
-                }}
-              >
-                <Link component={RouterLink} to="/password-reset">
-                  <Typography variant="subtitle1">Forgot Password?</Typography>
-                </Link>
+              <Grid item xs={12}>
+                <InputField
+                  label="Confirm Password"
+                  type="password"
+                  InputProps={true}
+                  validate={this.confirmPassword}
+                />
               </Grid>
               <Grid
                 container
@@ -82,17 +126,14 @@ class SignIn extends Component {
               >
                 <Grid item xs={6}>
                   <div style={{ textAlign: 'left' }}>
-                    <RouterLink
-                      to="/signup/type"
-                      style={{ textDecoration: 'none' }}
-                    >
+                    <Link to="/signin" style={{ textDecoration: 'none' }}>
                       <CustomButton
                         variant="outlined"
                         type="secondary"
-                        text="Create account"
+                        text="Sign in instead"
                         size="large"
                       />
-                    </RouterLink>
+                    </Link>
                   </div>
                 </Grid>
                 <Grid item xs={6}>
@@ -100,9 +141,9 @@ class SignIn extends Component {
                     <CustomButton
                       variant="contained"
                       type="primary"
-                      text="Sign me in"
+                      text="Sign me up"
                       size="large"
-                      clickMethod={this.signMeIn}
+                      clickMethod={this.signMeUp}
                     />
                   </div>
                 </Grid>
@@ -115,4 +156,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default SignUpFoodie;

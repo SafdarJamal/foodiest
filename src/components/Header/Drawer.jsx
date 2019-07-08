@@ -72,7 +72,7 @@ export default props => {
 
           <Divider />
 
-          <Link to="/signup" style={{ textDecoration: 'none' }}>
+          <Link to="/signup/type" style={{ textDecoration: 'none' }}>
             <ListItem
               button
               selected={selectedIndex === 1}

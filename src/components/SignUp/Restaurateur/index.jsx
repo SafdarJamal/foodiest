@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
-import Paper from '../UI/Paper';
+import Paper from '../../UI/Paper';
 import Typography from '@material-ui/core/Typography';
-import InputField from '../UI/InputField';
-import CustomButton from '../UI/CustomButton';
-import Progress from '../UI/Progress';
+import InputField from '../../UI/InputField';
+import CustomButton from '../../UI/CustomButton';
+import Progress from '../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 
 import { Link } from 'react-router-dom';
@@ -14,9 +14,9 @@ import {
   validateEmail,
   validatePassword,
   validateSignUpForm
-} from './validate';
+} from '../validate';
 
-class SignUp extends Component {
+class SignUpRestaurateur extends Component {
   constructor(props) {
     super(props);
 
@@ -34,6 +34,11 @@ class SignUp extends Component {
   }
 
   validateLName(value) {
+    const result = validateName(value);
+    console.log(result);
+  }
+
+  validateRName(value) {
     const result = validateName(value);
     console.log(result);
   }
@@ -99,6 +104,13 @@ class SignUp extends Component {
               </Grid>
               <Grid item xs={12}>
                 <InputField
+                  label="Restaurant Name"
+                  type="text"
+                  validate={this.validateRName}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <InputField
                   label="Email"
                   type="email"
                   validate={this.validateEmail}
@@ -156,4 +168,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default SignUpRestaurateur;
