@@ -1,4 +1,4 @@
-import { white, black } from '../common/colors';
+import { white, black } from './colors';
 
 export default {
   common: {
@@ -14,10 +14,10 @@ export default {
     dark: '#00783E'
   },
   secondary: {
-    contrastText: white,
-    main: '#7d58ff',
+    contrastText: black,
+    main: white,
     light: '',
-    dark: '#37248F'
+    dark: '#E4E7EB'
   },
   success: {
     contrastText: white,

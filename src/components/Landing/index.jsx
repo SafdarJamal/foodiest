@@ -18,7 +18,7 @@ const Landing = props => {
       <Paper elevation={2} style={{ height: 650 }}>
         <Grid container>
           <Grid item xs={4} style={{ marginLeft: 25 }}>
-            <Typography variant="h1" style={{ marginTop: '40%' }}>
+            <Typography variant="h1" style={{ marginTop: 150 }}>
               Foodiest is the easy way to get the food you love delivered.
             </Typography>
             <Typography variant="subtitle1" style={{ marginTop: 50 }}>

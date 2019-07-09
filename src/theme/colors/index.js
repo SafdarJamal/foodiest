@@ -24,7 +24,7 @@ export const orange = '#FFB822';
 export const red = '#ED4740';
 
 export const primary = {
-  main: blue,
-  light: '#F6F9FD',
-  dark: '#0B48A0'
+  main: green,
+  light: '#F1FAF5',
+  dark: '#00783E'
 };
