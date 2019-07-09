@@ -1,6 +1,8 @@
+import { SIGN_OUT } from '../constants/actionTypes';
+
 const SignOut = () => {
   return {
-    type: 'SIGN_OUT'
+    type: SIGN_OUT
   };
 };
 
