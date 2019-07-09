@@ -2,11 +2,15 @@ const LANDING = '/';
 const ACCOUNT_TYPE = '/signup/type';
 const SIGNUP_RESTAURATEUR = '/signup/restaurateur';
 const SIGNUP_FOODIE = '/signup/foodie';
-const VERIFICATION = '/verification';
+const VERIFICATION = '/signup/verification';
 const SIGNIN = '/signin';
 const PASSWORD_RESET = '/password-reset';
-const DASHBOARD = '/dashboard';
-const HOME = '/home';
+
+// Restaurateur
+const DASHBOARD = '/dashboard/';
+
+// Foodie
+const HOME = '/home/';
 
 export {
   LANDING,
