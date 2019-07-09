@@ -8,12 +8,14 @@ import store from './store';
 
 import Firebase, { FirebaseContext } from './services/firebase';
 
+import { BrowserRouter as Router } from 'react-router-dom';
+
 ReactDOM.render(
   <Provider store={store}>
     <FirebaseContext.Provider value={new Firebase()}>
-      <div>
+      <Router>
         <App />
-      </div>
+      </Router>
     </FirebaseContext.Provider>
   </Provider>,
   document.getElementById('root')
