@@ -8,12 +8,12 @@ import theme from '../../theme';
 
 import Header from '../Header';
 import LandingPage from '../Landing';
-import AccountType from '../SignUp/AccountType';
-import SignUpRestaurateur from '../SignUp/Restaurateur';
-import SignUpFoodie from '../SignUp/Foodie';
-import EmailVerification from '../EmailVerification';
-import SignIn from '../SignIn';
-import PasswordReset from '../PasswordReset';
+import AccountType from '../Auth/SignUp/AccountType';
+import SignUpRestaurateur from '../Auth/SignUp/Restaurateur';
+import SignUpFoodie from '../Auth/SignUp/Foodie';
+import EmailVerification from '../Auth/EmailVerification';
+import SignIn from '../Auth/SignIn';
+import PasswordReset from '../Auth/PasswordReset';
 import Home from '../Home';
 
 class App extends Component {

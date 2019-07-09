@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
-import Paper from '../../UI/Paper';
+import Paper from '../../../UI/Paper';
 import Typography from '@material-ui/core/Typography';
-import InputField from '../../UI/InputField';
-import CustomButton from '../../UI/CustomButton';
-import Progress from '../../UI/Progress';
+import InputField from '../../../UI/InputField';
+import CustomButton from '../../../UI/CustomButton';
+import Progress from '../../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ import {
   validateEmail,
   validatePassword,
   validateSignUpForm
-} from '../../../utils/validate';
+} from '../../../../utils/validate';
 
 class SignUpRestaurateur extends Component {
   constructor(props) {
