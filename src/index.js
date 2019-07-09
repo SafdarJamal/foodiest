@@ -6,7 +6,7 @@ import './index.css';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import Firebase, { FirebaseContext } from './firebase';
+import Firebase, { FirebaseContext } from './services/firebase';
 
 ReactDOM.render(
   <Provider store={store}>
