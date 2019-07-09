@@ -5,9 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CustomButton from '../UI/CustomButton';
 import logo from '../../assets/images/logo.png';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import { Link } from 'react-router-dom';
 
@@ -33,28 +30,6 @@ export default props => {
     <div className={classes.grow}>
       <AppBar position="fixed" color="default" elevation={2}>
         <Toolbar>
-          {props.isOpen === true ? (
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={props.handleDrawerClose}
-            >
-              <ChevronLeftIcon />
-            </IconButton>
-          ) : (
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={props.handleDrawerOpen}
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-
           <Typography style={{ cursor: 'pointer' }} variant="h2" noWrap>
             <Link to="/">
               <img
