@@ -8,6 +8,7 @@ const CustomButton = props => {
       color={props.type === 'primary' ? props.type : 'default'}
       size={props.size}
       onClick={props.clickMethod}
+      disabled={props.disabled}
     >
       {props.text || props.type || 'Default'}
     </Button>

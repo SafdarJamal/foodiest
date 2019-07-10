@@ -72,6 +72,7 @@ const InputField = props => {
         // required
         error={props.errorMessage ? true : false}
         helperText={props.errorMessage && props.errorMessage}
+        disabled={props.disabled}
       />
     </div>
   );

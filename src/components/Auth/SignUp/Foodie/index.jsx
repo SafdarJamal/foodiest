@@ -28,7 +28,9 @@ class SignUpFoodie extends Component {
       emailError: null,
       passwordError: null,
       confirmPasswordError: null,
-      password: null
+      email: null,
+      password: null,
+      isProcessing: false
     };
 
     this.validateFName = this.validateFName.bind(this);
@@ -68,7 +70,7 @@ class SignUpFoodie extends Component {
     if (result.isValid !== true) {
       this.setState({ emailError: result.message });
     } else {
-      this.setState({ emailError: null });
+      this.setState({ emailError: null, email: value });
     }
   }
 
@@ -94,6 +96,8 @@ class SignUpFoodie extends Component {
   }
 
   signMeUp() {
+    this.setState({ isProcessing: true });
+
     const result = validateSignUpForm();
     // console.log(result);
 
@@ -148,11 +152,27 @@ class SignUpFoodie extends Component {
         lNameError,
         emailError,
         passwordError,
-        confirmPasswordError
+        confirmPasswordError,
+        isProcessing: false
       });
       return false;
     }
-    console.log('SignUp');
+    // console.log('SignUp');
+    this.props.firebase
+      .signUp(this.state.email, this.state.password)
+      .then(success => {
+        // console.log(response);
+        const user = success.user;
+        console.log(user);
+
+        this.setState({ isProcessing: false });
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+
+        this.setState({ isProcessing: false });
+      });
   }
 
   render() {
@@ -161,12 +181,13 @@ class SignUpFoodie extends Component {
       lNameError,
       emailError,
       passwordError,
-      confirmPasswordError
+      confirmPasswordError,
+      isProcessing
     } = this.state;
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
-        <Progress />
+        {isProcessing && <Progress />}
         <Paper class0="root">
           <form noValidate autoComplete="off">
             <Grid container spacing={1}>
@@ -186,6 +207,7 @@ class SignUpFoodie extends Component {
                   type="text"
                   validate={this.validateFName}
                   errorMessage={fNameError}
+                  disabled={isProcessing}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -194,6 +216,7 @@ class SignUpFoodie extends Component {
                   type="text"
                   validate={this.validateLName}
                   errorMessage={lNameError}
+                  disabled={isProcessing}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -202,6 +225,7 @@ class SignUpFoodie extends Component {
                   type="email"
                   validate={this.validateEmail}
                   errorMessage={emailError}
+                  disabled={isProcessing}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -211,6 +235,7 @@ class SignUpFoodie extends Component {
                   InputProps={true}
                   validate={this.validatePassword}
                   errorMessage={passwordError}
+                  disabled={isProcessing}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -220,6 +245,7 @@ class SignUpFoodie extends Component {
                   InputProps={true}
                   validate={this.confirmPassword}
                   errorMessage={confirmPasswordError}
+                  disabled={isProcessing}
                 />
               </Grid>
               <Grid
@@ -234,6 +260,7 @@ class SignUpFoodie extends Component {
                         type="secondary"
                         text="Sign in instead"
                         size="large"
+                        disabled={isProcessing}
                       />
                     </Link>
                   </div>
@@ -246,6 +273,7 @@ class SignUpFoodie extends Component {
                       text="Sign me up"
                       size="large"
                       clickMethod={this.signMeUp}
+                      disabled={isProcessing}
                     />
                   </div>
                 </Grid>
