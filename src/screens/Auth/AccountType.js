@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../components/Header';
-import AccountType from '../../components/Auth/SignUp/AccountType';
+import AccountType from '../../components/Auth/AccountType';
 
 export default () => {
   return (

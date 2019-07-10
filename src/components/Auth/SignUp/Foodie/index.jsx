@@ -21,9 +21,15 @@ class SignUpFoodie extends Component {
     super(props);
 
     this.state = {
+      fNameError: null,
+      lNameError: null,
+      emailError: null,
+      passwordError: null,
+      confirmPasswordError: null,
       password: null
     };
 
+    this.validateFName = this.validateFName.bind(this);
     this.validatePassword = this.validatePassword.bind(this);
     this.confirmPassword = this.confirmPassword.bind(this);
   }
@@ -31,6 +37,11 @@ class SignUpFoodie extends Component {
   validateFName(value) {
     const result = validateName(value);
     console.log(result);
+    if (result === false) {
+      this.setState({ fNameError: 'Invalid name !' });
+    } else {
+      this.setState({ fNameError: null });
+    }
   }
 
   validateLName(value) {
@@ -66,6 +77,14 @@ class SignUpFoodie extends Component {
   }
 
   render() {
+    const {
+      fNameError,
+      lNameError,
+      emailError,
+      passwordError,
+      confirmPassword
+    } = this.state;
+
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
         <Progress />
@@ -87,7 +106,7 @@ class SignUpFoodie extends Component {
                   label="First Name"
                   type="text"
                   validate={this.validateFName}
-                  // errorMessage="Invalid name"
+                  errorMessage={fNameError}
                 />
               </Grid>
               <Grid item xs={12}>

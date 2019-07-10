@@ -70,7 +70,7 @@ const InputField = props => {
           }
         }
         // required
-        error={props.errorMessage}
+        error={props.errorMessage ? true : false}
         helperText={props.errorMessage && props.errorMessage}
       />
     </div>
