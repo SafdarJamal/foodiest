@@ -7,7 +7,8 @@ import CustomButton from '../../../UI/CustomButton';
 import Progress from '../../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { HOME } from '../../../../constants/routes';
 
 import { withFirebase } from '../../../../services/firebase';
 
@@ -31,7 +32,8 @@ class SignUpFoodie extends Component {
       email: null,
       password: null,
       isProcessing: false,
-      signUpError: null
+      signUpError: null,
+      redirectToHome: false
     };
 
     this.validateFName = this.validateFName.bind(this);
@@ -172,7 +174,8 @@ class SignUpFoodie extends Component {
           email: null,
           password: null,
           signUpError: null,
-          isProcessing: false
+          isProcessing: false,
+          redirectToHome: true
         });
       })
       .catch(error => {
@@ -198,8 +201,13 @@ class SignUpFoodie extends Component {
       passwordError,
       confirmPasswordError,
       isProcessing,
-      signUpError
+      signUpError,
+      redirectToHome
     } = this.state;
+
+    if (redirectToHome) {
+      return <Redirect to={HOME} />;
+    }
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>

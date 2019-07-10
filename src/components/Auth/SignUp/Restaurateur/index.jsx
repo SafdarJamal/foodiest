@@ -7,7 +7,8 @@ import CustomButton from '../../../UI/CustomButton';
 import Progress from '../../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { DASHBOARD } from '../../../../constants/routes';
 
 import { withFirebase } from '../../../../services/firebase';
 
@@ -32,7 +33,8 @@ class SignUpRestaurateur extends Component {
       email: null,
       password: null,
       isProcessing: false,
-      signUpError: null
+      signUpError: null,
+      redirectToDashboard: false
     };
 
     this.validateFName = this.validateFName.bind(this);
@@ -194,7 +196,8 @@ class SignUpRestaurateur extends Component {
           email: null,
           password: null,
           signUpError: null,
-          isProcessing: false
+          isProcessing: false,
+          redirectToDashboard: true
         });
       })
       .catch(error => {
@@ -221,8 +224,13 @@ class SignUpRestaurateur extends Component {
       passwordError,
       confirmPasswordError,
       isProcessing,
-      signUpError
+      signUpError,
+      redirectToDashboard
     } = this.state;
+
+    if (redirectToDashboard) {
+      return <Redirect to={DASHBOARD} />;
+    }
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
