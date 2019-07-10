@@ -9,6 +9,8 @@ import Grid from '@material-ui/core/Grid';
 
 import { Link } from 'react-router-dom';
 
+import { withFirebase } from '../../../../services/firebase';
+
 import {
   validateName,
   validateEmail,
@@ -84,6 +86,8 @@ class SignUpFoodie extends Component {
       passwordError,
       confirmPassword
     } = this.state;
+
+    // console.log(this.props.firebase);
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
@@ -175,4 +179,4 @@ class SignUpFoodie extends Component {
   }
 }
 
-export default SignUpFoodie;
+export default withFirebase(SignUpFoodie);

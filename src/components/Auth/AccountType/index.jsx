@@ -29,7 +29,7 @@ const AccountType = () => {
   const classes = useStyles();
 
   return (
-    <Container style={{ marginTop: 100, width: 600 }}>
+    <Container style={{ marginTop: 125, width: 600 }}>
       <Paper class0="root">
         <Typography variant="h1" align="center">
           Who is this account for?

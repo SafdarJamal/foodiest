@@ -8,11 +8,7 @@ import heroImage from '../../assets/images/UberEats.jpg';
 
 import { Link } from 'react-router-dom';
 
-import { withFirebase } from '../../services/firebase';
-
 const Landing = props => {
-  console.log(props.firebase);
-
   return (
     <Container style={{ marginTop: 125 }}>
       <Paper elevation={2} style={{ height: 650 }}>
@@ -44,4 +40,4 @@ const Landing = props => {
   );
 };
 
-export default withFirebase(Landing);
+export default Landing;
