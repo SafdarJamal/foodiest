@@ -32,6 +32,8 @@ class SignUpFoodie extends Component {
     };
 
     this.validateFName = this.validateFName.bind(this);
+    this.validateLName = this.validateLName.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
     this.validatePassword = this.validatePassword.bind(this);
     this.confirmPassword = this.confirmPassword.bind(this);
   }
@@ -39,8 +41,8 @@ class SignUpFoodie extends Component {
   validateFName(value) {
     const result = validateName(value);
     console.log(result);
-    if (result === false) {
-      this.setState({ fNameError: 'Invalid name !' });
+    if (result.isValid === false) {
+      this.setState({ fNameError: result.message });
     } else {
       this.setState({ fNameError: null });
     }
@@ -49,6 +51,11 @@ class SignUpFoodie extends Component {
   validateLName(value) {
     const result = validateName(value);
     console.log(result);
+    if (result.isValid === false) {
+      this.setState({ lNameError: result.message });
+    } else {
+      this.setState({ lNameError: null });
+    }
   }
 
   validateEmail(value) {
@@ -88,6 +95,7 @@ class SignUpFoodie extends Component {
     } = this.state;
 
     // console.log(this.props.firebase);
+    // console.log(fNameError, lNameError);
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
@@ -118,6 +126,7 @@ class SignUpFoodie extends Component {
                   label="Last Name"
                   type="text"
                   validate={this.validateLName}
+                  errorMessage={lNameError}
                 />
               </Grid>
               <Grid item xs={12}>

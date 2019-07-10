@@ -2,12 +2,15 @@ function validateName(value) {
   const regex = /^[A-Za-z]?([ ]?[A-Za-z])+$/;
   const field = value;
   console.log(value);
-  if (field.indexOf(' ') === 0) {
-    return false;
+
+  if (field === '') {
+    return { isValid: false, message: 'Please fill out this field !' };
+  } else if (field.indexOf(' ') === 0) {
+    return { isValid: false, message: 'Invalid name !' };
   } else if (!field.match(regex)) {
-    return false;
+    return { isValid: false, message: 'Invalid name !' };
   } else {
-    return true;
+    return { isValid: true };
   }
 }
 
