@@ -61,6 +61,11 @@ class SignUpFoodie extends Component {
   validateEmail(value) {
     const result = validateEmail(value);
     console.log(result);
+    if (result.isValid === false) {
+      this.setState({ emailError: result.message });
+    } else {
+      this.setState({ emailError: null });
+    }
   }
 
   validatePassword(value) {
@@ -134,6 +139,7 @@ class SignUpFoodie extends Component {
                   label="Email"
                   type="email"
                   validate={this.validateEmail}
+                  errorMessage={emailError}
                 />
               </Grid>
               <Grid item xs={12}>

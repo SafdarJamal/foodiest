@@ -20,12 +20,12 @@ function validateEmail(value) {
   console.log(value);
   if (!field.match(regex)) {
     if (field === '') {
-      return false;
+      return { isValid: false, message: 'Please fill out this field !' };
     } else {
-      return false;
+      return { isValid: false, message: 'Invalid email address !' };
     }
   } else {
-    return true;
+    return { isValid: true };
   }
 }
 
