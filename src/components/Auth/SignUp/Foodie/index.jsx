@@ -40,7 +40,8 @@ class SignUpFoodie extends Component {
 
   validateFName(value) {
     const result = validateName(value);
-    console.log(result);
+    // console.log(result);
+
     if (result.isValid === false) {
       this.setState({ fNameError: result.message });
     } else {
@@ -50,7 +51,8 @@ class SignUpFoodie extends Component {
 
   validateLName(value) {
     const result = validateName(value);
-    console.log(result);
+    // console.log(result);
+
     if (result.isValid === false) {
       this.setState({ lNameError: result.message });
     } else {
@@ -60,7 +62,8 @@ class SignUpFoodie extends Component {
 
   validateEmail(value) {
     const result = validateEmail(value);
-    console.log(result);
+    // console.log(result);
+
     if (result.isValid === false) {
       this.setState({ emailError: result.message });
     } else {
@@ -70,7 +73,8 @@ class SignUpFoodie extends Component {
 
   validatePassword(value) {
     const result = validatePassword(value);
-    console.log(result);
+    // console.log(result);
+
     if (result.isValid === false) {
       this.setState({ passwordError: result.message });
     } else {
@@ -80,11 +84,12 @@ class SignUpFoodie extends Component {
 
   confirmPassword(value) {
     const { password } = this.state;
-    let result = false;
-    if (value === password) {
-      result = true;
+
+    if (value !== password) {
+      this.setState({ confirmPasswordError: `Passwords didn't match !` });
+    } else {
+      this.setState({ confirmPasswordError: null });
     }
-    console.log(result);
   }
 
   signMeUp() {
@@ -98,7 +103,7 @@ class SignUpFoodie extends Component {
       lNameError,
       emailError,
       passwordError,
-      confirmPassword
+      confirmPasswordError
     } = this.state;
 
     // console.log(this.props.firebase);
@@ -159,6 +164,7 @@ class SignUpFoodie extends Component {
                   type="password"
                   InputProps={true}
                   validate={this.confirmPassword}
+                  errorMessage={confirmPasswordError}
                 />
               </Grid>
               <Grid
