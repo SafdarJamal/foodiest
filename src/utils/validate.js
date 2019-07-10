@@ -34,15 +34,15 @@ function validatePassword(value) {
   const field = value;
   if (!field.match(regex)) {
     if (field === '') {
-      return false;
+      return { isValid: false, message: 'Please fill out this field !' };
     } else if (field.indexOf(' ') !== -1) {
-      return false;
+      return { isValid: false, message: 'Can not contain spaces !' };
     } else if (field.length < 8) {
-      return false;
+      return { isValid: false, message: 'At least 8 characters long !' };
     }
-    return false;
+    return { isValid: false, message: 'Invalid characters !' };
   } else {
-    return true;
+    return { isValid: true };
   }
 }
 

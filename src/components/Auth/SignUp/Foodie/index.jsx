@@ -71,8 +71,10 @@ class SignUpFoodie extends Component {
   validatePassword(value) {
     const result = validatePassword(value);
     console.log(result);
-    if (result) {
-      this.setState({ password: value });
+    if (result.isValid === false) {
+      this.setState({ passwordError: result.message });
+    } else {
+      this.setState({ passwordError: null, password: value });
     }
   }
 
@@ -148,6 +150,7 @@ class SignUpFoodie extends Component {
                   type="password"
                   InputProps={true}
                   validate={this.validatePassword}
+                  errorMessage={passwordError}
                 />
               </Grid>
               <Grid item xs={12}>
