@@ -43,7 +43,7 @@ class SignUpFoodie extends Component {
     const result = validateName(value);
     // console.log(result);
 
-    if (result.isValid === false) {
+    if (result.isValid !== true) {
       this.setState({ fNameError: result.message });
     } else {
       this.setState({ fNameError: null });
@@ -54,7 +54,7 @@ class SignUpFoodie extends Component {
     const result = validateName(value);
     // console.log(result);
 
-    if (result.isValid === false) {
+    if (result.isValid !== true) {
       this.setState({ lNameError: result.message });
     } else {
       this.setState({ lNameError: null });
@@ -65,7 +65,7 @@ class SignUpFoodie extends Component {
     const result = validateEmail(value);
     // console.log(result);
 
-    if (result.isValid === false) {
+    if (result.isValid !== true) {
       this.setState({ emailError: result.message });
     } else {
       this.setState({ emailError: null });
@@ -76,7 +76,7 @@ class SignUpFoodie extends Component {
     const result = validatePassword(value);
     // console.log(result);
 
-    if (result.isValid === false) {
+    if (result.isValid !== true) {
       this.setState({ passwordError: result.message });
     } else {
       this.setState({ passwordError: null, password: value });
@@ -120,7 +120,7 @@ class SignUpFoodie extends Component {
       lName = false;
       lNameError = result.lName.message;
     }
-    if (result.fName.isValid !== true) {
+    if (result.email.isValid !== true) {
       email = false;
       emailError = result.email.message;
     }
@@ -163,9 +163,6 @@ class SignUpFoodie extends Component {
       passwordError,
       confirmPasswordError
     } = this.state;
-
-    // console.log(this.props.firebase);
-    // console.log(fNameError, lNameError);
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
