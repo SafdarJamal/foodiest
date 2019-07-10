@@ -33,6 +33,7 @@ function validateEmail(value) {
 function validatePassword(value) {
   const regex = /^[a-zA-Z0-9.-_#*+/$@%,-?!]([.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
   const field = value;
+  // console.log(value);
 
   if (!field.match(regex)) {
     if (field === '') {
@@ -106,13 +107,12 @@ function validateSignInForm() {
   const a = validateEmail(email);
   const b = validatePassword(password);
 
-  if (a === false) {
-    return false;
-  } else if (b === false) {
-    return false;
-  } else {
-    return true;
-  }
+  // console.log(a, b);
+
+  return {
+    email: a,
+    password: b
+  };
 }
 
 export {

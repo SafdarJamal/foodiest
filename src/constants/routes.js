@@ -4,7 +4,7 @@ const SIGNUP_RESTAURATEUR = '/signup/restaurateur';
 const SIGNUP_FOODIE = '/signup/foodie';
 const VERIFICATION = '/signup/verification';
 const SIGNIN = '/signin';
-const PASSWORD_RESET = '/password-reset';
+const PASSWORD_RESET = '/signin/password-reset';
 
 // Restaurateur
 const DASHBOARD = '/dashboard/';

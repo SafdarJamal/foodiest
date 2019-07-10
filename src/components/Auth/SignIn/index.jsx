@@ -10,6 +10,8 @@ import Link from '@material-ui/core/Link';
 
 import { Link as RouterLink } from 'react-router-dom';
 
+import { withFirebase } from '../../../services/firebase';
+
 import {
   validateEmail,
   validatePassword,
@@ -17,25 +19,112 @@ import {
 } from '../../../utils/validate';
 
 class SignIn extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      emailError: null,
+      passwordError: null,
+      email: null,
+      password: null,
+      isProcessing: false,
+      signInError: null
+    };
+
+    this.validateEmail = this.validateEmail.bind(this);
+    this.validatePassword = this.validatePassword.bind(this);
+    this.signMeIn = this.signMeIn.bind(this);
+    this.dismissError = this.dismissError.bind(this);
+  }
+
   validateEmail(value) {
     const result = validateEmail(value);
-    console.log(result);
+    // console.log(result);
+
+    if (result.isValid !== true) {
+      this.setState({ emailError: result.message });
+    } else {
+      this.setState({ emailError: null, email: value });
+    }
   }
 
   validatePassword(value) {
     const result = validatePassword(value);
-    console.log(result);
+    // console.log(result);
+
+    if (result.isValid !== true) {
+      this.setState({ passwordError: result.message });
+    } else {
+      this.setState({ passwordError: null, password: value });
+    }
   }
 
   signMeIn() {
+    this.setState({ isProcessing: true });
+
     const result = validateSignInForm();
-    console.log(result);
+    // console.log(result);
+
+    let email = true;
+    let emailError = null;
+
+    let password = true;
+    let passwordError = null;
+
+    if (result.email.isValid !== true) {
+      email = false;
+      emailError = result.email.message;
+    }
+    if (result.password.isValid !== true) {
+      password = false;
+      passwordError = result.password.message;
+    }
+
+    if (email === false || password === false) {
+      this.setState({
+        emailError,
+        passwordError,
+        isProcessing: false
+      });
+      return false;
+    }
+
+    // console.log(this.state.email, this.state.password);
+
+    this.props.firebase
+      .signIn(this.state.email, this.state.password)
+      .then(success => {
+        const user = success.user;
+        console.log(user);
+
+        this.setState({
+          email: null,
+          password: null,
+          signInError: null,
+          isProcessing: false
+        });
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+
+        this.setState({
+          isProcessing: false,
+          signInError: 'Email or password is incorrect.'
+        });
+      });
+  }
+
+  dismissError() {
+    this.setState({ signInError: null });
   }
 
   render() {
+    const { emailError, passwordError, isProcessing, signInError } = this.state;
+
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
-        <Progress />
+        {isProcessing && <Progress />}
         <Paper class0="root">
           <form noValidate autoComplete="off">
             <Grid container spacing={1}>
@@ -48,11 +137,36 @@ class SignIn extends Component {
                   Sign In
                 </Typography>
               </Grid>
+              {signInError && (
+                <Grid
+                  item
+                  xs={12}
+                  style={{
+                    backgroundColor: '#EAF0F1',
+                    border: '1px solid red',
+                    textAlign: 'center',
+                    margin: 10,
+                    borderRadius: 2
+                  }}
+                >
+                  <Typography variant="overline">
+                    {signInError}
+                    <CustomButton
+                      disableRipple={true}
+                      type="secondary"
+                      text="Dismiss"
+                      clickMethod={this.dismissError}
+                    />
+                  </Typography>
+                </Grid>
+              )}
               <Grid item xs={12}>
                 <InputField
                   label="Email"
                   type="email"
                   validate={this.validateEmail}
+                  errorMessage={emailError}
+                  disabled={isProcessing}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -61,6 +175,8 @@ class SignIn extends Component {
                   type="password"
                   InputProps={true}
                   validate={this.validatePassword}
+                  errorMessage={passwordError}
+                  disabled={isProcessing}
                 />
               </Grid>
               <Grid
@@ -72,7 +188,7 @@ class SignIn extends Component {
                   cursor: 'pointer'
                 }}
               >
-                <Link component={RouterLink} to="/password-reset">
+                <Link component={RouterLink} to="/signin/password-reset">
                   <Typography variant="subtitle1">Forgot Password?</Typography>
                 </Link>
               </Grid>
@@ -91,6 +207,7 @@ class SignIn extends Component {
                         type="secondary"
                         text="Create account"
                         size="large"
+                        disabled={isProcessing}
                       />
                     </RouterLink>
                   </div>
@@ -100,9 +217,10 @@ class SignIn extends Component {
                     <CustomButton
                       variant="contained"
                       type="primary"
-                      text="Sign me in"
+                      text="Sign me up"
                       size="large"
                       clickMethod={this.signMeIn}
+                      disabled={isProcessing}
                     />
                   </div>
                 </Grid>
@@ -115,4 +233,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default withFirebase(SignIn);

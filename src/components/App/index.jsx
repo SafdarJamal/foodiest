@@ -36,7 +36,7 @@ class App extends Component {
           />
           <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodie} />
           <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
-          <Route path={ROUTES.SIGNIN} component={SignIn} />
+          <Route exact path={ROUTES.SIGNIN} component={SignIn} />
           <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
           <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
           <Route path={ROUTES.HOME} component={Foodie} />

@@ -168,7 +168,12 @@ class SignUpFoodie extends Component {
         const user = success.user;
         console.log(user);
 
-        this.setState({ email: null, password: null, isProcessing: false });
+        this.setState({
+          email: null,
+          password: null,
+          signUpError: null,
+          isProcessing: false
+        });
       })
       .catch(error => {
         const errorMessage = error.message;
