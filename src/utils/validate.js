@@ -1,7 +1,7 @@
 function validateName(value) {
   const regex = /^[A-Za-z]?([ ]?[A-Za-z])+$/;
   const field = value;
-  console.log(value);
+  // console.log(value);
 
   if (field === '') {
     return { isValid: false, message: 'Please fill out this field !' };
@@ -17,7 +17,8 @@ function validateName(value) {
 function validateEmail(value) {
   const regex = /^\w+([.-]?\w+)*@[a-zA-Z0-9]([.-]?[a-zA-Z0-9])*(\.[a-zA-Z]{2,4})+$/;
   const field = value;
-  console.log(value);
+  // console.log(value);
+
   if (!field.match(regex)) {
     if (field === '') {
       return { isValid: false, message: 'Please fill out this field !' };
@@ -32,6 +33,7 @@ function validateEmail(value) {
 function validatePassword(value) {
   const regex = /^[a-zA-Z0-9.-_#*+/$@%,-?!]([.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
   const field = value;
+
   if (!field.match(regex)) {
     if (field === '') {
       return { isValid: false, message: 'Please fill out this field !' };
@@ -51,27 +53,23 @@ function validateSignUpForm() {
   const lName = document.getElementById('last-name').value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-  const confPassword = document.getElementById('confirm-password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
 
   const a = validateName(fName);
   const b = validateName(lName);
   const c = validateEmail(email);
   const d = validatePassword(password);
-  const e = d === true ? confPassword === password : false;
+  const e = d.isValid ? confirmPassword === password : undefined;
 
-  console.log(a, b, c, d, e);
+  // console.log(a, b, c, d, e);
 
-  if (a === false) {
-    return false;
-  } else if (b === false) {
-    return false;
-  } else if (c === false) {
-    return false;
-  } else if (d === false) {
-    return false;
-  } else {
-    return true;
-  }
+  return {
+    fName: a,
+    lName: b,
+    email: c,
+    password: d,
+    confirmPassword: { isValid: e, message: `Passwords didn't match !` }
+  };
 }
 
 function validateSignInForm() {

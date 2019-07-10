@@ -36,6 +36,7 @@ class SignUpFoodie extends Component {
     this.validateEmail = this.validateEmail.bind(this);
     this.validatePassword = this.validatePassword.bind(this);
     this.confirmPassword = this.confirmPassword.bind(this);
+    this.signMeUp = this.signMeUp.bind(this);
   }
 
   validateFName(value) {
@@ -94,7 +95,64 @@ class SignUpFoodie extends Component {
 
   signMeUp() {
     const result = validateSignUpForm();
-    console.log(result);
+    // console.log(result);
+
+    let fName = true;
+    let fNameError = null;
+
+    let lName = true;
+    let lNameError = null;
+
+    let email = true;
+    let emailError = null;
+
+    let password = true;
+    let passwordError = null;
+
+    let confirmPassword = true;
+    let confirmPasswordError = null;
+
+    if (result.fName.isValid !== true) {
+      fName = false;
+      fNameError = result.fName.message;
+    }
+    if (result.lName.isValid !== true) {
+      lName = false;
+      lNameError = result.lName.message;
+    }
+    if (result.fName.isValid !== true) {
+      email = false;
+      emailError = result.email.message;
+    }
+    if (result.password.isValid !== true) {
+      password = false;
+      passwordError = result.password.message;
+    }
+    if (
+      result.confirmPassword.isValid !== true &&
+      result.confirmPassword.isValid !== undefined
+    ) {
+      confirmPassword = false;
+      confirmPasswordError = result.confirmPassword.message;
+    }
+
+    if (
+      fName === false ||
+      lName === false ||
+      email === false ||
+      password === false ||
+      confirmPassword === false
+    ) {
+      this.setState({
+        fNameError,
+        lNameError,
+        emailError,
+        passwordError,
+        confirmPasswordError
+      });
+      return false;
+    }
+    console.log('SignUp');
   }
 
   render() {
