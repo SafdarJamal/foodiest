@@ -9,6 +9,7 @@ const CustomButton = props => {
       size={props.size}
       onClick={props.clickMethod}
       disabled={props.disabled}
+      disableRipple={props.disableRipple}
     >
       {props.text || props.type || 'Default'}
     </Button>

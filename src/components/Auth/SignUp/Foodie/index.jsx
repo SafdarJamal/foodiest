@@ -30,7 +30,8 @@ class SignUpFoodie extends Component {
       confirmPasswordError: null,
       email: null,
       password: null,
-      isProcessing: false
+      isProcessing: false,
+      signUpError: null
     };
 
     this.validateFName = this.validateFName.bind(this);
@@ -39,6 +40,7 @@ class SignUpFoodie extends Component {
     this.validatePassword = this.validatePassword.bind(this);
     this.confirmPassword = this.confirmPassword.bind(this);
     this.signMeUp = this.signMeUp.bind(this);
+    this.dismissError = this.dismissError.bind(this);
   }
 
   validateFName(value) {
@@ -157,22 +159,30 @@ class SignUpFoodie extends Component {
       });
       return false;
     }
-    // console.log('SignUp');
+
+    // console.log(this.state.email, this.state.password);
+
     this.props.firebase
       .signUp(this.state.email, this.state.password)
       .then(success => {
-        // console.log(response);
         const user = success.user;
         console.log(user);
 
-        this.setState({ isProcessing: false });
+        this.setState({ email: null, password: null, isProcessing: false });
       })
       .catch(error => {
         const errorMessage = error.message;
         console.log(errorMessage);
 
-        this.setState({ isProcessing: false });
+        this.setState({
+          isProcessing: false,
+          signUpError: errorMessage
+        });
       });
+  }
+
+  dismissError() {
+    this.setState({ signUpError: null });
   }
 
   render() {
@@ -182,7 +192,8 @@ class SignUpFoodie extends Component {
       emailError,
       passwordError,
       confirmPasswordError,
-      isProcessing
+      isProcessing,
+      signUpError
     } = this.state;
 
     return (
@@ -200,6 +211,29 @@ class SignUpFoodie extends Component {
                   Sign Up
                 </Typography>
               </Grid>
+              {signUpError && (
+                <Grid
+                  item
+                  xs={12}
+                  style={{
+                    backgroundColor: '#EAF0F1',
+                    border: '1px solid red',
+                    textAlign: 'center',
+                    margin: 10,
+                    borderRadius: 2
+                  }}
+                >
+                  <Typography variant="overline">
+                    {signUpError}
+                    <CustomButton
+                      disableRipple={true}
+                      type="secondary"
+                      text="Dismiss"
+                      clickMethod={this.dismissError}
+                    />
+                  </Typography>
+                </Grid>
+              )}
               <Grid item xs={12}>
                 <InputField
                   focus={true}
