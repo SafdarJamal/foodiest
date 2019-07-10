@@ -48,7 +48,34 @@ function validatePassword(value) {
   }
 }
 
-function validateSignUpForm() {
+function validateRestaurateurSignUpForm() {
+  const fName = document.getElementById('first-name').value;
+  const lName = document.getElementById('last-name').value;
+  const rName = document.getElementById('restaurant-name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
+
+  const a = validateName(fName);
+  const b = validateName(lName);
+  const c = validateName(rName);
+  const d = validateEmail(email);
+  const e = validatePassword(password);
+  const f = d.isValid ? confirmPassword === password : undefined;
+
+  // console.log(a, b, c, d, e);
+
+  return {
+    fName: a,
+    lName: b,
+    rName: c,
+    email: d,
+    password: e,
+    confirmPassword: { isValid: f, message: `Passwords didn't match !` }
+  };
+}
+
+function validateFoodieSignUpForm() {
   const fName = document.getElementById('first-name').value;
   const lName = document.getElementById('last-name').value;
   const email = document.getElementById('email').value;
@@ -92,6 +119,7 @@ export {
   validateName,
   validateEmail,
   validatePassword,
-  validateSignUpForm,
+  validateRestaurateurSignUpForm,
+  validateFoodieSignUpForm,
   validateSignInForm
 };
