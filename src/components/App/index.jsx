@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 
@@ -25,27 +28,23 @@ import Restaurateur from '../../screens/Restaurateur';
 // Foodie Screen
 import Foodie from '../../screens/Foodie';
 
+// Initial Loading
 import Loader from '../Loader';
+import { Loading } from '../../actions';
+
 import PrivateRoute from '../PrivateRoute';
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLoading: true
-    };
-  }
-
   componentDidMount() {
     this.props.firebase.auth.onAuthStateChanged(user => {
       if (user) {
-        this.setState({ isLoading: false });
+        console.log(this.props);
+        this.props.Loading();
       }
     });
   }
 
   render() {
-    const { isLoading } = this.state;
+    const { isLoading } = this.props;
 
     if (isLoading) {
       return (
@@ -81,4 +80,14 @@ class App extends Component {
   }
 }
 
-export default withFirebase(App);
+const mapStateToProps = state => {
+  return { isLoading: state.loading.isLoading };
+};
+
+export default compose(
+  connect(
+    mapStateToProps,
+    { Loading }
+  ),
+  withFirebase
+)(App);
