@@ -115,11 +115,22 @@ function validateSignInForm() {
   };
 }
 
+function validatePasswordResetForm() {
+  const email = document.getElementById('email').value;
+
+  const a = validateEmail(email);
+
+  // console.log(a);
+
+  return a;
+}
+
 export {
   validateName,
   validateEmail,
   validatePassword,
   validateRestaurateurSignUpForm,
   validateFoodieSignUpForm,
-  validateSignInForm
+  validateSignInForm,
+  validatePasswordResetForm
 };

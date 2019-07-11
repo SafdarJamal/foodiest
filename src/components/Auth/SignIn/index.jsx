@@ -8,6 +8,7 @@ import Progress from '../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { SignIn as SignInAction } from '../../../actions';
 
@@ -227,7 +228,7 @@ class SignIn extends Component {
                     <CustomButton
                       variant="contained"
                       type="primary"
-                      text="Sign me up"
+                      text="Sign me in"
                       size="large"
                       clickMethod={this.signMeIn}
                       disabled={isProcessing}
@@ -247,7 +248,10 @@ const mapStateToProps = state => {
   return { isSignedIn: state.auth.isSignedIn };
 };
 
-export default connect(
-  mapStateToProps,
-  { SignInAction }
-)(withFirebase(SignIn));
+export default compose(
+  connect(
+    mapStateToProps,
+    { SignInAction }
+  ),
+  withFirebase
+)(SignIn);

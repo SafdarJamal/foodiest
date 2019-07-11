@@ -31,7 +31,7 @@ class EmailVerification extends Component {
       const { firebase } = this.props;
 
       firebase
-        .sendVerificationEmail()
+        .verifyEmail()
         .then(() => {
           console.log(this.props.firebase.auth.currentUser);
 
