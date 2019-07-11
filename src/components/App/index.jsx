@@ -6,6 +6,8 @@ import theme from '../../theme';
 import { Switch, Route } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
+import { withFirebase } from '../../services/firebase';
+
 // Landing Screen
 import Landing from '../../screens/Landing/Landing';
 
@@ -24,12 +26,43 @@ import Restaurateur from '../../screens/Restaurateur';
 import Foodie from '../../screens/Foodie';
 
 import Loader from '../Loader';
+import PrivateRoute from '../PrivateRoute';
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: true
+    };
+  }
+
+  componentDidMount() {
+    this.props.firebase.auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ isLoading: false });
+      }
+    });
+  }
+
   render() {
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return (
+        <ThemeProvider theme={theme}>
+          <Loader />;
+        </ThemeProvider>
+      );
+    }
+
     return (
       <ThemeProvider theme={theme}>
         <Switch>
-          <Route component={Loader} />
+          <PrivateRoute
+            path={ROUTES.HOME}
+            component={Foodie}
+            firebase={this.props.firebase}
+          />
           <Route exact path={ROUTES.LANDING} component={Landing} />
           <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
           <Route
@@ -48,4 +81,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withFirebase(App);
