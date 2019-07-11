@@ -6,9 +6,6 @@ import CustomButton from '../../UI/CustomButton';
 import Progress from '../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 
-import { Redirect } from 'react-router-dom';
-import { HOME, DASHBOARD } from '../../../constants/routes';
-
 import { withFirebase } from '../../../services/firebase';
 
 class EmailVerification extends Component {
@@ -17,12 +14,12 @@ class EmailVerification extends Component {
 
     this.state = {
       isProcessing: false,
-      errorMessage: null,
-      redirectToReferrer: false
+      successMessage: null,
+      errorMessage: null
     };
 
     this.resendEmail = this.resendEmail.bind(this);
-    this.dismissError = this.dismissError.bind(this);
+    this.dismissMessage = this.dismissMessage.bind(this);
   }
 
   resendEmail() {
@@ -30,42 +27,40 @@ class EmailVerification extends Component {
       isProcessing: true
     });
 
-    const { firebase } = this.props;
+    setTimeout(() => {
+      const { firebase } = this.props;
 
-    firebase
-      .sendVerificationEmail()
-      .then(() => {
-        console.log(this.props.firebase.auth.currentUser);
+      firebase
+        .sendVerificationEmail()
+        .then(() => {
+          console.log(this.props.firebase.auth.currentUser);
 
-        this.setState({
-          errorMessage: null,
-          isProcessing: false,
-          redirectToReferrer: true
+          this.setState({
+            successMessage:
+              'Verification link has been send to your provided email address, check you mailbox.',
+            errorMessage: null,
+            isProcessing: false
+          });
+        })
+        .catch(error => {
+          const errorMessage = error.message;
+          console.log(errorMessage);
+
+          this.setState({
+            successMessage: null,
+            errorMessage,
+            isProcessing: false
+          });
         });
-      })
-      .catch(error => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-
-        this.setState({
-          isProcessing: false,
-          errorMessage
-        });
-      });
+    }, 3000);
   }
 
-  dismissError() {
-    this.setState({ errorMessage: null });
+  dismissMessage() {
+    this.setState({ successMessage: null, errorMessage: null });
   }
 
   render() {
-    const { isProcessing, errorMessage, redirectToReferrer } = this.state;
-
-    if (redirectToReferrer) {
-      // return <Redirect to={HOME} />;
-    }
-
-    console.log(process.env.REACT_APP_EMAIL_CONFIRMATION_REDIRECT);
+    const { isProcessing, successMessage, errorMessage } = this.state;
 
     return (
       <Container style={{ marginTop: 100, width: 600 }}>
@@ -81,25 +76,25 @@ class EmailVerification extends Component {
                 Email Verification
               </Typography>
             </Grid>
-            {errorMessage && (
+            {(successMessage || errorMessage) && (
               <Grid
                 item
                 xs={12}
                 style={{
                   backgroundColor: '#EAF0F1',
-                  border: '1px solid red',
+                  border: `1px solid ${successMessage ? 'green' : 'red'}`,
                   textAlign: 'center',
                   margin: 10,
                   borderRadius: 2
                 }}
               >
                 <Typography variant="overline">
-                  {errorMessage}
+                  {successMessage ? successMessage : errorMessage}
                   <CustomButton
                     disableRipple={true}
                     type="secondary"
                     text="Dismiss"
-                    clickMethod={this.dismissError}
+                    clickMethod={this.dismissMessage}
                   />
                 </Typography>
               </Grid>
@@ -118,6 +113,7 @@ class EmailVerification extends Component {
                 text="Resend"
                 size="large"
                 clickMethod={this.resendEmail}
+                disabled={isProcessing}
               />
             </Grid>
           </Grid>
