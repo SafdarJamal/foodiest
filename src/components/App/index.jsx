@@ -23,11 +23,13 @@ import Restaurateur from '../../screens/Restaurateur';
 // Foodie Screen
 import Foodie from '../../screens/Foodie';
 
+import Loader from '../Loader';
 class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
         <Switch>
+          <Route component={Loader} />
           <Route exact path={ROUTES.LANDING} component={Landing} />
           <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
           <Route
