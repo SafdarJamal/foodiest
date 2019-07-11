@@ -7,8 +7,10 @@ import CustomButton from '../../../UI/CustomButton';
 import Progress from '../../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 
-import { Link, Redirect } from 'react-router-dom';
-import { DASHBOARD } from '../../../../constants/routes';
+import { compose } from 'redux';
+
+import { withRouter, Link } from 'react-router-dom';
+import { VERIFICATION } from '../../../../constants/routes';
 
 import { withFirebase } from '../../../../services/firebase';
 
@@ -33,8 +35,7 @@ class SignUpRestaurateur extends Component {
       email: null,
       password: null,
       isProcessing: false,
-      signUpError: null,
-      redirectToDashboard: false
+      signUpError: null
     };
 
     this.validateFName = this.validateFName.bind(this);
@@ -196,9 +197,10 @@ class SignUpRestaurateur extends Component {
           email: null,
           password: null,
           signUpError: null,
-          isProcessing: false,
-          redirectToDashboard: true
+          isProcessing: false
         });
+
+        this.props.history.push(VERIFICATION);
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -224,13 +226,8 @@ class SignUpRestaurateur extends Component {
       passwordError,
       confirmPasswordError,
       isProcessing,
-      signUpError,
-      redirectToDashboard
+      signUpError
     } = this.state;
-
-    if (redirectToDashboard) {
-      return <Redirect to={DASHBOARD} />;
-    }
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
@@ -365,4 +362,7 @@ class SignUpRestaurateur extends Component {
   }
 }
 
-export default withFirebase(SignUpRestaurateur);
+export default compose(
+  withRouter,
+  withFirebase
+)(SignUpRestaurateur);

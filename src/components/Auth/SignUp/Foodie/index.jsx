@@ -7,8 +7,10 @@ import CustomButton from '../../../UI/CustomButton';
 import Progress from '../../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 
-import { Link, Redirect } from 'react-router-dom';
-import { HOME } from '../../../../constants/routes';
+import { compose } from 'redux';
+
+import { withRouter, Link } from 'react-router-dom';
+import { VERIFICATION } from '../../../../constants/routes';
 
 import { withFirebase } from '../../../../services/firebase';
 
@@ -32,8 +34,7 @@ class SignUpFoodie extends Component {
       email: null,
       password: null,
       isProcessing: false,
-      signUpError: null,
-      redirectToHome: false
+      signUpError: null
     };
 
     this.validateFName = this.validateFName.bind(this);
@@ -174,9 +175,10 @@ class SignUpFoodie extends Component {
           email: null,
           password: null,
           signUpError: null,
-          isProcessing: false,
-          redirectToHome: true
+          isProcessing: false
         });
+
+        this.props.history.push(VERIFICATION);
       })
       .catch(error => {
         const errorMessage = error.message;
@@ -201,13 +203,8 @@ class SignUpFoodie extends Component {
       passwordError,
       confirmPasswordError,
       isProcessing,
-      signUpError,
-      redirectToHome
+      signUpError
     } = this.state;
-
-    if (redirectToHome) {
-      return <Redirect to={HOME} />;
-    }
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
@@ -333,4 +330,7 @@ class SignUpFoodie extends Component {
   }
 }
 
-export default withFirebase(SignUpFoodie);
+export default compose(
+  withRouter,
+  withFirebase
+)(SignUpFoodie);
