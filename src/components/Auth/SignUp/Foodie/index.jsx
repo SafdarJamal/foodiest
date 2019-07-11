@@ -165,30 +165,34 @@ class SignUpFoodie extends Component {
 
     // console.log(this.state.email, this.state.password);
 
-    this.props.firebase
-      .signUp(this.state.email, this.state.password)
-      .then(success => {
-        const user = success.user;
-        console.log(user);
+    setTimeout(() => {
+      const { firebase } = this.props;
 
-        this.setState({
-          email: null,
-          password: null,
-          signUpError: null,
-          isProcessing: false
+      firebase
+        .signUp(this.state.email, this.state.password)
+        .then(success => {
+          const user = success.user;
+          console.log(user);
+
+          this.setState({
+            email: null,
+            password: null,
+            signUpError: null,
+            isProcessing: false
+          });
+
+          this.props.history.push(VERIFICATION);
+        })
+        .catch(error => {
+          const errorMessage = error.message;
+          console.log(errorMessage);
+
+          this.setState({
+            isProcessing: false,
+            signUpError: errorMessage
+          });
         });
-
-        this.props.history.push(VERIFICATION);
-      })
-      .catch(error => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-
-        this.setState({
-          isProcessing: false,
-          signUpError: errorMessage
-        });
-      });
+    }, 3000);
   }
 
   dismissError() {
