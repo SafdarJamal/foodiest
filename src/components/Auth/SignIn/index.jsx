@@ -8,6 +8,9 @@ import Progress from '../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 
+import { connect } from 'react-redux';
+import { SignIn as SignInAction } from '../../../actions';
+
 import { Link as RouterLink } from 'react-router-dom';
 
 import { withFirebase } from '../../../services/firebase';
@@ -91,28 +94,34 @@ class SignIn extends Component {
 
     // console.log(this.state.email, this.state.password);
 
-    this.props.firebase
-      .signIn(this.state.email, this.state.password)
-      .then(success => {
-        const user = success.user;
-        console.log(user);
+    setTimeout(() => {
+      const { firebase } = this.props;
 
-        this.setState({
-          email: null,
-          password: null,
-          signInError: null,
-          isProcessing: false
-        });
-      })
-      .catch(error => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
+      firebase
+        .signIn(this.state.email, this.state.password)
+        .then(success => {
+          const user = success.user;
+          console.log(user);
 
-        this.setState({
-          isProcessing: false,
-          signInError: 'Email or password is incorrect.'
+          this.setState({
+            email: null,
+            password: null,
+            signInError: null,
+            isProcessing: false
+          });
+
+          this.props.SignInAction();
+        })
+        .catch(error => {
+          const errorMessage = error.message;
+          console.log(errorMessage);
+
+          this.setState({
+            isProcessing: false,
+            signInError: 'Email or password is incorrect.'
+          });
         });
-      });
+    }, 3000);
   }
 
   dismissError() {
@@ -121,6 +130,7 @@ class SignIn extends Component {
 
   render() {
     const { emailError, passwordError, isProcessing, signInError } = this.state;
+    console.log(this.props);
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
@@ -233,4 +243,11 @@ class SignIn extends Component {
   }
 }
 
-export default withFirebase(SignIn);
+const mapStateToProps = state => {
+  return { isSignedIn: state.auth.isSignedIn };
+};
+
+export default connect(
+  mapStateToProps,
+  { SignInAction }
+)(withFirebase(SignIn));
