@@ -32,7 +32,6 @@ import Foodie from '../../screens/Foodie';
 import Loader from '../Loader';
 import { Loading, SignIn as SignInAction } from '../../actions';
 
-import PrivateRoute from '../PrivateRoute';
 class App extends Component {
   componentDidMount() {
     this.props.firebase.auth.onAuthStateChanged(user => {
@@ -62,11 +61,6 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <Switch>
-          <PrivateRoute
-            path={ROUTES.HOME}
-            component={Foodie}
-            firebase={this.props.firebase}
-          />
           <Route exact path={ROUTES.LANDING} component={Landing} />
           <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
           <Route
