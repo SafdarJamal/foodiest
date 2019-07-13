@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 const loadingReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LOADING:
-      return { ...state, isLoading: false };
+      return { ...state, isLoading: action.payload.isLoading };
     default:
       return state;
   }

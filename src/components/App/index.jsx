@@ -38,7 +38,7 @@ class App extends Component {
     this.props.firebase.auth.onAuthStateChanged(user => {
       if (user) {
         console.log(this.props);
-        this.props.Loading();
+        this.props.Loading({ isLoading: false });
       }
     });
   }

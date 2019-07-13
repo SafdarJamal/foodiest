@@ -1,8 +1,9 @@
 import { LOADING } from '../constants/actionTypes';
 
-const Loading = () => {
+const Loading = payload => {
   return {
-    type: LOADING
+    type: LOADING,
+    payload
   };
 };
 
