@@ -12,7 +12,7 @@ import * as ROUTES from '../../constants/routes';
 import { withFirebase } from '../../services/firebase';
 
 // Landing Screen
-import Landing from '../../screens/Landing/Landing';
+// import Landing from '../../screens/Landing/Landing';
 
 // Auth Screens
 import AccountType from '../../screens/Auth/AccountType';
@@ -32,12 +32,19 @@ import Foodie from '../../screens/Foodie';
 import Loader from '../Loader';
 import { Loading, SignIn as SignInAction } from '../../actions';
 
+import LandingRoute from '../../routes/public/LandingRoute';
+
 class App extends Component {
   componentDidMount() {
     this.props.firebase.auth.onAuthStateChanged(user => {
       if (user) {
         // console.log(this.props);
-        this.props.SignInAction({ email: user.email, uid: user.uid });
+        this.props.SignInAction({
+          email: user.email,
+          uid: user.uid,
+          type: 'restaurateur',
+          isVerified: false
+        });
         this.props.Loading({ isLoading: false });
       } else {
         this.props.Loading({ isLoading: false });
@@ -61,7 +68,8 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <Switch>
-          <Route exact path={ROUTES.LANDING} component={Landing} />
+          {/* <PrivateRoute exact path={ROUTES.LANDING} component={PrivateRoute} /> */}
+          <Route exact path={ROUTES.LANDING} component={LandingRoute} />
           <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
           <Route
             path={ROUTES.SIGNUP_RESTAURATEUR}
