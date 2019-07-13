@@ -30,21 +30,26 @@ import Foodie from '../../screens/Foodie';
 
 // Initial Loading
 import Loader from '../Loader';
-import { Loading } from '../../actions';
+import { Loading, SignIn as SignInAction } from '../../actions';
 
 import PrivateRoute from '../PrivateRoute';
 class App extends Component {
   componentDidMount() {
     this.props.firebase.auth.onAuthStateChanged(user => {
       if (user) {
-        console.log(this.props);
+        // console.log(this.props);
+        this.props.SignInAction({ email: user.email, uid: user.uid });
+        this.props.Loading({ isLoading: false });
+      } else {
         this.props.Loading({ isLoading: false });
       }
     });
   }
 
   render() {
-    const { isLoading } = this.props;
+    const { isLoading, user } = this.props;
+
+    console.log(user);
 
     if (isLoading) {
       return (
@@ -81,13 +86,13 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return { isLoading: state.loading.isLoading };
+  return { isLoading: state.loading.isLoading, user: state.auth.user };
 };
 
 export default compose(
   connect(
     mapStateToProps,
-    { Loading }
+    { Loading, SignInAction }
   ),
   withFirebase
 )(App);
