@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { Loading, SignIn as SignInAction } from '../../actions';
 
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
@@ -11,28 +12,23 @@ import * as ROUTES from '../../constants/routes';
 
 import { withFirebase } from '../../services/firebase';
 
-// Landing Screen
-// import Landing from '../../screens/Landing/Landing';
-
-// Auth Screens
-import AccountType from '../../screens/Auth/AccountType';
-import SignUpRestaurateur from '../../screens/Auth/SignUpRestaurateur';
-import SignUpFoodie from '../../screens/Auth/SignUpFoodie';
-import EmailVerification from '../../screens/Auth/EmailVerification';
-import SignIn from '../../screens/Auth/SignIn';
-import PasswordReset from '../../screens/Auth/PasswordReset';
-
-// Restaurateur Screen
-import Restaurateur from '../../screens/Restaurateur';
-
-// Foodie Screen
-import Foodie from '../../screens/Foodie';
-
 // Initial Loading
 import Loader from '../Loader';
-import { Loading, SignIn as SignInAction } from '../../actions';
 
+// Private Routes
+import RestaurateurRoute from '../../routes/private/RestaurateurRoute';
+import FoodieRoute from '../../routes/private/FoodieRoute';
+
+// Verification Route
+import EmailVerificationRoute from '../../routes/verification/EmailVerificationRoute';
+
+// Public Routes
 import LandingRoute from '../../routes/public/LandingRoute';
+import AccountTypeRoute from '../../routes/public/AccountTypeRoute';
+import SignUpRestaurateurRoute from '../../routes/public/SignUpRestaurateurRoute';
+import SignUpFoodieRoute from '../../routes/public/SignUpFoodieRoute';
+import SignInRoute from '../../routes/public/SignInRoute';
+import PasswordResetRoute from '../../routes/public/PasswordResetRoute';
 
 class App extends Component {
   componentDidMount() {
@@ -68,19 +64,21 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <Switch>
-          {/* <PrivateRoute exact path={ROUTES.LANDING} component={PrivateRoute} /> */}
           <Route exact path={ROUTES.LANDING} component={LandingRoute} />
-          <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
+          <Route path={ROUTES.DASHBOARD} component={RestaurateurRoute} />
+          <Route path={ROUTES.HOME} component={FoodieRoute} />
+          <Route path={ROUTES.ACCOUNT_TYPE} component={AccountTypeRoute} />
           <Route
             path={ROUTES.SIGNUP_RESTAURATEUR}
-            component={SignUpRestaurateur}
+            component={SignUpRestaurateurRoute}
           />
-          <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodie} />
-          <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
-          <Route exact path={ROUTES.SIGNIN} component={SignIn} />
-          <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
-          <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
-          <Route path={ROUTES.HOME} component={Foodie} />
+          <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodieRoute} />
+          <Route
+            path={ROUTES.VERIFICATION}
+            component={EmailVerificationRoute}
+          />
+          <Route exact path={ROUTES.SIGNIN} component={SignInRoute} />
+          <Route path={ROUTES.PASSWORD_RESET} component={PasswordResetRoute} />
         </Switch>
       </ThemeProvider>
     );

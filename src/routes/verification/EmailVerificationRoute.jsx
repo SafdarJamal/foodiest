@@ -11,6 +11,8 @@ const EmailVerificationRoute = props => {
   if (user) {
     if (!user.isVerified) {
       return <Route component={EmailVerification} />;
+    } else {
+      return <Redirect to={ROUTES.LANDING} />;
     }
   } else {
     return <Redirect to={ROUTES.LANDING} />;
