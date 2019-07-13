@@ -35,12 +35,12 @@ class App extends Component {
     this.props.firebase.auth.onAuthStateChanged(user => {
       if (user) {
         // console.log(this.props);
-        this.props.SignInAction({
-          email: user.email,
-          uid: user.uid,
-          type: 'restaurateur',
-          isVerified: false
-        });
+        // this.props.SignInAction({
+        //   email: user.email,
+        //   uid: user.uid,
+        //   type: 'foodie',
+        //   isVerified: false
+        // });
         this.props.Loading({ isLoading: false });
       } else {
         this.props.Loading({ isLoading: false });
