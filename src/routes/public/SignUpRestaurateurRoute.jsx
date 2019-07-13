@@ -9,10 +9,14 @@ const SignUpRestaurateurRoute = props => {
   const { user } = props;
 
   if (user) {
-    if (user.type === 'restaurateur') {
-      return <Redirect to={ROUTES.HOME} />;
-    } else if (user.type === 'foodie') {
-      return <Redirect to={ROUTES.DASHBOARD} />;
+    if (user.isVerified) {
+      if (user.type === 'restaurateur') {
+        return <Redirect to={ROUTES.HOME} />;
+      } else if (user.type === 'foodie') {
+        return <Redirect to={ROUTES.DASHBOARD} />;
+      }
+    } else {
+      return <Route component={SignUpRestaurateur} />;
     }
   } else {
     return <Route component={SignUpRestaurateur} />;
