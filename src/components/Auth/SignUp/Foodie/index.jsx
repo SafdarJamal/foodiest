@@ -171,6 +171,7 @@ class SignUpFoodie extends Component {
     setTimeout(() => {
       const { firebase } = this.props;
       const { fName, lName, email, password } = this.state;
+
       firebase
         .signUp(email, password)
         .then(success => {
@@ -188,8 +189,8 @@ class SignUpFoodie extends Component {
         })
         .then(() => {
           this.setState({
-            fName,
-            lName,
+            fName: null,
+            lName: null,
             email: null,
             password: null,
             signUpError: null,

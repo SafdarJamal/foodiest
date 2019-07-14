@@ -26,14 +26,17 @@ class SignUpRestaurateur extends Component {
     super(props);
 
     this.state = {
+      fName: null,
+      lName: null,
+      rName: null,
+      email: null,
+      password: null,
       fNameError: null,
       lNameError: null,
       rNameError: null,
       emailError: null,
       passwordError: null,
       confirmPasswordError: null,
-      email: null,
-      password: null,
       isProcessing: false,
       signUpError: null
     };
@@ -55,7 +58,7 @@ class SignUpRestaurateur extends Component {
     if (result.isValid !== true) {
       this.setState({ fNameError: result.message });
     } else {
-      this.setState({ fNameError: null });
+      this.setState({ fNameError: null, fName: value });
     }
   }
 
@@ -66,7 +69,7 @@ class SignUpRestaurateur extends Component {
     if (result.isValid !== true) {
       this.setState({ lNameError: result.message });
     } else {
-      this.setState({ lNameError: null });
+      this.setState({ lNameError: null, lName: value });
     }
   }
 
@@ -77,7 +80,7 @@ class SignUpRestaurateur extends Component {
     if (result.isValid !== true) {
       this.setState({ rNameError: result.message });
     } else {
-      this.setState({ rNameError: null });
+      this.setState({ rNameError: null, rName: value });
     }
   }
 
@@ -189,14 +192,29 @@ class SignUpRestaurateur extends Component {
 
     setTimeout(() => {
       const { firebase } = this.props;
+      const { fName, lName, rName, email, password } = this.state;
 
       firebase
-        .signUp(this.state.email, this.state.password)
+        .signUp(email, password)
         .then(success => {
           const user = success.user;
-          console.log(user);
+          // console.log(user);
 
+          const userData = {
+            fName,
+            lName,
+            rName,
+            email,
+            type: 'restaurateur'
+          };
+
+          return firebase.addUser(user.uid, userData);
+        })
+        .then(() => {
           this.setState({
+            fName: null,
+            lName: null,
+            rName: null,
             email: null,
             password: null,
             signUpError: null,
