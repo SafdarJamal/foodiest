@@ -1,15 +1,15 @@
 import app from 'firebase/app';
 import 'firebase/auth';
-import firebaseConfig from '../../config/firebaseConfig';
+import 'firebase/firestore';
 
-// const firebase = app.initializeApp(firebaseConfig);
-// export default firebase;
+import firebaseConfig from '../../config/firebaseConfig';
 
 class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
 
     this.auth = app.auth();
+    this.db = app.firestore();
   }
 
   // Auth API
@@ -29,6 +29,8 @@ class Firebase {
   passwordUpdate = password => this.auth.currentUser.updatePassword(password);
 
   signOut = () => this.auth.signOut();
+
+  // Database API
 }
 
 export default Firebase;
