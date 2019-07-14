@@ -31,6 +31,11 @@ class Firebase {
   signOut = () => this.auth.signOut();
 
   // Database API
+  addUser = (uid, userData) =>
+    this.db
+      .collection('users')
+      .doc(uid)
+      .set(userData);
 }
 
 export default Firebase;
