@@ -188,6 +188,8 @@ class SignUpFoodie extends Component {
           return firebase.addUser(user.uid, userData);
         })
         .then(() => {
+          firebase.verifyEmail();
+
           this.setState({
             fName: null,
             lName: null,
