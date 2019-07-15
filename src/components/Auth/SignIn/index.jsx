@@ -8,11 +8,8 @@ import Progress from '../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { SignIn as SignInAction } from '../../../actions';
-
-import { Link as RouterLink } from 'react-router-dom';
+import { Redirect, Link as RouterLink } from 'react-router-dom';
+import * as ROUTES from '../../../constants/routes';
 
 import { withFirebase } from '../../../services/firebase';
 
@@ -32,7 +29,8 @@ class SignIn extends Component {
       emailError: null,
       passwordError: null,
       isProcessing: false,
-      signInError: null
+      signInError: null,
+      redirectToReferrer: false
     };
 
     this.validateEmail = this.validateEmail.bind(this);
@@ -102,32 +100,16 @@ class SignIn extends Component {
       firebase
         .signIn(email, password)
         .then(success => {
-          const user = success.user;
-          console.log(user);
+          // const user = success.user;
+          // console.log(user);
 
-          this.props.firebase
-            .getUser(user.uid)
-            .then(querySnapshot => {
-              // console.log(querySnapshot.data());
-
-              const userData = querySnapshot.data();
-              userData.uid = user.uid;
-              userData.isVerified = user.emailVerified;
-
-              this.props.SignInAction(userData);
-            })
-            .then(() => {
-              this.setState({
-                email: null,
-                password: null,
-                signInError: null,
-                isProcessing: false
-              });
-            })
-            .catch(error => {
-              const errorMessage = error.message;
-              console.log(errorMessage);
-            });
+          this.setState({
+            email: null,
+            password: null,
+            signInError: null,
+            isProcessing: false,
+            redirectToReferrer: true
+          });
         })
         .catch(error => {
           const errorMessage = error.message;
@@ -146,8 +128,18 @@ class SignIn extends Component {
   }
 
   render() {
-    const { emailError, passwordError, isProcessing, signInError } = this.state;
+    const {
+      emailError,
+      passwordError,
+      isProcessing,
+      signInError,
+      redirectToReferrer
+    } = this.state;
     console.log(this.props);
+
+    if (redirectToReferrer) {
+      return <Redirect to={ROUTES.LANDING} />;
+    }
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
@@ -260,14 +252,4 @@ class SignIn extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { isSignedIn: state.auth.isSignedIn };
-};
-
-export default compose(
-  connect(
-    mapStateToProps,
-    { SignInAction }
-  ),
-  withFirebase
-)(SignIn);
+export default withFirebase(SignIn);

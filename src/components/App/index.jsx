@@ -32,7 +32,7 @@ import PasswordResetRoute from '../../routes/public/PasswordResetRoute';
 
 class App extends Component {
   componentDidMount() {
-    const { firebase } = this.props;
+    const { firebase, SignInAction, Loading } = this.props;
 
     firebase.auth.onAuthStateChanged(user => {
       if (user) {
@@ -47,10 +47,10 @@ class App extends Component {
             userData.uid = user.uid;
             userData.isVerified = user.emailVerified;
 
-            this.props.SignInAction(userData);
+            SignInAction(userData);
           })
           .then(() => {
-            this.props.Loading({ isLoading: false });
+            Loading({ isLoading: false });
           })
           .catch(error => {
             const errorMessage = error.message;
