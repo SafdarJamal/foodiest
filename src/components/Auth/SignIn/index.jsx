@@ -8,10 +8,13 @@ import Progress from '../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 
-import { Redirect, Link as RouterLink } from 'react-router-dom';
-import * as ROUTES from '../../../constants/routes';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 
 import { withFirebase } from '../../../services/firebase';
+
+import { Redirect, Link as RouterLink } from 'react-router-dom';
+import * as ROUTES from '../../../constants/routes';
 
 import {
   validateEmail,
@@ -135,10 +138,18 @@ class SignIn extends Component {
       signInError,
       redirectToReferrer
     } = this.state;
-    console.log(this.props);
+
+    const { user } = this.props;
+    console.log(user);
 
     if (redirectToReferrer) {
-      return <Redirect to={ROUTES.LANDING} />;
+      if (user.type === 'restaurateur') {
+        return <Redirect to={ROUTES.DASHBOARD} />;
+      } else if (user.type === 'foodie') {
+        return <Redirect to={ROUTES.HOME} />;
+      } else {
+        return <Redirect to={ROUTES.LANDING} />;
+      }
     }
 
     return (
@@ -252,4 +263,11 @@ class SignIn extends Component {
   }
 }
 
-export default withFirebase(SignIn);
+const mapStateToProps = state => {
+  return { user: state.auth.user };
+};
+
+export default compose(
+  connect(mapStateToProps),
+  withFirebase
+)(SignIn);
