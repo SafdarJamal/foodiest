@@ -32,11 +32,13 @@ import PasswordResetRoute from '../../routes/public/PasswordResetRoute';
 
 class App extends Component {
   componentDidMount() {
-    this.props.firebase.auth.onAuthStateChanged(user => {
+    const { firebase } = this.props;
+
+    firebase.auth.onAuthStateChanged(user => {
       if (user) {
         // console.log(this.props);
 
-        this.props.firebase
+        firebase
           .getUser(user.uid)
           .then(querySnapshot => {
             // console.log(querySnapshot.data());

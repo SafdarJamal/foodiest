@@ -27,10 +27,10 @@ class SignIn extends Component {
     super(props);
 
     this.state = {
-      emailError: null,
-      passwordError: null,
       email: null,
       password: null,
+      emailError: null,
+      passwordError: null,
       isProcessing: false,
       signInError: null
     };
@@ -97,21 +97,37 @@ class SignIn extends Component {
 
     setTimeout(() => {
       const { firebase } = this.props;
+      const { email, password } = this.state;
 
       firebase
-        .signIn(this.state.email, this.state.password)
+        .signIn(email, password)
         .then(success => {
           const user = success.user;
           console.log(user);
 
-          this.setState({
-            email: null,
-            password: null,
-            signInError: null,
-            isProcessing: false
-          });
+          this.props.firebase
+            .getUser(user.uid)
+            .then(querySnapshot => {
+              // console.log(querySnapshot.data());
 
-          this.props.SignInAction();
+              const userData = querySnapshot.data();
+              userData.uid = user.uid;
+              userData.isVerified = user.emailVerified;
+
+              this.props.SignInAction(userData);
+            })
+            .then(() => {
+              this.setState({
+                email: null,
+                password: null,
+                signInError: null,
+                isProcessing: false
+              });
+            })
+            .catch(error => {
+              const errorMessage = error.message;
+              console.log(errorMessage);
+            });
         })
         .catch(error => {
           const errorMessage = error.message;
