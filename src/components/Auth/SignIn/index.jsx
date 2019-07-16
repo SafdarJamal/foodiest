@@ -27,6 +27,8 @@ class SignIn extends Component {
   constructor(props) {
     super(props);
 
+    this._isMounted = false;
+
     this.state = {
       email: null,
       password: null,
@@ -41,6 +43,14 @@ class SignIn extends Component {
     this.validatePassword = this.validatePassword.bind(this);
     this.signMeIn = this.signMeIn.bind(this);
     this.dismissError = this.dismissError.bind(this);
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   validateEmail(value) {
@@ -118,13 +128,15 @@ class SignIn extends Component {
           });
         })
         .then(() => {
-          this.setState({
-            email: null,
-            password: null,
-            signInError: null,
-            isProcessing: false,
-            redirectToReferrer: true
-          });
+          if (this._isMounted) {
+            this.setState({
+              email: null,
+              password: null,
+              signInError: null,
+              isProcessing: false,
+              redirectToReferrer: true
+            });
+          }
         })
         .catch(error => {
           const errorMessage = error.message;
@@ -159,8 +171,6 @@ class SignIn extends Component {
         return <Redirect to={ROUTES.DASHBOARD} />;
       } else if (user.type === 'foodie') {
         return <Redirect to={ROUTES.HOME} />;
-      } else {
-        return <Redirect to={ROUTES.LANDING} />;
       }
     }
 
