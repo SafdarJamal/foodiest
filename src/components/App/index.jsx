@@ -33,13 +33,13 @@ import PasswordResetRoute from '../../routes/public/PasswordResetRoute';
 class App extends Component {
   componentDidMount() {
     const { firebase, SignInAction, Loading } = this.props;
+    // console.log(this.props);
 
     const unsubscribe = firebase.auth.onAuthStateChanged(user => {
       if (user) {
-        // console.log(this.props);
         unsubscribe();
 
-        firebase
+        return firebase
           .getUser(user.uid)
           .then(querySnapshot => {
             // console.log(querySnapshot.data());
@@ -51,9 +51,7 @@ class App extends Component {
             SignInAction(userData);
           })
           .then(() => {
-            Loading({
-              isLoading: false
-            });
+            Loading({ isLoading: false });
           })
           .catch(error => {
             const errorMessage = error.message;
@@ -62,9 +60,7 @@ class App extends Component {
       } else {
         unsubscribe();
 
-        this.props.Loading({
-          isLoading: false
-        });
+        this.props.Loading({ isLoading: false });
       }
     });
   }
