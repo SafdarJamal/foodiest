@@ -10,6 +10,7 @@ import Link from '@material-ui/core/Link';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { SignIn as SignInAction } from '../../../actions';
 
 import { withFirebase } from '../../../services/firebase';
 
@@ -97,15 +98,26 @@ class SignIn extends Component {
     // console.log(this.state.email, this.state.password);
 
     setTimeout(() => {
-      const { firebase } = this.props;
+      const { firebase, SignInAction } = this.props;
       const { email, password } = this.state;
 
       firebase
         .signIn(email, password)
         .then(success => {
-          // const user = success.user;
+          const user = success.user;
           // console.log(user);
 
+          return firebase.getUser(user.uid).then(querySnapshot => {
+            // console.log(querySnapshot.data());
+
+            const userData = querySnapshot.data();
+            userData.uid = user.uid;
+            userData.isVerified = user.emailVerified;
+
+            SignInAction(userData);
+          });
+        })
+        .then(() => {
           this.setState({
             email: null,
             password: null,
@@ -268,6 +280,9 @@ const mapStateToProps = state => {
 };
 
 export default compose(
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps,
+    { SignInAction }
+  ),
   withFirebase
 )(SignIn);

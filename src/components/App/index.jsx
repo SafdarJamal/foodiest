@@ -34,9 +34,10 @@ class App extends Component {
   componentDidMount() {
     const { firebase, SignInAction, Loading } = this.props;
 
-    firebase.auth.onAuthStateChanged(user => {
+    const unsubscribe = firebase.auth.onAuthStateChanged(user => {
       if (user) {
         // console.log(this.props);
+        unsubscribe();
 
         firebase
           .getUser(user.uid)
@@ -50,14 +51,20 @@ class App extends Component {
             SignInAction(userData);
           })
           .then(() => {
-            Loading({ isLoading: false });
+            Loading({
+              isLoading: false
+            });
           })
           .catch(error => {
             const errorMessage = error.message;
             console.log(errorMessage);
           });
       } else {
-        this.props.Loading({ isLoading: false });
+        unsubscribe();
+
+        this.props.Loading({
+          isLoading: false
+        });
       }
     });
   }
