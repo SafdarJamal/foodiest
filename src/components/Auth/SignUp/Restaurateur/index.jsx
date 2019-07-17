@@ -10,9 +10,11 @@ import Grid from '@material-ui/core/Grid';
 import { compose } from 'redux';
 
 import { withRouter, Link } from 'react-router-dom';
-import { VERIFICATION } from '../../../../constants/routes';
+import * as ROUTES from '../../../../constants/routes';
 
 import { withFirebase } from '../../../../services/firebase';
+
+import * as USER_TYPES from '../../../../constants/userTypes';
 
 import {
   validateName,
@@ -205,14 +207,13 @@ class SignUpRestaurateur extends Component {
             lName,
             rName,
             email,
-            type: 'restaurateur'
+            type: USER_TYPES.RESTAURATEUR
           };
 
           return firebase.addUser(user.uid, userData);
         })
+        .then(() => firebase.verifyEmail())
         .then(() => {
-          firebase.verifyEmail();
-
           this.setState({
             fName: null,
             lName: null,
@@ -223,7 +224,7 @@ class SignUpRestaurateur extends Component {
             isProcessing: false
           });
 
-          this.props.history.push(VERIFICATION);
+          this.props.history.push(ROUTES.VERIFICATION);
         })
         .catch(error => {
           const errorMessage = error.message;

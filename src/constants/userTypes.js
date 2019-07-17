@@ -1,0 +1,4 @@
+const RESTAURATEUR = 'RESTAURATEUR';
+const FOODIE = 'FOODIE';
+
+export { RESTAURATEUR, FOODIE };
