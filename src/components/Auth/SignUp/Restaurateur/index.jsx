@@ -8,12 +8,10 @@ import Progress from '../../../UI/Progress';
 import Grid from '@material-ui/core/Grid';
 
 import { compose } from 'redux';
+import { withFirebase } from '../../../../services/firebase';
 
 import { withRouter, Link } from 'react-router-dom';
 import * as ROUTES from '../../../../constants/routes';
-
-import { withFirebase } from '../../../../services/firebase';
-
 import * as USER_TYPES from '../../../../constants/userTypes';
 
 import {

@@ -3,14 +3,13 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Loading, SignIn as SignInAction } from '../../actions';
+import { withFirebase } from '../../services/firebase';
 
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 
 import { Switch, Route } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
-
-import { withFirebase } from '../../services/firebase';
 
 // Initial Loading
 import Loader from '../Loader';
