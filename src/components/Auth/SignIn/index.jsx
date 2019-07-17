@@ -17,6 +17,8 @@ import { withFirebase } from '../../../services/firebase';
 import { Redirect, Link as RouterLink } from 'react-router-dom';
 import * as ROUTES from '../../../constants/routes';
 
+import * as USER_TYPES from '../../../constants/userTypes';
+
 import {
   validateEmail,
   validatePassword,
@@ -167,9 +169,9 @@ class SignIn extends Component {
     console.log(user);
 
     if (redirectToReferrer) {
-      if (user.type === 'restaurateur') {
+      if (user.type === USER_TYPES.RESTAURATEUR) {
         return <Redirect to={ROUTES.DASHBOARD} />;
-      } else if (user.type === 'foodie') {
+      } else if (user.type === USER_TYPES.FOODIE) {
         return <Redirect to={ROUTES.HOME} />;
       }
     }

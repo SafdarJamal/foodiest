@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import * as USER_TYPES from '../../constants/userTypes';
 
 import Restaurateur from '../../screens/Restaurateur';
 
@@ -10,9 +11,9 @@ const RestaurateurRoute = props => {
 
   if (user) {
     if (user.isVerified) {
-      if (user.type === 'restaurateur') {
+      if (user.type === USER_TYPES.RESTAURATEUR) {
         return <Route component={Restaurateur} />;
-      } else if (user.type === 'foodie') {
+      } else if (user.type === USER_TYPES.FOODIE) {
         return <Redirect to={ROUTES.HOME} />;
       }
     } else {

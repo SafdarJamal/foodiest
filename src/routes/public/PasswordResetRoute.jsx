@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import * as USER_TYPES from '../../constants/userTypes';
 
 import PasswordReset from '../../screens/Auth/PasswordReset';
 
@@ -10,10 +11,10 @@ const PasswordResetRoute = props => {
 
   if (user) {
     if (user.isVerified) {
-      if (user.type === 'restaurateur') {
-        return <Redirect to={ROUTES.HOME} />;
-      } else if (user.type === 'foodie') {
+      if (user.type === USER_TYPES.RESTAURATEUR) {
         return <Redirect to={ROUTES.DASHBOARD} />;
+      } else if (user.type === USER_TYPES.FOODIE) {
+        return <Redirect to={ROUTES.HOME} />;
       }
     } else {
       return <Route component={PasswordReset} />;
