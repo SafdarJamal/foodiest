@@ -15,30 +15,23 @@ import * as ROUTES from '../../constants/routes';
 // Initial Loading
 import Loader from '../Loader';
 
-// Private Routes
-const RestaurateurRoute = lazy(() =>
+const Restaurateur = lazy(() =>
   import('../../routes/private/RestaurateurRoute')
 );
-const FoodieRoute = lazy(() => import('../../routes/private/FoodieRoute'));
-
-// Verification Route
-const EmailVerificationRoute = lazy(() =>
-  import('../../routes/verification/EmailVerificationRoute')
-);
-
-// Public Routes
-const LandingRoute = lazy(() => import('../../routes/public/LandingRoute'));
-const AccountTypeRoute = lazy(() =>
-  import('../../routes/public/AccountTypeRoute')
-);
-const SignUpRestaurateurRoute = lazy(() =>
+const Foodie = lazy(() => import('../../routes/private/FoodieRoute'));
+const Landing = lazy(() => import('../../routes/public/LandingRoute'));
+const AccountType = lazy(() => import('../../routes/public/AccountTypeRoute'));
+const SignUpRestaurateur = lazy(() =>
   import('../../routes/public/SignUpRestaurateurRoute')
 );
-const SignUpFoodieRoute = lazy(() =>
+const SignUpFoodie = lazy(() =>
   import('../../routes/public/SignUpFoodieRoute')
 );
-const SignInRoute = lazy(() => import('../../routes/public/SignInRoute'));
-const PasswordResetRoute = lazy(() =>
+const EmailVerification = lazy(() =>
+  import('../../routes/verification/EmailVerificationRoute')
+);
+const SignIn = lazy(() => import('../../routes/public/SignInRoute'));
+const PasswordReset = lazy(() =>
   import('../../routes/public/PasswordResetRoute')
 );
 
@@ -100,24 +93,18 @@ class App extends Component {
           }
         >
           <Switch>
-            <Route exact path={ROUTES.LANDING} component={LandingRoute} />
-            <Route path={ROUTES.DASHBOARD} component={RestaurateurRoute} />
-            <Route path={ROUTES.HOME} component={FoodieRoute} />
-            <Route path={ROUTES.ACCOUNT_TYPE} component={AccountTypeRoute} />
+            <Route exact path={ROUTES.LANDING} component={Landing} />
+            <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
+            <Route path={ROUTES.HOME} component={Foodie} />
+            <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
             <Route
               path={ROUTES.SIGNUP_RESTAURATEUR}
-              component={SignUpRestaurateurRoute}
+              component={SignUpRestaurateur}
             />
-            <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodieRoute} />
-            <Route
-              path={ROUTES.VERIFICATION}
-              component={EmailVerificationRoute}
-            />
-            <Route exact path={ROUTES.SIGNIN} component={SignInRoute} />
-            <Route
-              path={ROUTES.PASSWORD_RESET}
-              component={PasswordResetRoute}
-            />
+            <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodie} />
+            <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
+            <Route exact path={ROUTES.SIGNIN} component={SignIn} />
+            <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
           </Switch>
         </Suspense>
       </ThemeProvider>
