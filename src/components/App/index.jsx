@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Suspense, lazy } from 'react';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -15,19 +16,31 @@ import * as ROUTES from '../../constants/routes';
 import Loader from '../Loader';
 
 // Private Routes
-import RestaurateurRoute from '../../routes/private/RestaurateurRoute';
-import FoodieRoute from '../../routes/private/FoodieRoute';
+const RestaurateurRoute = lazy(() =>
+  import('../../routes/private/RestaurateurRoute')
+);
+const FoodieRoute = lazy(() => import('../../routes/private/FoodieRoute'));
 
 // Verification Route
-import EmailVerificationRoute from '../../routes/verification/EmailVerificationRoute';
+const EmailVerificationRoute = lazy(() =>
+  import('../../routes/verification/EmailVerificationRoute')
+);
 
 // Public Routes
-import LandingRoute from '../../routes/public/LandingRoute';
-import AccountTypeRoute from '../../routes/public/AccountTypeRoute';
-import SignUpRestaurateurRoute from '../../routes/public/SignUpRestaurateurRoute';
-import SignUpFoodieRoute from '../../routes/public/SignUpFoodieRoute';
-import SignInRoute from '../../routes/public/SignInRoute';
-import PasswordResetRoute from '../../routes/public/PasswordResetRoute';
+const LandingRoute = lazy(() => import('../../routes/public/LandingRoute'));
+const AccountTypeRoute = lazy(() =>
+  import('../../routes/public/AccountTypeRoute')
+);
+const SignUpRestaurateurRoute = lazy(() =>
+  import('../../routes/public/SignUpRestaurateurRoute')
+);
+const SignUpFoodieRoute = lazy(() =>
+  import('../../routes/public/SignUpFoodieRoute')
+);
+const SignInRoute = lazy(() => import('../../routes/public/SignInRoute'));
+const PasswordResetRoute = lazy(() =>
+  import('../../routes/public/PasswordResetRoute')
+);
 
 class App extends Component {
   componentDidMount() {
@@ -79,23 +92,34 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <Switch>
-          <Route exact path={ROUTES.LANDING} component={LandingRoute} />
-          <Route path={ROUTES.DASHBOARD} component={RestaurateurRoute} />
-          <Route path={ROUTES.HOME} component={FoodieRoute} />
-          <Route path={ROUTES.ACCOUNT_TYPE} component={AccountTypeRoute} />
-          <Route
-            path={ROUTES.SIGNUP_RESTAURATEUR}
-            component={SignUpRestaurateurRoute}
-          />
-          <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodieRoute} />
-          <Route
-            path={ROUTES.VERIFICATION}
-            component={EmailVerificationRoute}
-          />
-          <Route exact path={ROUTES.SIGNIN} component={SignInRoute} />
-          <Route path={ROUTES.PASSWORD_RESET} component={PasswordResetRoute} />
-        </Switch>
+        <Suspense
+          fallback={
+            <div>
+              <Loader />
+            </div>
+          }
+        >
+          <Switch>
+            <Route exact path={ROUTES.LANDING} component={LandingRoute} />
+            <Route path={ROUTES.DASHBOARD} component={RestaurateurRoute} />
+            <Route path={ROUTES.HOME} component={FoodieRoute} />
+            <Route path={ROUTES.ACCOUNT_TYPE} component={AccountTypeRoute} />
+            <Route
+              path={ROUTES.SIGNUP_RESTAURATEUR}
+              component={SignUpRestaurateurRoute}
+            />
+            <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodieRoute} />
+            <Route
+              path={ROUTES.VERIFICATION}
+              component={EmailVerificationRoute}
+            />
+            <Route exact path={ROUTES.SIGNIN} component={SignInRoute} />
+            <Route
+              path={ROUTES.PASSWORD_RESET}
+              component={PasswordResetRoute}
+            />
+          </Switch>
+        </Suspense>
       </ThemeProvider>
     );
   }
