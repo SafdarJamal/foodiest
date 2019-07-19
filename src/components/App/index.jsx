@@ -12,13 +12,17 @@ import theme from '../../theme';
 import { Switch, Route } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
+import pMinDelay from 'p-min-delay';
+
 // Initial Loading
 import Loader from '../Loader';
 
 const Restaurateur = lazy(() =>
-  import('../../routes/private/RestaurateurRoute')
+  pMinDelay(import('../../routes/private/RestaurateurRoute'), 3000)
 );
-const Foodie = lazy(() => import('../../routes/private/FoodieRoute'));
+const Foodie = lazy(() =>
+  pMinDelay(import('../../routes/private/FoodieRoute'), 3000)
+);
 const Landing = lazy(() => import('../../routes/public/LandingRoute'));
 const AccountType = lazy(() => import('../../routes/public/AccountTypeRoute'));
 const SignUpRestaurateur = lazy(() =>
