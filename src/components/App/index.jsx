@@ -14,16 +14,17 @@ import * as ROUTES from '../../constants/routes';
 
 import pMinDelay from 'p-min-delay';
 
-// Initial Loading
+// Initial loading
 import Loader from '../Loader';
 
+// Route handlers
+const Landing = lazy(() => import('../../routes/public/Landing'));
 const Restaurateur = lazy(() =>
   pMinDelay(import('../../routes/private/Restaurateur'), 3000)
 );
 const Foodie = lazy(() =>
   pMinDelay(import('../../routes/private/Foodie'), 3000)
 );
-const Landing = lazy(() => import('../../routes/public/Landing'));
 const AccountType = lazy(() => import('../../routes/public/AccountType'));
 const SignUpRestaurateur = lazy(() =>
   import('../../routes/public/SignUpRestaurateur')
@@ -72,7 +73,6 @@ class App extends Component {
 
   render() {
     const { isLoading, user } = this.props;
-
     console.log(user);
 
     if (isLoading) {
