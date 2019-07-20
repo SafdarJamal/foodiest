@@ -14,6 +14,11 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '../../assets/images/logo.png';
 
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { SignOut as SignOutAction } from '../../actions';
+import { withFirebase } from '../../services/firebase';
+
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1
@@ -35,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Home = () => {
+const Home = props => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -60,6 +65,15 @@ const Home = () => {
     setMobileMoreAnchorEl(event.currentTarget);
   }
 
+  function handleSignOut() {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+
+    const { firebase, SignOutAction } = props;
+
+    firebase.signOut().then(SignOutAction);
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -73,7 +87,7 @@ const Home = () => {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My Account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Sign Out Foodie</MenuItem>
+      <MenuItem onClick={handleSignOut}>Sign Out Foodie</MenuItem>
     </Menu>
   );
 
@@ -180,4 +194,10 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default compose(
+  connect(
+    null,
+    { SignOutAction }
+  ),
+  withFirebase
+)(Home);
