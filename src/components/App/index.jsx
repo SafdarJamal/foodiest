@@ -25,16 +25,24 @@ const Restaurateur = lazy(() =>
 const Foodie = lazy(() =>
   pMinDelay(import('../../routes/private/Foodie'), 3000)
 );
-const AccountType = lazy(() => import('../../routes/public/AccountType'));
+const AccountType = lazy(() =>
+  pMinDelay(import('../../routes/public/AccountType'), 2000)
+);
 const SignUpRestaurateur = lazy(() =>
-  import('../../routes/public/SignUpRestaurateur')
+  pMinDelay(import('../../routes/public/SignUpRestaurateur'), 2000)
 );
-const SignUpFoodie = lazy(() => import('../../routes/public/SignUpFoodie'));
+const SignUpFoodie = lazy(() =>
+  pMinDelay(import('../../routes/public/SignUpFoodie'), 2000)
+);
 const EmailVerification = lazy(() =>
-  import('../../routes/verification/EmailVerification')
+  pMinDelay(import('../../routes/verification/EmailVerification'), 2000)
 );
-const SignIn = lazy(() => import('../../routes/public/SignIn'));
-const PasswordReset = lazy(() => import('../../routes/public/PasswordReset'));
+const SignIn = lazy(() =>
+  pMinDelay(import('../../routes/public/SignIn'), 2000)
+);
+const PasswordReset = lazy(() =>
+  pMinDelay(import('../../routes/public/PasswordReset'), 2000)
+);
 
 class App extends Component {
   componentDidMount() {

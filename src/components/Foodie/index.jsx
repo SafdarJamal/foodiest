@@ -16,7 +16,7 @@ import logo from '../../assets/images/logo.png';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { SignOut as SignOutAction } from '../../actions';
+import { Loading, SignOut as SignOutAction } from '../../actions';
 import { withFirebase } from '../../services/firebase';
 
 const useStyles = makeStyles(theme => ({
@@ -69,9 +69,22 @@ const Home = props => {
     setAnchorEl(null);
     handleMobileMenuClose();
 
-    const { firebase, SignOutAction } = props;
+    const { firebase, Loading, SignOutAction } = props;
 
-    firebase.signOut().then(SignOutAction);
+    Loading({ isLoading: true });
+
+    setTimeout(() => {
+      firebase
+        .signOut()
+        .then(() => {
+          SignOutAction();
+          Loading({ isLoading: false });
+        })
+        .catch(error => {
+          const errorMessage = error.message;
+          console.log(errorMessage);
+        });
+    }, 3000);
   }
 
   const menuId = 'primary-search-account-menu';
@@ -197,7 +210,7 @@ const Home = props => {
 export default compose(
   connect(
     null,
-    { SignOutAction }
+    { Loading, SignOutAction }
   ),
   withFirebase
 )(Home);
