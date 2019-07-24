@@ -6,9 +6,7 @@ import * as USER_TYPES from '../../constants/userTypes';
 
 import AccountType from '../../screens/Auth/AccountType';
 
-const AccountTypeRoute = props => {
-  const { user } = props;
-
+const AccountTypeRoute = ({ user }) => {
   if (user) {
     if (user.isVerified) {
       if (user.type === USER_TYPES.RESTAURATEUR) {

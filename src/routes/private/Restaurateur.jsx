@@ -6,9 +6,7 @@ import * as USER_TYPES from '../../constants/userTypes';
 
 import Restaurateur from '../../screens/Restaurateur';
 
-const RestaurateurRoute = props => {
-  const { user } = props;
-
+const RestaurateurRoute = ({ user }) => {
   if (user) {
     if (user.isVerified) {
       if (user.type === USER_TYPES.RESTAURATEUR) {

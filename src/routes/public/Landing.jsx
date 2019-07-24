@@ -6,9 +6,7 @@ import * as USER_TYPES from '../../constants/userTypes';
 
 import Landing from '../../screens/Landing/Landing';
 
-const LandingRoute = props => {
-  const { user } = props;
-
+const LandingRoute = ({ user }) => {
   if (user) {
     if (user.isVerified) {
       if (user.type === USER_TYPES.RESTAURATEUR) {

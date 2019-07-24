@@ -6,9 +6,7 @@ import * as USER_TYPES from '../../constants/userTypes';
 
 import PasswordReset from '../../screens/Auth/PasswordReset';
 
-const PasswordResetRoute = props => {
-  const { user } = props;
-
+const PasswordResetRoute = ({ user }) => {
   if (user) {
     if (user.isVerified) {
       if (user.type === USER_TYPES.RESTAURATEUR) {

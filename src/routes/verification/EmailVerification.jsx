@@ -5,9 +5,7 @@ import * as ROUTES from '../../constants/routes';
 
 import EmailVerification from '../../screens/Auth/EmailVerification';
 
-const EmailVerificationRoute = props => {
-  const { user } = props;
-
+const EmailVerificationRoute = ({ user }) => {
   if (user) {
     if (!user.isVerified) {
       return <Route component={EmailVerification} />;
