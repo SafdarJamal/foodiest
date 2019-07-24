@@ -14,6 +14,7 @@ import * as ROUTES from '../../constants/routes';
 
 // Initial loading
 import Loader from '../Loader';
+import EllipsisSpinner from '../UI/EllipsisSpinner';
 
 // Routes handling
 const Landing = lazy(() => import('../../routes/public/Landing'));
@@ -81,8 +82,8 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Suspense
           fallback={
-            <div>
-              <Loader />
+            <div style={{ textAlign: 'center', paddingTop: '25%' }}>
+              <EllipsisSpinner />
             </div>
           }
         >
