@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
+import pMinDelay from 'p-min-delay';
 
-import Foodie from '../../screens/Foodie';
+const Foodie = lazy(() => pMinDelay(import('../../screens/Foodie'), 2000));
 
 const FoodieRoute = ({ user }) => {
   if (user) {

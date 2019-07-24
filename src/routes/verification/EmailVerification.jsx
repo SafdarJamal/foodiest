@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import pMinDelay from 'p-min-delay';
 
-import EmailVerification from '../../screens/Auth/EmailVerification';
+const EmailVerification = lazy(() =>
+  pMinDelay(import('../../screens/Auth/EmailVerification'), 2000)
+);
 
 const EmailVerificationRoute = ({ user }) => {
   if (user) {

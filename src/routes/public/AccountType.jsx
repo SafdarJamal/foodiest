@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
+import pMinDelay from 'p-min-delay';
 
-import AccountType from '../../screens/Auth/AccountType';
+const AccountType = lazy(() =>
+  pMinDelay(import('../../screens/Auth/AccountType'), 2000)
+);
 
 const AccountTypeRoute = ({ user }) => {
   if (user) {

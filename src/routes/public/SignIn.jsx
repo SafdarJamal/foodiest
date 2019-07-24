@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
+import pMinDelay from 'p-min-delay';
 
-import SignIn from '../../screens/Auth/SignIn';
+const SignIn = lazy(() => pMinDelay(import('../../screens/Auth/SignIn'), 2000));
 
 const SignInRoute = ({ user }) => {
   if (user) {

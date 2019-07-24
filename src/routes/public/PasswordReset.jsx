@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
+import pMinDelay from 'p-min-delay';
 
-import PasswordReset from '../../screens/Auth/PasswordReset';
+const PasswordReset = lazy(() =>
+  pMinDelay(import('../../screens/Auth/PasswordReset'), 2000)
+);
 
 const PasswordResetRoute = ({ user }) => {
   if (user) {

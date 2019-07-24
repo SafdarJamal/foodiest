@@ -12,37 +12,23 @@ import theme from '../../theme';
 import { Switch, Route } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
-import pMinDelay from 'p-min-delay';
-
 // Initial loading
 import Loader from '../Loader';
 
-// Route handlers
+// Routes handling
 const Landing = lazy(() => import('../../routes/public/Landing'));
-const Restaurateur = lazy(() =>
-  pMinDelay(import('../../routes/private/Restaurateur'), 3000)
-);
-const Foodie = lazy(() =>
-  pMinDelay(import('../../routes/private/Foodie'), 3000)
-);
-const AccountType = lazy(() =>
-  pMinDelay(import('../../routes/public/AccountType'), 2000)
-);
+const Restaurateur = lazy(() => import('../../routes/private/Restaurateur'));
+const Foodie = lazy(() => import('../../routes/private/Foodie'));
+const AccountType = lazy(() => import('../../routes/public/AccountType'));
 const SignUpRestaurateur = lazy(() =>
-  pMinDelay(import('../../routes/public/SignUpRestaurateur'), 2000)
+  import('../../routes/public/SignUpRestaurateur')
 );
-const SignUpFoodie = lazy(() =>
-  pMinDelay(import('../../routes/public/SignUpFoodie'), 2000)
-);
+const SignUpFoodie = lazy(() => import('../../routes/public/SignUpFoodie'));
 const EmailVerification = lazy(() =>
-  pMinDelay(import('../../routes/verification/EmailVerification'), 2000)
+  import('../../routes/verification/EmailVerification')
 );
-const SignIn = lazy(() =>
-  pMinDelay(import('../../routes/public/SignIn'), 2000)
-);
-const PasswordReset = lazy(() =>
-  pMinDelay(import('../../routes/public/PasswordReset'), 2000)
-);
+const SignIn = lazy(() => import('../../routes/public/SignIn'));
+const PasswordReset = lazy(() => import('../../routes/public/PasswordReset'));
 
 class App extends Component {
   componentDidMount() {
