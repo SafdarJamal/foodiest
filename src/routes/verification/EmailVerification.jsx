@@ -5,7 +5,7 @@ import * as ROUTES from '../../constants/routes';
 import pMinDelay from 'p-min-delay';
 
 const EmailVerification = lazy(() =>
-  pMinDelay(import('../../screens/Auth/EmailVerification'), 2000)
+  pMinDelay(import('../../screens/Auth/EmailVerification'), 1000)
 );
 
 const EmailVerificationRoute = ({ user }) => {

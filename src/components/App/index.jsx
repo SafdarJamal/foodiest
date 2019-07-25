@@ -11,9 +11,6 @@ import theme from '../../theme';
 import { Switch, Route } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import './index.css';
-
 // Initial loading
 import Loader from '../Loader';
 import EllipsisSpinner from '../UI/EllipsisSpinner';
@@ -89,47 +86,20 @@ class App extends Component {
             </div>
           }
         >
-          <Route
-            render={({ location }) => {
-              return (
-                <TransitionGroup>
-                  <CSSTransition
-                    key={location.key}
-                    timeout={150}
-                    classNames="fade"
-                    appear={true}
-                  >
-                    <Switch location={location}>
-                      <Route exact path={ROUTES.LANDING} component={Landing} />
-                      <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
-                      <Route path={ROUTES.HOME} component={Foodie} />
-                      <Route
-                        path={ROUTES.ACCOUNT_TYPE}
-                        component={AccountType}
-                      />
-                      <Route
-                        path={ROUTES.SIGNUP_RESTAURATEUR}
-                        component={SignUpRestaurateur}
-                      />
-                      <Route
-                        path={ROUTES.SIGNUP_FOODIE}
-                        component={SignUpFoodie}
-                      />
-                      <Route
-                        path={ROUTES.VERIFICATION}
-                        component={EmailVerification}
-                      />
-                      <Route exact path={ROUTES.SIGNIN} component={SignIn} />
-                      <Route
-                        path={ROUTES.PASSWORD_RESET}
-                        component={PasswordReset}
-                      />
-                    </Switch>
-                  </CSSTransition>
-                </TransitionGroup>
-              );
-            }}
-          />
+          <Switch>
+            <Route exact path={ROUTES.LANDING} component={Landing} />
+            <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
+            <Route path={ROUTES.HOME} component={Foodie} />
+            <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
+            <Route
+              path={ROUTES.SIGNUP_RESTAURATEUR}
+              component={SignUpRestaurateur}
+            />
+            <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodie} />
+            <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
+            <Route exact path={ROUTES.SIGNIN} component={SignIn} />
+            <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
+          </Switch>
         </Suspense>
       </ThemeProvider>
     );

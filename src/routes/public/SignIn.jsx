@@ -5,7 +5,7 @@ import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
 import pMinDelay from 'p-min-delay';
 
-const SignIn = lazy(() => pMinDelay(import('../../screens/Auth/SignIn'), 2000));
+const SignIn = lazy(() => pMinDelay(import('../../screens/Auth/SignIn'), 1000));
 
 const SignInRoute = ({ user }) => {
   if (user) {

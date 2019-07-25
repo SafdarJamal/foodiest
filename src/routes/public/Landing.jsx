@@ -6,7 +6,7 @@ import * as USER_TYPES from '../../constants/userTypes';
 import pMinDelay from 'p-min-delay';
 
 const Landing = lazy(() =>
-  pMinDelay(import('../../screens/Landing/Landing'), 2000)
+  pMinDelay(import('../../screens/Landing/Landing'), 1000)
 );
 
 const LandingRoute = ({ user }) => {

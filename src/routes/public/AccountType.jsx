@@ -6,7 +6,7 @@ import * as USER_TYPES from '../../constants/userTypes';
 import pMinDelay from 'p-min-delay';
 
 const AccountType = lazy(() =>
-  pMinDelay(import('../../screens/Auth/AccountType'), 2000)
+  pMinDelay(import('../../screens/Auth/AccountType'), 1000)
 );
 
 const AccountTypeRoute = ({ user }) => {

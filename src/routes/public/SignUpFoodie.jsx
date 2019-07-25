@@ -6,7 +6,7 @@ import * as USER_TYPES from '../../constants/userTypes';
 import pMinDelay from 'p-min-delay';
 
 const SignUpFoodie = lazy(() =>
-  pMinDelay(import('../../screens/Auth/SignUpFoodie'), 2000)
+  pMinDelay(import('../../screens/Auth/SignUpFoodie'), 1000)
 );
 
 const SignUpFoodieRoute = ({ user }) => {

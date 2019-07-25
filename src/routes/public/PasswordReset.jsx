@@ -6,7 +6,7 @@ import * as USER_TYPES from '../../constants/userTypes';
 import pMinDelay from 'p-min-delay';
 
 const PasswordReset = lazy(() =>
-  pMinDelay(import('../../screens/Auth/PasswordReset'), 2000)
+  pMinDelay(import('../../screens/Auth/PasswordReset'), 1000)
 );
 
 const PasswordResetRoute = ({ user }) => {
