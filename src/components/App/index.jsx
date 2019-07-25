@@ -7,13 +7,13 @@ import { withFirebase } from '../../services/firebase';
 
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
+import ErrorBoundary from '../ErrorBoundary';
 
 import { Switch, Route } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
 // Initial loading
 import Loader from '../Loader';
-import EllipsisSpinner from '../UI/EllipsisSpinner';
 
 // Routes handling
 const Landing = lazy(() => import('../../routes/public/Landing'));
@@ -79,28 +79,30 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <Suspense
-          fallback={
-            <div style={{ textAlign: 'center', paddingTop: '25%' }}>
-              <EllipsisSpinner />
-            </div>
-          }
-        >
-          <Switch>
-            <Route exact path={ROUTES.LANDING} component={Landing} />
-            <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
-            <Route path={ROUTES.HOME} component={Foodie} />
-            <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
-            <Route
-              path={ROUTES.SIGNUP_RESTAURATEUR}
-              component={SignUpRestaurateur}
-            />
-            <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodie} />
-            <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
-            <Route exact path={ROUTES.SIGNIN} component={SignIn} />
-            <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
-          </Switch>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense
+            fallback={
+              <div>
+                <Loader />
+              </div>
+            }
+          >
+            <Switch>
+              <Route exact path={ROUTES.LANDING} component={Landing} />
+              <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
+              <Route path={ROUTES.HOME} component={Foodie} />
+              <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
+              <Route
+                path={ROUTES.SIGNUP_RESTAURATEUR}
+                component={SignUpRestaurateur}
+              />
+              <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodie} />
+              <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
+              <Route exact path={ROUTES.SIGNIN} component={SignIn} />
+              <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
+            </Switch>
+          </Suspense>
+        </ErrorBoundary>
       </ThemeProvider>
     );
   }
