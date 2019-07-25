@@ -2,7 +2,7 @@ import React, { Component, Suspense } from 'react';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Loading, SignIn as SignInAction } from '../../actions';
+import { Loading, SignIn } from '../../actions';
 import { withFirebase } from '../../services/firebase';
 
 import { ThemeProvider } from '@material-ui/styles';
@@ -15,39 +15,12 @@ import Routes from '../../routes';
 import Header from '../Header';
 import Loader from '../Loader';
 
+import { authStateObserver } from '../../utils/authStateObserver';
+
 class App extends Component {
   componentDidMount() {
-    const { firebase, SignInAction, Loading } = this.props;
-    // console.log(this.props);
-
-    const unsubscribe = firebase.auth.onAuthStateChanged(user => {
-      if (user) {
-        unsubscribe();
-
-        return firebase
-          .getUser(user.uid)
-          .then(querySnapshot => {
-            // console.log(querySnapshot.data());
-
-            const userData = querySnapshot.data();
-            userData.uid = user.uid;
-            userData.isVerified = user.emailVerified;
-
-            SignInAction(userData);
-          })
-          .then(() => {
-            Loading({ isLoading: false });
-          })
-          .catch(error => {
-            const errorMessage = error.message;
-            console.log(errorMessage);
-          });
-      } else {
-        unsubscribe();
-
-        this.props.Loading({ isLoading: false });
-      }
-    });
+    const { firebase, Loading, SignIn } = this.props;
+    authStateObserver(firebase, Loading, SignIn);
   }
 
   render() {
@@ -91,7 +64,7 @@ const mapStateToProps = state => {
 export default compose(
   connect(
     mapStateToProps,
-    { Loading, SignInAction }
+    { Loading, SignIn }
   ),
   withFirebase
 )(App);
