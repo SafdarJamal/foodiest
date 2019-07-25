@@ -1,4 +1,4 @@
-import React, { Component, Suspense, lazy } from 'react';
+import React, { Component, Suspense } from 'react';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -10,25 +10,10 @@ import theme from '../../theme';
 import ErrorBoundary from '../ErrorBoundary';
 
 import { Switch, Route } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes';
+import Routes from '../../routes';
 
 import Header from '../Header';
 import Loader from '../Loader';
-
-// Routes handling
-const Landing = lazy(() => import('../../routes/public/Landing'));
-const Restaurateur = lazy(() => import('../../routes/private/Restaurateur'));
-const Foodie = lazy(() => import('../../routes/private/Foodie'));
-const AccountType = lazy(() => import('../../routes/public/AccountType'));
-const SignUpRestaurateur = lazy(() =>
-  import('../../routes/public/SignUpRestaurateur')
-);
-const SignUpFoodie = lazy(() => import('../../routes/public/SignUpFoodie'));
-const EmailVerification = lazy(() =>
-  import('../../routes/verification/EmailVerification')
-);
-const SignIn = lazy(() => import('../../routes/public/SignIn'));
-const PasswordReset = lazy(() => import('../../routes/public/PasswordReset'));
 
 class App extends Component {
   componentDidMount() {
@@ -90,18 +75,7 @@ class App extends Component {
             }
           >
             <Switch>
-              <Route exact path={ROUTES.LANDING} component={Landing} />
-              <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
-              <Route path={ROUTES.HOME} component={Foodie} />
-              <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
-              <Route
-                path={ROUTES.SIGNUP_RESTAURATEUR}
-                component={SignUpRestaurateur}
-              />
-              <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodie} />
-              <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
-              <Route exact path={ROUTES.SIGNIN} component={SignIn} />
-              <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
+              <Routes />
             </Switch>
           </Suspense>
         </ErrorBoundary>
