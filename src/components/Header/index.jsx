@@ -1,10 +1,16 @@
 import React from 'react';
 import AppBar from './AppBar';
 
-const Header = props => {
+const Header = ({ location }) => {
+  let isLanding = true;
+
+  if (location.pathname !== '/') {
+    isLanding = false;
+  }
+
   return (
     <div>
-      <AppBar isLanding={props.isLanding} />
+      <AppBar isLanding={isLanding} />
     </div>
   );
 };

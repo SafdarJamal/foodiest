@@ -12,7 +12,7 @@ import ErrorBoundary from '../ErrorBoundary';
 import { Switch, Route } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
-// Initial loading
+import Header from '../Header';
 import Loader from '../Loader';
 
 // Routes handling
@@ -80,6 +80,8 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <ErrorBoundary>
+          {!user && <Route component={Header} />}
+
           <Suspense
             fallback={
               <div>
