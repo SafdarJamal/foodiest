@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
 
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
 // Routes handling
@@ -18,7 +18,7 @@ const PasswordReset = lazy(() => import('./public/PasswordReset'));
 
 const Routes = () => {
   return (
-    <div>
+    <Switch>
       <Route exact path={ROUTES.LANDING} component={Landing} />
       <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
       <Route path={ROUTES.HOME} component={Foodie} />
@@ -28,7 +28,7 @@ const Routes = () => {
       <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
       <Route exact path={ROUTES.SIGNIN} component={SignIn} />
       <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
-    </div>
+    </Switch>
   );
 };
 

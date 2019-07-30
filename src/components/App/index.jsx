@@ -9,7 +9,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 import ErrorBoundary from '../ErrorBoundary';
 
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Routes from '../../routes';
 
 import Header from '../Header';
@@ -39,7 +39,6 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <ErrorBoundary>
           {!user && <Route component={Header} />}
-
           <Suspense
             fallback={
               <div>
@@ -47,9 +46,7 @@ class App extends Component {
               </div>
             }
           >
-            <Switch>
-              <Routes />
-            </Switch>
+            <Routes />
           </Suspense>
         </ErrorBoundary>
       </ThemeProvider>
