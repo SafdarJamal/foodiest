@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Typography from '@material-ui/core/Typography';
+import CustomButton from '../UI/CustomButton';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -17,10 +19,24 @@ class ErrorBoundary extends Component {
     console.log(error, info);
   }
 
+  reload() {
+    window.location.reload();
+  }
+
   render() {
     if (this.state.hasError) {
       // Render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return (
+        <Typography variant="overline" style={{ fontSize: 18 }}>
+          Something went wrong.
+          <CustomButton
+            disableRipple={true}
+            type="primary"
+            text="Reload the page"
+            clickMethod={this.reload}
+          />
+        </Typography>
+      );
     }
 
     return this.props.children;
