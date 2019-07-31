@@ -15,6 +15,7 @@ const EmailVerification = lazy(() =>
 );
 const SignIn = lazy(() => import('./public/SignIn'));
 const PasswordReset = lazy(() => import('./public/PasswordReset'));
+const NotFound = lazy(() => import('../components/NotFound'));
 
 const Routes = () => {
   return (
@@ -28,6 +29,7 @@ const Routes = () => {
       <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
       <Route exact path={ROUTES.SIGNIN} component={SignIn} />
       <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
+      <Route component={NotFound} />
     </Switch>
   );
 };
