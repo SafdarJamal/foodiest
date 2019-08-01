@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,8 +9,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import SignInIcon from '@material-ui/icons/AccountCircle';
 import SignUpIcon from '@material-ui/icons/PersonAdd';
-import Typography from '@material-ui/core/Typography';
 import logo from '../../assets/images/logo.png';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import { Link } from 'react-router-dom';
 
@@ -24,13 +24,15 @@ const useStyles = makeStyles({
   }
 });
 
-export default () => {
+export default props => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false
   });
 
   const toggleDrawer = (side, open) => event => {
+    console.log('==>');
+
     if (
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
@@ -67,10 +69,13 @@ export default () => {
 
       <List>
         {['Home', 'Sign In', 'Sign Up'].map((text, index) => (
-          <Link to={linkList[index]} style={{ textDecoration: 'none' }}>
+          <Link
+            key={text}
+            to={linkList[index]}
+            style={{ textDecoration: 'none' }}
+          >
             <ListItem
               button
-              key={text}
               selected={selectedIndex === index}
               onClick={event => handleListItemClick(event, index)}
             >
@@ -86,7 +91,15 @@ export default () => {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('left', true)}>Open Left</Button>
+      <IconButton
+        edge="start"
+        className={classes.menuButton}
+        color="inherit"
+        aria-label="menu"
+        onClick={toggleDrawer('left', true)}
+      >
+        <MenuIcon />
+      </IconButton>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>

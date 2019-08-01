@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CustomButton from '../UI/CustomButton';
 import logo from '../../assets/images/logo.png';
+import Drawer from './Drawer';
 
 import { Link } from 'react-router-dom';
 
@@ -30,6 +31,7 @@ export default props => {
     <div className={classes.grow}>
       <AppBar position="fixed" color="default" elevation={2}>
         <Toolbar>
+          <Drawer />
           <Typography style={{ cursor: 'pointer' }} variant="h2" noWrap>
             <Link to="/">
               <img
