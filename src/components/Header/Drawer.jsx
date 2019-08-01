@@ -10,8 +10,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import SignInIcon from '@material-ui/icons/AccountCircle';
 import SignUpIcon from '@material-ui/icons/PersonAdd';
 import logo from '../../assets/images/logo.png';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 
 import { Link } from 'react-router-dom';
 
@@ -26,23 +24,6 @@ const useStyles = makeStyles({
 
 export default props => {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    left: false
-  });
-
-  const toggleDrawer = (side, open) => event => {
-    console.log('==>');
-
-    if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return;
-    }
-
-    setState({ ...state, [side]: open });
-  };
-
   const [selectedIndex, setSelectedIndex] = React.useState(null);
 
   const handleListItemClick = (event, index) => {
@@ -52,12 +33,12 @@ export default props => {
   const iconList = [<HomeIcon />, <SignInIcon />, <SignUpIcon />];
   const linkList = ['/', '/signin', '/signup/type'];
 
-  const sideList = side => (
+  const sideList = () => (
     <div
       className={classes.list}
       role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
+      onClick={props.toggleDrawer(false)}
+      onKeyDown={props.toggleDrawer(false)}
     >
       <div style={{ backgroundColor: '#eaeff1', padding: 20 }}>
         <Link to="/" style={{ textDecoration: 'none', cursor: 'pointer' }}>
@@ -91,17 +72,8 @@ export default props => {
 
   return (
     <div>
-      <IconButton
-        edge="start"
-        className={classes.menuButton}
-        color="inherit"
-        aria-label="menu"
-        onClick={toggleDrawer('left', true)}
-      >
-        <MenuIcon />
-      </IconButton>
-      <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
-        {sideList('left')}
+      <Drawer open={props.isOpen} onClose={props.toggleDrawer(false)}>
+        {sideList()}
       </Drawer>
     </div>
   );

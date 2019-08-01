@@ -4,12 +4,16 @@ import Drawer from './Drawer';
 
 const Header = ({ location }) => {
   const [state, setState] = React.useState({
-    left: false
+    isDrawerOpen: false
   });
 
-  const toggleDrawer = (side, open) => event => {
-    console.log('==>');
+  let isLanding = true;
 
+  if (location.pathname !== '/') {
+    isLanding = false;
+  }
+
+  const toggleDrawer = isDrawerOpen => event => {
     if (
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
@@ -17,20 +21,13 @@ const Header = ({ location }) => {
       return;
     }
 
-    setState({ ...state, [side]: open });
+    setState({ ...state, isDrawerOpen });
   };
-
-  let isLanding = true;
-
-  if (location.pathname !== '/') {
-    isLanding = false;
-  }
-  console.log(state.left);
 
   return (
     <div>
       <AppBar isLanding={isLanding} toggleDrawer={toggleDrawer} />
-      <Drawer isOpen={state.left} toggleDrawer={toggleDrawer} />
+      <Drawer isOpen={state.isDrawerOpen} toggleDrawer={toggleDrawer} />
     </div>
   );
 };
