@@ -214,6 +214,7 @@ class SignIn extends Component {
               )}
               <Grid item xs={12}>
                 <InputField
+                  focus={true}
                   label="Email"
                   type="email"
                   validate={this.validateEmail}
