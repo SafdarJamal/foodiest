@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import heroImage from '../../assets/images/eats.jpg';
 
 import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 const Landing = props => {
   return (
@@ -22,7 +23,7 @@ const Landing = props => {
             </Typography>
 
             <br />
-            <Link to="/signup/type" style={{ textDecoration: 'none' }}>
+            <Link to={ROUTES.SIGNUP_TYPE} style={{ textDecoration: 'none' }}>
               <CustomButton
                 variant="contained"
                 text="Get started"

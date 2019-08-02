@@ -252,7 +252,7 @@ class SignIn extends Component {
                 <Grid item xs={6}>
                   <div style={{ textAlign: 'left' }}>
                     <RouterLink
-                      to="/signup/type"
+                      to={ROUTES.SIGNUP_TYPE}
                       style={{ textDecoration: 'none' }}
                     >
                       <CustomButton

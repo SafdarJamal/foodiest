@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import ghostImg from '../../assets/images/ghost.png';
 
 import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 const NotFound = () => {
   return (
@@ -26,7 +27,7 @@ const NotFound = () => {
             <img src={ghostImg} width="100%" height="400" alt="Ghost Screen" />
           </Grid>
           <Grid item xs={12} style={{ marginTop: 25, textAlign: 'center' }}>
-            <Link to="/" style={{ textDecoration: 'none' }}>
+            <Link to={ROUTES.LANDING} style={{ textDecoration: 'none' }}>
               <CustomButton
                 variant="contained"
                 type="primary"

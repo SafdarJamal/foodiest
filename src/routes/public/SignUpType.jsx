@@ -5,11 +5,11 @@ import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
 import pMinDelay from 'p-min-delay';
 
-const AccountType = lazy(() =>
-  pMinDelay(import('../../screens/Auth/AccountType'), 1000)
+const SignUpType = lazy(() =>
+  pMinDelay(import('../../screens/Auth/SignUpType'), 1000)
 );
 
-const AccountTypeRoute = ({ user }) => {
+const SignUpTypeRoute = ({ user }) => {
   if (user) {
     if (user.isVerified) {
       if (user.type === USER_TYPES.RESTAURATEUR) {
@@ -18,10 +18,10 @@ const AccountTypeRoute = ({ user }) => {
         return <Redirect to={ROUTES.HOME} />;
       }
     } else {
-      return <Route component={AccountType} />;
+      return <Route component={SignUpType} />;
     }
   } else {
-    return <Route component={AccountType} />;
+    return <Route component={SignUpType} />;
   }
 };
 
@@ -29,4 +29,4 @@ const mapStateToProps = state => {
   return { user: state.auth.user };
 };
 
-export default connect(mapStateToProps)(AccountTypeRoute);
+export default connect(mapStateToProps)(SignUpTypeRoute);

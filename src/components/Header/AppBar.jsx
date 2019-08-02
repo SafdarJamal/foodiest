@@ -16,6 +16,8 @@ import logo from '../../assets/images/logo.png';
 import CustomButton from '../UI/CustomButton';
 
 import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
+import * as USER_TYPES from '../../constants/userTypes';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -164,7 +166,15 @@ export default props => {
             <MenuIcon />
           </IconButton>
           <Typography style={{ cursor: 'pointer' }} variant="h2" noWrap>
-            <Link to="/">
+            <Link
+              to={
+                user
+                  ? user.type === USER_TYPES.RESTAURATEUR
+                    ? ROUTES.DASHBOARD
+                    : ROUTES.HOME
+                  : ROUTES.LANDING
+              }
+            >
               <img
                 src={logo}
                 alt="Foodiest"
@@ -218,7 +228,7 @@ export default props => {
               {isLanding && (
                 <div className={classes.sectionDesktop}>
                   <div className={classes.menuButton}>
-                    <Link to="/signin" style={{ textDecoration: 'none' }}>
+                    <Link to={ROUTES.SIGNIN} style={{ textDecoration: 'none' }}>
                       <CustomButton
                         variant="outlined"
                         size="large"
@@ -227,7 +237,10 @@ export default props => {
                       />
                     </Link>
                   </div>
-                  <Link to="/signup/type" style={{ textDecoration: 'none' }}>
+                  <Link
+                    to={ROUTES.SIGNUP_TYPE}
+                    style={{ textDecoration: 'none' }}
+                  >
                     <CustomButton
                       variant="contained"
                       size="large"

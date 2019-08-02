@@ -18,10 +18,9 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ChatIcon from '@material-ui/icons/Chat';
 import SettingIcon from '@material-ui/icons/Settings';
 
+import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
-
-import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   list: {
@@ -44,7 +43,7 @@ export default props => {
 
   const publicList = () => {
     const iconList = [<HomeIcon />, <ProfileIcon />, <SignUpIcon />];
-    const linkList = [ROUTES.LANDING, ROUTES.SIGNIN, ROUTES.ACCOUNT_TYPE];
+    const linkList = [ROUTES.LANDING, ROUTES.SIGNIN, ROUTES.SIGNUP_TYPE];
 
     return (
       <div
@@ -267,9 +266,11 @@ export default props => {
   return (
     <div>
       <Drawer open={isOpen} onClose={toggleDrawer(false)}>
-        {!user && publicList()}
-        {user && user.type === USER_TYPES.RESTAURATEUR && restaurateurList()}
-        {user && user.type === USER_TYPES.FOODIE && foodieList()}
+        {user
+          ? user.type === USER_TYPES.RESTAURATEUR
+            ? restaurateurList()
+            : foodieList()
+          : publicList()}
       </Drawer>
     </div>
   );

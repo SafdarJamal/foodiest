@@ -12,6 +12,7 @@ import restaurateur from '../../../assets/images/restaurateur.jpg';
 import foodie from '../../../assets/images/foodie.jpg';
 
 import { Link } from 'react-router-dom';
+import * as ROUTES from '../../../constants/routes';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AccountType = () => {
+const SignUpType = () => {
   const classes = useStyles();
 
   return (
@@ -41,7 +42,7 @@ const AccountType = () => {
             <Card className={classes.card0}>
               <CardActionArea>
                 <Link
-                  to="/signup/restaurateur"
+                  to={ROUTES.SIGNUP_RESTAURATEUR}
                   style={{ textDecoration: 'none' }}
                 >
                   <CardMedia
@@ -70,7 +71,10 @@ const AccountType = () => {
           <Grid item xs={6}>
             <Card className={classes.card1}>
               <CardActionArea>
-                <Link to="/signup/foodie" style={{ textDecoration: 'none' }}>
+                <Link
+                  to={ROUTES.SIGNUP_FOODIE}
+                  style={{ textDecoration: 'none' }}
+                >
                   <CardMedia
                     component="img"
                     alt="Foodie"
@@ -101,4 +105,4 @@ const AccountType = () => {
   );
 };
 
-export default AccountType;
+export default SignUpType;

@@ -1,5 +1,5 @@
 const LANDING = '/';
-const ACCOUNT_TYPE = '/signup/type';
+const SIGNUP_TYPE = '/signup/type';
 const SIGNUP_RESTAURATEUR = '/signup/restaurateur';
 const SIGNUP_FOODIE = '/signup/foodie';
 const VERIFICATION = '/signup/verification';
@@ -24,7 +24,7 @@ const HOME_SETTINGS = '/home/settings';
 
 export {
   LANDING,
-  ACCOUNT_TYPE,
+  SIGNUP_TYPE,
   SIGNUP_RESTAURATEUR,
   SIGNUP_FOODIE,
   VERIFICATION,

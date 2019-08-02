@@ -7,7 +7,7 @@ import * as ROUTES from '../constants/routes';
 const Landing = lazy(() => import('./public/Landing'));
 const Restaurateur = lazy(() => import('./private/Restaurateur'));
 const Foodie = lazy(() => import('./private/Foodie'));
-const AccountType = lazy(() => import('./public/AccountType'));
+const SignUpType = lazy(() => import('./public/SignUpType'));
 const SignUpRestaurateur = lazy(() => import('./public/SignUpRestaurateur'));
 const SignUpFoodie = lazy(() => import('./public/SignUpFoodie'));
 const EmailVerification = lazy(() =>
@@ -23,7 +23,7 @@ const Routes = () => {
       <Route exact path={ROUTES.LANDING} component={Landing} />
       <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
       <Route path={ROUTES.HOME} component={Foodie} />
-      <Route path={ROUTES.ACCOUNT_TYPE} component={AccountType} />
+      <Route path={ROUTES.SIGNUP_TYPE} component={SignUpType} />
       <Route path={ROUTES.SIGNUP_RESTAURATEUR} component={SignUpRestaurateur} />
       <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodie} />
       <Route path={ROUTES.VERIFICATION} component={EmailVerification} />

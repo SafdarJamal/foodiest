@@ -1,10 +1,10 @@
 import React from 'react';
-import AccountType from '../../components/Auth/AccountType';
+import SignUpType from '../../components/Auth/SignUpType';
 
 export default () => {
   return (
     <div>
-      <AccountType />
+      <SignUpType />
     </div>
   );
 };

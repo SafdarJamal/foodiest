@@ -319,7 +319,7 @@ class SignUpFoodie extends Component {
               >
                 <Grid item xs={6}>
                   <div style={{ textAlign: 'left' }}>
-                    <Link to="/signin" style={{ textDecoration: 'none' }}>
+                    <Link to={ROUTES.SIGNIN} style={{ textDecoration: 'none' }}>
                       <CustomButton
                         variant="outlined"
                         type="secondary"
