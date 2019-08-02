@@ -38,7 +38,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <ErrorBoundary>
-          {!user && <Route component={Header} />}
+          <Route component={Header} />
           <Suspense
             fallback={
               <div>
