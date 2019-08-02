@@ -41,7 +41,11 @@ const Header = props => {
         firebase={firebase}
         SignOutAction={SignOutAction}
       />
-      <Drawer isOpen={state.isDrawerOpen} toggleDrawer={toggleDrawer} />
+      <Drawer
+        user={user}
+        isOpen={state.isDrawerOpen}
+        toggleDrawer={toggleDrawer}
+      />
     </div>
   );
 };
