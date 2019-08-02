@@ -4,11 +4,11 @@ import Drawer from './Drawer';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Loading, SignOut } from '../../actions';
+import { Loading, SignOut as SignOutAction } from '../../actions';
 import { withFirebase } from '../../services/firebase';
 
 const Header = props => {
-  const { location, user } = props;
+  const { location, user, Loading, firebase, SignOutAction } = props;
 
   const [state, setState] = React.useState({
     isDrawerOpen: false
@@ -33,7 +33,14 @@ const Header = props => {
 
   return (
     <div>
-      <AppBar user={user} isLanding={isLanding} toggleDrawer={toggleDrawer} />
+      <AppBar
+        user={user}
+        isLanding={isLanding}
+        toggleDrawer={toggleDrawer}
+        Loading={Loading}
+        firebase={firebase}
+        SignOutAction={SignOutAction}
+      />
       <Drawer isOpen={state.isDrawerOpen} toggleDrawer={toggleDrawer} />
     </div>
   );
@@ -46,7 +53,7 @@ const mapStateToProps = state => {
 export default compose(
   connect(
     mapStateToProps,
-    { Loading, SignOut }
+    { Loading, SignOutAction }
   ),
   withFirebase
 )(Header);

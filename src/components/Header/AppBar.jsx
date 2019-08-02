@@ -39,7 +39,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default props => {
-  const { user, isLanding } = props;
+  const {
+    user,
+    isLanding,
+    toggleDrawer,
+    Loading,
+    firebase,
+    SignOutAction
+  } = props;
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -68,8 +75,6 @@ export default props => {
   function SignMeOut() {
     setAnchorEl(null);
     handleMobileMenuClose();
-
-    const { firebase, Loading, SignOutAction } = props;
 
     Loading({ isLoading: true });
 
@@ -154,7 +159,7 @@ export default props => {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
-            onClick={props.toggleDrawer(true)}
+            onClick={toggleDrawer(true)}
           >
             <MenuIcon />
           </IconButton>
