@@ -8,7 +8,7 @@ import { Loading, SignOut } from '../../actions';
 import { withFirebase } from '../../services/firebase';
 
 const Header = props => {
-  const { location } = props;
+  const { location, user } = props;
 
   const [state, setState] = React.useState({
     isDrawerOpen: false
@@ -33,7 +33,7 @@ const Header = props => {
 
   return (
     <div>
-      <AppBar isLanding={isLanding} toggleDrawer={toggleDrawer} />
+      <AppBar user={user} isLanding={isLanding} toggleDrawer={toggleDrawer} />
       <Drawer isOpen={state.isDrawerOpen} toggleDrawer={toggleDrawer} />
     </div>
   );
