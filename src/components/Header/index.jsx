@@ -2,7 +2,14 @@ import React from 'react';
 import AppBar from './AppBar';
 import Drawer from './Drawer';
 
-const Header = ({ location }) => {
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Loading, SignOut } from '../../actions';
+import { withFirebase } from '../../services/firebase';
+
+const Header = props => {
+  const { location } = props;
+
   const [state, setState] = React.useState({
     isDrawerOpen: false
   });
@@ -32,4 +39,14 @@ const Header = ({ location }) => {
   );
 };
 
-export default Header;
+const mapStateToProps = state => {
+  return { user: state.auth.user };
+};
+
+export default compose(
+  connect(
+    mapStateToProps,
+    { Loading, SignOut }
+  ),
+  withFirebase
+)(Header);
