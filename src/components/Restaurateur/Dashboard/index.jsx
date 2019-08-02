@@ -1,10 +1,10 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import Paper from '../UI/Paper';
+import Paper from '../../UI/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-const Home = () => {
+const Dashboard = () => {
   return (
     <Container style={{ marginTop: 125, width: 600 }}>
       <Paper class0="root">
@@ -15,7 +15,7 @@ const Home = () => {
               align="center"
               style={{ marginBottom: 20 }}
             >
-              Home
+              Dashboard
             </Typography>
           </Grid>
         </Grid>
@@ -24,4 +24,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;
