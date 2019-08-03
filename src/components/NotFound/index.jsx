@@ -20,7 +20,8 @@ const NotFound = () => {
               align="center"
               style={{ marginBottom: 20 }}
             >
-              404 - Not Found
+              {/* 404 - Not Found */}
+              This Page is a Ghost
             </Typography>
           </Grid>
           <Grid item xs={12}>
