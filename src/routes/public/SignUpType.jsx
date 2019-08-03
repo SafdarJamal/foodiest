@@ -18,7 +18,7 @@ const SignUpTypeRoute = ({ user }) => {
         return <Redirect to={ROUTES.HOME} />;
       }
     } else {
-      return <Route component={SignUpType} />;
+      return <Redirect to={ROUTES.VERIFICATION} />;
     }
   } else {
     return <Route component={SignUpType} />;

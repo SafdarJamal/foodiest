@@ -18,7 +18,7 @@ const PasswordResetRoute = ({ user }) => {
         return <Redirect to={ROUTES.HOME} />;
       }
     } else {
-      return <Route component={PasswordReset} />;
+      return <Redirect to={ROUTES.VERIFICATION} />;
     }
   } else {
     return <Route component={PasswordReset} />;

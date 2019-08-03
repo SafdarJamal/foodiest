@@ -18,7 +18,7 @@ const SignUpRestaurateurRoute = ({ user }) => {
         return <Redirect to={ROUTES.HOME} />;
       }
     } else {
-      return <Route component={SignUpRestaurateur} />;
+      return <Redirect to={ROUTES.VERIFICATION} />;
     }
   } else {
     return <Route component={SignUpRestaurateur} />;

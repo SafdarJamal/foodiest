@@ -18,7 +18,7 @@ const LandingRoute = ({ user }) => {
         return <Redirect to={ROUTES.HOME} />;
       }
     } else {
-      return <Route component={Landing} />;
+      return <Redirect to={ROUTES.VERIFICATION} />;
     }
   } else {
     return <Route component={Landing} />;
