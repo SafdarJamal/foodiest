@@ -14,7 +14,7 @@ const FoodieRoute = ({ user }) => {
       if (user.type === USER_TYPES.FOODIE) {
         return (
           <Switch>
-            <Route exact path={ROUTES.HOME} component={Home} />
+            <Route path={ROUTES.HOME} component={Home} exact />
             <Route component={NotFound} />
           </Switch>
         );

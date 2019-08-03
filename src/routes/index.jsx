@@ -20,14 +20,14 @@ const NotFound = lazy(() => import('../components/NotFound'));
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path={ROUTES.LANDING} component={Landing} />
+      <Route path={ROUTES.LANDING} component={Landing} exact />
       <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
       <Route path={ROUTES.HOME} component={Foodie} />
       <Route path={ROUTES.SIGNUP_TYPE} component={SignUpType} />
       <Route path={ROUTES.SIGNUP_RESTAURATEUR} component={SignUpRestaurateur} />
       <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodie} />
       <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
-      <Route exact path={ROUTES.SIGNIN} component={SignIn} />
+      <Route path={ROUTES.SIGNIN} component={SignIn} exact />
       <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
       <Route component={NotFound} />
     </Switch>

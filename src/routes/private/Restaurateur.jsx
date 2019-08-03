@@ -16,7 +16,7 @@ const RestaurateurRoute = ({ user }) => {
       if (user.type === USER_TYPES.RESTAURATEUR) {
         return (
           <Switch>
-            <Route exact path={ROUTES.DASHBOARD} component={Dashboard} />
+            <Route path={ROUTES.DASHBOARD} component={Dashboard} exact />
             <Route component={NotFound} />
           </Switch>
         );
