@@ -6,9 +6,6 @@ import CustomButton from '../UI/CustomButton';
 import Grid from '@material-ui/core/Grid';
 import boatLeakImg from '../../assets/images/boat-leak.png';
 
-import { Link } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes';
-
 const SomethingWentWrong = () => {
   return (
     <Container style={{ marginTop: 125, width: 600 }}>
@@ -20,7 +17,7 @@ const SomethingWentWrong = () => {
               align="center"
               style={{ marginBottom: 20 }}
             >
-              Something went wrong
+              Something Went Wrong
             </Typography>
           </Grid>
           <Grid item xs={12}>
@@ -28,18 +25,17 @@ const SomethingWentWrong = () => {
               src={boatLeakImg}
               width="100%"
               height="400"
-              alt="Ghost Screen"
+              alt="Boat leak Screen"
             />
           </Grid>
           <Grid item xs={12} style={{ marginTop: 25, textAlign: 'center' }}>
-            <Link to={ROUTES.LANDING} style={{ textDecoration: 'none' }}>
-              <CustomButton
-                variant="contained"
-                type="primary"
-                text="Back to home"
-                size="large"
-              />
-            </Link>
+            <CustomButton
+              variant="contained"
+              type="primary"
+              text="Reload this page"
+              size="large"
+              clickMethod={() => window.location.reload()}
+            />
           </Grid>
         </Grid>
       </Paper>

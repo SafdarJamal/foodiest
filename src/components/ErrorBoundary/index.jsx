@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
-import CustomButton from '../UI/CustomButton';
+import SomethingWentWrong from '../SomethingWentWrong';
 
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
+
     this.state = { hasError: false };
   }
 
@@ -19,24 +19,10 @@ class ErrorBoundary extends Component {
     console.log(error, info);
   }
 
-  reload() {
-    window.location.reload();
-  }
-
   render() {
     if (this.state.hasError) {
       // Render any custom fallback UI
-      return (
-        <Typography variant="overline" style={{ fontSize: 18 }}>
-          Something went wrong.
-          <CustomButton
-            disableRipple={true}
-            type="primary"
-            text="Reload the page"
-            clickMethod={this.reload}
-          />
-        </Typography>
-      );
+      return <SomethingWentWrong />;
     }
 
     return this.props.children;
