@@ -207,7 +207,7 @@ class SignIn extends Component {
                       disableRipple={true}
                       type="secondary"
                       text="Dismiss"
-                      clickMethod={this.dismissError}
+                      onClick={this.dismissError}
                     />
                   </Typography>
                 </Grid>
@@ -272,7 +272,7 @@ class SignIn extends Component {
                       type="primary"
                       text="Sign me in"
                       size="large"
-                      clickMethod={this.signMeIn}
+                      onClick={this.signMeIn}
                       disabled={isProcessing}
                     />
                   </div>

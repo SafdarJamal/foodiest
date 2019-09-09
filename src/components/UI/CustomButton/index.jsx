@@ -2,16 +2,18 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 
 const CustomButton = props => {
+  const { variant, type, text, size, onClick, disabled, disableRipple } = props;
+
   return (
     <Button
-      variant={props.variant}
-      color={props.type === 'primary' ? props.type : 'default'}
-      size={props.size}
-      onClick={props.clickMethod}
-      disabled={props.disabled}
-      disableRipple={props.disableRipple}
+      variant={variant}
+      color={type === 'primary' ? type : 'default'}
+      size={size}
+      onClick={onClick}
+      disabled={disabled}
+      disableRipple={disableRipple}
     >
-      {props.text || props.type || 'Default'}
+      {text || type || 'Default'}
     </Button>
   );
 };

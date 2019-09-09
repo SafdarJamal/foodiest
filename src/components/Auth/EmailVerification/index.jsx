@@ -94,7 +94,7 @@ class EmailVerification extends Component {
                     disableRipple={true}
                     type="secondary"
                     text="Dismiss"
-                    clickMethod={this.dismissMessage}
+                    onClick={this.dismissMessage}
                   />
                 </Typography>
               </Grid>
@@ -112,7 +112,7 @@ class EmailVerification extends Component {
                 type="primary"
                 text="Resend"
                 size="large"
-                clickMethod={this.resendEmail}
+                onClick={this.resendEmail}
                 disabled={isProcessing}
               />
             </Grid>

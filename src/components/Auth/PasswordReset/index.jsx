@@ -137,7 +137,7 @@ class PasswordReset extends Component {
                     disableRipple={true}
                     type="secondary"
                     text="Dismiss"
-                    clickMethod={this.dismissMessage}
+                    onClick={this.dismissMessage}
                   />
                 </Typography>
               </Grid>
@@ -181,7 +181,7 @@ class PasswordReset extends Component {
                     type="primary"
                     text="Email me reset link"
                     size="large"
-                    clickMethod={this.sendEmail}
+                    onClick={this.sendEmail}
                     disabled={isProcessing}
                   />
                 </div>

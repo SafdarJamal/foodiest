@@ -260,7 +260,7 @@ class SignUpFoodie extends Component {
                       disableRipple={true}
                       type="secondary"
                       text="Dismiss"
-                      clickMethod={this.dismissError}
+                      onClick={this.dismissError}
                     />
                   </Typography>
                 </Grid>
@@ -337,7 +337,7 @@ class SignUpFoodie extends Component {
                       type="primary"
                       text="Sign me up"
                       size="large"
-                      clickMethod={this.signMeUp}
+                      onClick={this.signMeUp}
                       disabled={isProcessing}
                     />
                   </div>

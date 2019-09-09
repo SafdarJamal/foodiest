@@ -34,7 +34,7 @@ const SomethingWentWrong = () => {
               type="primary"
               text="Reload this page"
               size="large"
-              clickMethod={() => window.location.reload()}
+              onClick={() => window.location.reload()}
             />
           </Grid>
         </Grid>
