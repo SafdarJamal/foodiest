@@ -12,10 +12,12 @@ const SignUpRestaurateur = lazy(() =>
 const SignUpRestaurateurRoute = ({ user }) => {
   if (user) {
     if (user.isVerified) {
-      if (user.type === USER_TYPES.RESTAURATEUR) {
-        return <Redirect to={ROUTES.DASHBOARD} />;
-      } else if (user.type === USER_TYPES.FOODIE) {
-        return <Redirect to={ROUTES.HOME} />;
+      switch (user.type) {
+        case USER_TYPES.RESTAURATEUR:
+          return <Redirect to={ROUTES.DASHBOARD} />;
+        case USER_TYPES.FOODIE:
+          return <Redirect to={ROUTES.HOME} />;
+        default:
       }
     } else {
       return <Redirect to={ROUTES.VERIFICATION} />;

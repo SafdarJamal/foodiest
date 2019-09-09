@@ -11,15 +11,17 @@ const NotFound = lazy(() => import('../../components/NotFound'));
 const FoodieRoute = ({ user }) => {
   if (user) {
     if (user.isVerified) {
-      if (user.type === USER_TYPES.FOODIE) {
-        return (
-          <Switch>
-            <Route path={ROUTES.HOME} component={Home} exact />
-            <Route component={NotFound} />
-          </Switch>
-        );
-      } else if (user.type === USER_TYPES.RESTAURATEUR) {
-        return <Redirect to={ROUTES.DASHBOARD} />;
+      switch (user.type) {
+        case USER_TYPES.FOODIE:
+          return (
+            <Switch>
+              <Route path={ROUTES.HOME} component={Home} exact />
+              <Route component={NotFound} />
+            </Switch>
+          );
+        case USER_TYPES.RESTAURATEUR:
+          return <Redirect to={ROUTES.DASHBOARD} />;
+        default:
       }
     } else {
       return <Redirect to={ROUTES.VERIFICATION} />;
