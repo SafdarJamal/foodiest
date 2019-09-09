@@ -11,10 +11,12 @@ const useStyles = makeStyles(theme => ({
 export default props => {
   const classes = useStyles();
 
+  const { children, class0 } = props;
+
   return (
     <div>
-      <Paper elevation={2} className={classes[props.class0]}>
-        {props.children}
+      <Paper elevation={2} className={classes[class0]}>
+        {children}
       </Paper>
     </div>
   );
