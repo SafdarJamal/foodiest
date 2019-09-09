@@ -33,21 +33,23 @@ const InputField = props => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
 
+  const { focus, label, type, InputProps, errorMessage, disabled } = props;
+
   return (
     <div className={classes.container}>
       <TextField
-        autoFocus={props.focus}
-        id={props.label.toLowerCase().replace(/ /g, '-')}
-        label={props.label}
+        autoFocus={focus}
+        id={label.toLowerCase().replace(/ /g, '-')}
+        label={label}
         className={classes.textField}
         value={values.inputValue}
         onChange={handleChange('inputValue')}
         margin="normal"
         variant="outlined"
         fullWidth
-        type={values.showPassword ? 'text' : props.type}
+        type={values.showPassword ? 'text' : type}
         InputProps={
-          props.InputProps && {
+          InputProps && {
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton
@@ -70,9 +72,9 @@ const InputField = props => {
           }
         }
         // required
-        error={props.errorMessage ? true : false}
-        helperText={props.errorMessage && props.errorMessage}
-        disabled={props.disabled}
+        error={errorMessage ? true : false}
+        helperText={errorMessage && errorMessage}
+        disabled={disabled}
       />
     </div>
   );

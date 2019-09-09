@@ -18,6 +18,7 @@ const motion2 = props => keyframes`
     transform: translate(19px, 0);
   }
 `;
+
 const motion3 = props => keyframes`
   0% {
     transform: scale(1);
