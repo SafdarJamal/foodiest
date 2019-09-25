@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function LinearIndeterminate() {
+const Progress = () => {
   const classes = useStyles();
 
   return (
@@ -16,4 +16,6 @@ export default function LinearIndeterminate() {
       <LinearProgress color="primary" />
     </div>
   );
-}
+};
+
+export default Progress;
