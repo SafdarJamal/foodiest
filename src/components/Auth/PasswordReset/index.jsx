@@ -134,11 +134,12 @@ class PasswordReset extends Component {
                 <Typography variant="overline">
                   {successMessage ? successMessage : errorMessage}
                   <CustomButton
+                    // type="secondary"
                     disableRipple={true}
-                    type="secondary"
-                    text="Dismiss"
                     onClick={this.dismissMessage}
-                  />
+                  >
+                    Dismiss
+                  </CustomButton>
                 </Typography>
               </Grid>
             )}
@@ -166,11 +167,12 @@ class PasswordReset extends Component {
                   <Link to="/signin" style={{ textDecoration: 'none' }}>
                     <CustomButton
                       variant="outlined"
-                      type="secondary"
-                      text="Back to Sign in"
+                      // type="secondary"
                       size="large"
                       disabled={isProcessing}
-                    />
+                    >
+                      Back to Sign In
+                    </CustomButton>
                   </Link>
                 </div>
               </Grid>
@@ -179,11 +181,12 @@ class PasswordReset extends Component {
                   <CustomButton
                     variant="contained"
                     type="primary"
-                    text="Email me reset link"
                     size="large"
                     onClick={this.sendEmail}
                     disabled={isProcessing}
-                  />
+                  >
+                    Email me Reset Link
+                  </CustomButton>
                 </div>
               </Grid>
             </Grid>

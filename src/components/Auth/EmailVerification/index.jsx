@@ -91,11 +91,12 @@ class EmailVerification extends Component {
                 <Typography variant="overline">
                   {successMessage ? successMessage : errorMessage}
                   <CustomButton
+                    // type="secondary"
                     disableRipple={true}
-                    type="secondary"
-                    text="Dismiss"
                     onClick={this.dismissMessage}
-                  />
+                  >
+                    Dismiss
+                  </CustomButton>
                 </Typography>
               </Grid>
             )}
@@ -110,11 +111,12 @@ class EmailVerification extends Component {
               <CustomButton
                 variant="contained"
                 type="primary"
-                text="Resend"
                 size="large"
                 onClick={this.resendEmail}
                 disabled={isProcessing}
-              />
+              >
+                Resend
+              </CustomButton>
             </Grid>
           </Grid>
         </Paper>

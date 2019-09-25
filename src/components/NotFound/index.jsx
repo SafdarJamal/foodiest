@@ -29,12 +29,9 @@ const NotFound = () => {
           </Grid>
           <Grid item xs={12} style={{ marginTop: 25, textAlign: 'center' }}>
             <Link to={ROUTES.LANDING} style={{ textDecoration: 'none' }}>
-              <CustomButton
-                variant="contained"
-                type="primary"
-                text="Back to home"
-                size="large"
-              />
+              <CustomButton variant="contained" type="primary" size="large">
+                Back to Home
+              </CustomButton>
             </Link>
           </Grid>
         </Grid>

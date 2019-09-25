@@ -32,10 +32,11 @@ const SomethingWentWrong = () => {
             <CustomButton
               variant="contained"
               type="primary"
-              text="Reload this page"
               size="large"
               onClick={() => window.location.reload()}
-            />
+            >
+              Reload this Page
+            </CustomButton>
           </Grid>
         </Grid>
       </Paper>

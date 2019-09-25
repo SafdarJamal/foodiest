@@ -282,11 +282,12 @@ class SignUpRestaurateur extends Component {
                   <Typography variant="overline">
                     {signUpError}
                     <CustomButton
+                      // type="secondary"
                       disableRipple={true}
-                      type="secondary"
-                      text="Dismiss"
                       onClick={this.dismissError}
-                    />
+                    >
+                      Dismiss
+                    </CustomButton>
                   </Typography>
                 </Grid>
               )}
@@ -356,11 +357,12 @@ class SignUpRestaurateur extends Component {
                     <Link to={ROUTES.SIGNIN} style={{ textDecoration: 'none' }}>
                       <CustomButton
                         variant="outlined"
-                        type="secondary"
-                        text="Sign in instead"
+                        // type="secondary"
                         size="large"
                         disabled={isProcessing}
-                      />
+                      >
+                        Sign In Instead
+                      </CustomButton>
                     </Link>
                   </div>
                 </Grid>
@@ -369,11 +371,12 @@ class SignUpRestaurateur extends Component {
                     <CustomButton
                       variant="contained"
                       type="primary"
-                      text="Sign me up"
                       size="large"
                       onClick={this.signMeUp}
                       disabled={isProcessing}
-                    />
+                    >
+                      Sign Me Up
+                    </CustomButton>
                   </div>
                 </Grid>
               </Grid>

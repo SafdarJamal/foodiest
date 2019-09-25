@@ -41,7 +41,7 @@ CustomButton.defaultProps = {
   variant: 'text',
   type: 'default',
   size: 'small',
-  onClick: null,
+  onClick: () => {},
   disabled: false,
   disableRipple: false
 };

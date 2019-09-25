@@ -232,9 +232,10 @@ export default props => {
                       <CustomButton
                         variant="outlined"
                         size="large"
-                        text="Sign in"
-                        type="secondary"
-                      />
+                        // type="secondary"
+                      >
+                        Sign In
+                      </CustomButton>
                     </Link>
                   </div>
                   <Link
@@ -244,9 +245,10 @@ export default props => {
                     <CustomButton
                       variant="contained"
                       size="large"
-                      text="Sign up"
                       type="primary"
-                    />
+                    >
+                      Sign Up
+                    </CustomButton>
                   </Link>
                 </div>
               )}

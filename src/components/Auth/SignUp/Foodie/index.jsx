@@ -257,11 +257,12 @@ class SignUpFoodie extends Component {
                   <Typography variant="overline">
                     {signUpError}
                     <CustomButton
+                      // type="secondary"
                       disableRipple={true}
-                      type="secondary"
-                      text="Dismiss"
                       onClick={this.dismissError}
-                    />
+                    >
+                      Dismiss
+                    </CustomButton>
                   </Typography>
                 </Grid>
               )}
@@ -322,11 +323,12 @@ class SignUpFoodie extends Component {
                     <Link to={ROUTES.SIGNIN} style={{ textDecoration: 'none' }}>
                       <CustomButton
                         variant="outlined"
-                        type="secondary"
-                        text="Sign in instead"
+                        // type="secondary"
                         size="large"
                         disabled={isProcessing}
-                      />
+                      >
+                        Sign In Instead
+                      </CustomButton>
                     </Link>
                   </div>
                 </Grid>
@@ -335,11 +337,12 @@ class SignUpFoodie extends Component {
                     <CustomButton
                       variant="contained"
                       type="primary"
-                      text="Sign me up"
                       size="large"
                       onClick={this.signMeUp}
                       disabled={isProcessing}
-                    />
+                    >
+                      Sign Me Up
+                    </CustomButton>
                   </div>
                 </Grid>
               </Grid>

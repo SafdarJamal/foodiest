@@ -24,12 +24,9 @@ const Landing = props => {
 
             <br />
             <Link to={ROUTES.SIGNUP_TYPE} style={{ textDecoration: 'none' }}>
-              <CustomButton
-                variant="contained"
-                text="Get started"
-                type="primary"
-                size="large"
-              />
+              <CustomButton variant="contained" type="primary" size="large">
+                Get Started
+              </CustomButton>
             </Link>
           </Grid>
           <Grid item xs={7}>

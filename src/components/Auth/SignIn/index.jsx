@@ -204,11 +204,12 @@ class SignIn extends Component {
                   <Typography variant="overline">
                     {signInError}
                     <CustomButton
+                      // type="secondary"
                       disableRipple={true}
-                      type="secondary"
-                      text="Dismiss"
                       onClick={this.dismissError}
-                    />
+                    >
+                      Dismiss
+                    </CustomButton>
                   </Typography>
                 </Grid>
               )}
@@ -257,11 +258,12 @@ class SignIn extends Component {
                     >
                       <CustomButton
                         variant="outlined"
-                        type="secondary"
-                        text="Create account"
+                        // type="secondary"
                         size="large"
                         disabled={isProcessing}
-                      />
+                      >
+                        Create Account
+                      </CustomButton>
                     </RouterLink>
                   </div>
                 </Grid>
@@ -270,11 +272,12 @@ class SignIn extends Component {
                     <CustomButton
                       variant="contained"
                       type="primary"
-                      text="Sign me in"
                       size="large"
                       onClick={this.signMeIn}
                       disabled={isProcessing}
-                    />
+                    >
+                      Sign Me In
+                    </CustomButton>
                   </div>
                 </Grid>
               </Grid>
