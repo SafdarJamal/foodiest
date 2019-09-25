@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 
 const motion1 = props => keyframes`
@@ -70,6 +71,12 @@ const Ellipsis = ({ color, size, sizeUnit }) => (
     <div />
   </EllipsisSpinner>
 );
+
+Ellipsis.propTypes = {
+  size: PropTypes.number,
+  color: PropTypes.string,
+  sizeUnit: PropTypes.string
+};
 
 Ellipsis.defaultProps = {
   size: 64,
