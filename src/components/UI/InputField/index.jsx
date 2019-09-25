@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -78,6 +79,24 @@ const InputField = props => {
       />
     </div>
   );
+};
+
+InputField.propTypes = {
+  focus: PropTypes.bool,
+  label: PropTypes.string,
+  type: PropTypes.string,
+  InputProps: PropTypes.bool,
+  errorMessage: PropTypes.string,
+  disabled: PropTypes.bool
+};
+
+InputField.defaultProps = {
+  focus: false,
+  label: '',
+  type: 'text',
+  InputProps: null,
+  errorMessage: '',
+  disabled: false
 };
 
 export default InputField;
