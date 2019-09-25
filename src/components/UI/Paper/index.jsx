@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import PaperUI from '@material-ui/core/Paper';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -8,16 +9,26 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default props => {
+const Paper = props => {
   const classes = useStyles();
-
   const { children, class0 } = props;
 
   return (
     <div>
-      <Paper elevation={2} className={classes[class0]}>
+      <PaperUI elevation={2} className={classes[class0]}>
         {children}
-      </Paper>
+      </PaperUI>
     </div>
   );
 };
+
+Paper.propTypes = {
+  children: PropTypes.node.isRequired,
+  class0: PropTypes.string
+};
+
+Paper.defaultProps = {
+  class0: ''
+};
+
+export default Paper;
