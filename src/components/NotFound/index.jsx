@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import * as ROUTES from '../../constants/routes';
+
 import Container from '@material-ui/core/Container';
 import Paper from '../UI/Paper';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CustomButton from '../UI/CustomButton';
-import Grid from '@material-ui/core/Grid';
 import ghostImg from '../../assets/images/ghost.png';
-
-import { Link } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes';
 
 const NotFound = () => {
   return (

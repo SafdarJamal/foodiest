@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import SomethingWentWrong from '../SomethingWentWrong';
 
 class ErrorBoundary extends Component {

@@ -1,5 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+
+import * as ROUTES from '../../constants/routes';
+import * as USER_TYPES from '../../constants/userTypes';
+
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -7,6 +11,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import logo from '../../assets/images/logo.png';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Icons
 import HomeIcon from '@material-ui/icons/Home';
@@ -17,10 +22,6 @@ import RestaurantIcon from '@material-ui/icons/Restaurant';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ChatIcon from '@material-ui/icons/Chat';
 import SettingIcon from '@material-ui/icons/Settings';
-
-import { Link } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes';
-import * as USER_TYPES from '../../constants/userTypes';
 
 const useStyles = makeStyles({
   list: {

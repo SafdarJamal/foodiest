@@ -1,5 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+
+import * as ROUTES from '../../constants/routes';
+import * as USER_TYPES from '../../constants/userTypes';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,10 +18,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '../../assets/images/logo.png';
 import CustomButton from '../UI/CustomButton';
-
-import { Link } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes';
-import * as USER_TYPES from '../../constants/userTypes';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   grow: {

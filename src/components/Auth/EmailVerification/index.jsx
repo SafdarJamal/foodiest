@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import { withFirebase } from '../../../services/firebase';
+
 import Container from '@material-ui/core/Container';
 import Paper from '../../UI/Paper';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CustomButton from '../../UI/CustomButton';
 import Progress from '../../UI/Progress';
-import Grid from '@material-ui/core/Grid';
-
-import { withFirebase } from '../../../services/firebase';
 
 class EmailVerification extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class EmailVerification extends Component {
       firebase
         .verifyEmail()
         .then(() => {
-          console.log(this.props.firebase.auth.currentUser);
+          console.log(firebase.auth.currentUser);
 
           this.setState({
             successMessage:

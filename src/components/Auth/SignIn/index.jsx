@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { withFirebase } from '../../../services/firebase';
+import { SignIn as SignInAction } from '../../../actions';
+import { Redirect, Link as RouterLink } from 'react-router-dom';
+
+import * as ROUTES from '../../../constants/routes';
+import * as USER_TYPES from '../../../constants/userTypes';
+
 import Container from '@material-ui/core/Container';
 import Paper from '../../UI/Paper';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import InputField from '../../UI/InputField';
 import CustomButton from '../../UI/CustomButton';
 import Progress from '../../UI/Progress';
-import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { SignIn as SignInAction } from '../../../actions';
-import { withFirebase } from '../../../services/firebase';
-
-import { Redirect, Link as RouterLink } from 'react-router-dom';
-import * as ROUTES from '../../../constants/routes';
-import * as USER_TYPES from '../../../constants/userTypes';
 
 import {
   validateEmail,

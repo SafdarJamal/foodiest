@@ -1,18 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import * as ROUTES from '../../../constants/routes';
+
 import Container from '@material-ui/core/Container';
 import Paper from '../../UI/Paper';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import { makeStyles } from '@material-ui/core/styles';
 import restaurateur from '../../../assets/images/restaurateur.jpg';
 import foodie from '../../../assets/images/foodie.jpg';
-
-import { Link } from 'react-router-dom';
-import * as ROUTES from '../../../constants/routes';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {

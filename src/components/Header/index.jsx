@@ -1,11 +1,11 @@
 import React from 'react';
-import AppBar from './AppBar';
-import Drawer from './Drawer';
-
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Loading, SignOut as SignOutAction } from '../../actions';
 import { withFirebase } from '../../services/firebase';
+import { Loading, SignOut as SignOutAction } from '../../actions';
+
+import AppBar from './AppBar';
+import Drawer from './Drawer';
 
 const Header = props => {
   const { location, user, Loading, firebase, SignOutAction } = props;
