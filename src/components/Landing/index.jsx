@@ -1,18 +1,19 @@
 import React from 'react';
+
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import CustomButton from '../UI/CustomButton';
+import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import CustomButton from '../UI/CustomButton';
 import heroImage from '../../assets/images/eats.jpg';
 
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
-const Landing = props => {
+const Landing = () => {
   return (
     <Container style={{ marginTop: 125 }}>
-      <Paper elevation={2} style={{ height: 650 }}>
+      <Paper>
         <Grid container>
           <Grid item xs={4} style={{ marginLeft: 25 }}>
             <Typography variant="h1" style={{ marginTop: 150 }}>
