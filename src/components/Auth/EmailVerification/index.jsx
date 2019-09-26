@@ -65,7 +65,7 @@ class EmailVerification extends Component {
     return (
       <Container style={{ marginTop: 100, width: 600 }}>
         {isProcessing && <Progress />}
-        <Paper class0="root">
+        <Paper className="root">
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Typography

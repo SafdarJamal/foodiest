@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 const Home = () => {
   return (
     <Container style={{ marginTop: 125, width: 600 }}>
-      <Paper class0="root">
+      <Paper className="root">
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <Typography

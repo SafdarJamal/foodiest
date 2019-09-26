@@ -31,7 +31,7 @@ const SignUpType = () => {
 
   return (
     <Container style={{ marginTop: 125, width: 600 }}>
-      <Paper class0="root">
+      <Paper className="root">
         <Typography variant="h1" align="center">
           Who is this account for?
         </Typography>

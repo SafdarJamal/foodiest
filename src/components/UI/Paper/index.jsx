@@ -11,24 +11,22 @@ const useStyles = makeStyles(theme => ({
 
 const Paper = props => {
   const classes = useStyles();
-  const { children, class0 } = props;
+  const { children, className } = props;
 
   return (
-    <div>
-      <PaperUI elevation={2} className={classes[class0]}>
-        {children}
-      </PaperUI>
-    </div>
+    <PaperUI elevation={2} className={classes[className]}>
+      {children}
+    </PaperUI>
   );
 };
 
 Paper.propTypes = {
   children: PropTypes.node.isRequired,
-  class0: PropTypes.string
+  className: PropTypes.string
 };
 
 Paper.defaultProps = {
-  class0: ''
+  className: ''
 };
 
 export default Paper;

@@ -9,7 +9,7 @@ import boatLeakImg from '../../assets/images/boat-leak.png';
 const SomethingWentWrong = () => {
   return (
     <Container style={{ marginTop: 125, width: 600 }}>
-      <Paper class0="root">
+      <Paper className="root">
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <Typography

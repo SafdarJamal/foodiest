@@ -177,7 +177,7 @@ class SignIn extends Component {
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
         {isProcessing && <Progress />}
-        <Paper class0="root">
+        <Paper className="root">
           <form noValidate autoComplete="off">
             <Grid container spacing={1}>
               <Grid item xs={12}>

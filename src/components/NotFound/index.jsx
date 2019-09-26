@@ -12,7 +12,7 @@ import * as ROUTES from '../../constants/routes';
 const NotFound = () => {
   return (
     <Container style={{ marginTop: 125, width: 600 }}>
-      <Paper class0="root">
+      <Paper className="root">
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <Typography
