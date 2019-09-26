@@ -11,8 +11,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Paper = props => {
-  const classes = useStyles();
   const { children, className } = props;
+  const classes = useStyles();
 
   return (
     <PaperUI elevation={2} className={classes[className]}>

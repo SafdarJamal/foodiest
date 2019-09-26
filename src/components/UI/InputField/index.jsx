@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Tooltip from '@material-ui/core/Tooltip';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -21,8 +21,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const InputField = props => {
+  const {
+    focus,
+    label,
+    type,
+    helperText,
+    required,
+    errorMessage,
+    disabled
+  } = props;
+
   const classes = useStyles();
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     inputValue: ''
   });
 
@@ -34,16 +44,6 @@ const InputField = props => {
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
-
-  const {
-    focus,
-    label,
-    type,
-    helperText,
-    required,
-    errorMessage,
-    disabled
-  } = props;
 
   return (
     <div className={classes.container}>

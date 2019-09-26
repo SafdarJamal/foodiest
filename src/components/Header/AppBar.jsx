@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
 
-import AppBar from '@material-ui/core/AppBar';
+import AppBarUI from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default props => {
+const AppBar = props => {
   const {
     user,
     isLanding,
@@ -52,30 +52,30 @@ export default props => {
   } = props;
 
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  function handleProfileMenuOpen(event) {
+  const handleProfileMenuOpen = event => {
     setAnchorEl(event.currentTarget);
-  }
+  };
 
-  function handleMobileMenuClose() {
+  const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
-  }
+  };
 
-  function handleMenuClose() {
+  const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-  }
+  };
 
-  function handleMobileMenuOpen(event) {
+  const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
-  }
+  };
 
-  function SignMeOut() {
+  const SignMeOut = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
 
@@ -93,7 +93,7 @@ export default props => {
           console.log(errorMessage);
         });
     }, 3000);
-  }
+  };
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -155,7 +155,7 @@ export default props => {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="fixed" color="default" elevation={2}>
+      <AppBarUI position="fixed" color="default" elevation={2}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -256,9 +256,11 @@ export default props => {
             </div>
           )}
         </Toolbar>
-      </AppBar>
+      </AppBarUI>
       {renderMobileMenu}
       {renderMenu}
     </div>
   );
 };
+
+export default AppBar;

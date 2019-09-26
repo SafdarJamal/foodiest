@@ -1,20 +1,18 @@
 import React, { Component, Suspense } from 'react';
-
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Loading, SignIn } from '../../actions';
 import { withFirebase } from '../../services/firebase';
+import { Loading, SignIn } from '../../actions';
+import { Route } from 'react-router-dom';
 
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
+
 import ErrorBoundary from '../ErrorBoundary';
-
-import { Route } from 'react-router-dom';
-import Routes from '../../routes';
-
 import Header from '../Header';
 import Loader from '../Loader';
 
+import Routes from '../../routes';
 import { authStateObserver } from '../../utils/authStateObserver';
 
 class App extends Component {

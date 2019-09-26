@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
 
-import Drawer from '@material-ui/core/Drawer';
+import DrawerUI from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -32,11 +32,11 @@ const useStyles = makeStyles({
   }
 });
 
-export default props => {
+const Drawer = props => {
   const { user, isOpen, toggleDrawer } = props;
 
   const classes = useStyles();
-  const [selectedIndex, setSelectedIndex] = React.useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -266,13 +266,15 @@ export default props => {
 
   return (
     <div>
-      <Drawer open={isOpen} onClose={toggleDrawer(false)}>
+      <DrawerUI open={isOpen} onClose={toggleDrawer(false)}>
         {user
           ? user.type === USER_TYPES.RESTAURATEUR
             ? restaurateurList()
             : foodieList()
           : publicList()}
-      </Drawer>
+      </DrawerUI>
     </div>
   );
 };
+
+export default Drawer;

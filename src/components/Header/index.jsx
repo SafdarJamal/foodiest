@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../services/firebase';
@@ -10,7 +10,7 @@ import Drawer from './Drawer';
 const Header = props => {
   const { location, user, Loading, firebase, SignOutAction } = props;
 
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     isDrawerOpen: false
   });
 
@@ -32,7 +32,7 @@ const Header = props => {
   };
 
   return (
-    <div>
+    <Fragment>
       <AppBar
         user={user}
         isLanding={isLanding}
@@ -46,7 +46,7 @@ const Header = props => {
         isOpen={state.isDrawerOpen}
         toggleDrawer={toggleDrawer}
       />
-    </div>
+    </Fragment>
   );
 };
 
