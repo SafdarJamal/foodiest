@@ -34,7 +34,15 @@ const InputField = props => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
 
-  const { focus, label, type, InputProps, errorMessage, disabled } = props;
+  const {
+    focus,
+    label,
+    type,
+    helperText,
+    required,
+    errorMessage,
+    disabled
+  } = props;
 
   return (
     <div className={classes.container}>
@@ -50,31 +58,33 @@ const InputField = props => {
         fullWidth
         type={values.showPassword ? 'text' : type}
         InputProps={
-          InputProps && {
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  edge="end"
-                  aria-label="Toggle password visibility"
-                  onClick={handleClickShowPassword}
-                >
-                  {values.showPassword ? (
-                    <Tooltip title="Hide password">
-                      <Visibility />
-                    </Tooltip>
-                  ) : (
-                    <Tooltip title="Show password">
-                      <VisibilityOff />
-                    </Tooltip>
-                  )}
-                </IconButton>
-              </InputAdornment>
-            )
-          }
+          type === 'password'
+            ? {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      edge="end"
+                      aria-label="Toggle password visibility"
+                      onClick={handleClickShowPassword}
+                    >
+                      {values.showPassword ? (
+                        <Tooltip title="Hide password">
+                          <Visibility />
+                        </Tooltip>
+                      ) : (
+                        <Tooltip title="Show password">
+                          <VisibilityOff />
+                        </Tooltip>
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }
+            : null
         }
-        // required
+        required={required}
         error={errorMessage ? true : false}
-        helperText={errorMessage && errorMessage}
+        helperText={errorMessage ? errorMessage : helperText}
         disabled={disabled}
       />
     </div>
@@ -85,7 +95,8 @@ InputField.propTypes = {
   focus: PropTypes.bool,
   label: PropTypes.string,
   type: PropTypes.string,
-  InputProps: PropTypes.bool,
+  helperText: PropTypes.string,
+  required: PropTypes.bool,
   errorMessage: PropTypes.string,
   disabled: PropTypes.bool
 };
@@ -94,7 +105,8 @@ InputField.defaultProps = {
   focus: false,
   label: '',
   type: 'text',
-  InputProps: null,
+  helperText: '',
+  required: false,
   errorMessage: '',
   disabled: false
 };

@@ -227,7 +227,6 @@ class SignIn extends Component {
                 <InputField
                   label="Password"
                   type="password"
-                  InputProps={true}
                   validate={this.validatePassword}
                   errorMessage={passwordError}
                   disabled={isProcessing}

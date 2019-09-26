@@ -332,7 +332,6 @@ class SignUpRestaurateur extends Component {
                 <InputField
                   label="Password"
                   type="password"
-                  InputProps={true}
                   validate={this.validatePassword}
                   errorMessage={passwordError}
                   disabled={isProcessing}
@@ -342,7 +341,6 @@ class SignUpRestaurateur extends Component {
                 <InputField
                   label="Confirm Password"
                   type="password"
-                  InputProps={true}
                   validate={this.confirmPassword}
                   errorMessage={confirmPasswordError}
                   disabled={isProcessing}
