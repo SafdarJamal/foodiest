@@ -1,4 +1,4 @@
-function validateName(value) {
+const validateName = value => {
   const regex = /^[A-Za-z]?([ ]?[A-Za-z])+$/;
   const field = value;
   // console.log(value);
@@ -12,9 +12,9 @@ function validateName(value) {
   } else {
     return { isValid: true };
   }
-}
+};
 
-function validateEmail(value) {
+const validateEmail = value => {
   const regex = /^\w+([.-]?\w+)*@[a-zA-Z0-9]([.-]?[a-zA-Z0-9])*(\.[a-zA-Z]{2,4})+$/;
   const field = value;
   // console.log(value);
@@ -28,9 +28,9 @@ function validateEmail(value) {
   } else {
     return { isValid: true };
   }
-}
+};
 
-function validatePassword(value) {
+const validatePassword = value => {
   const regex = /^[a-zA-Z0-9.-_#*+/$@%,-?!]([.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
   const field = value;
   // console.log(value);
@@ -47,9 +47,9 @@ function validatePassword(value) {
   } else {
     return { isValid: true };
   }
-}
+};
 
-function validateSignUpForm() {
+const validateSignUpForm = () => {
   const fName = document.getElementById('first-name').value;
   const lName = document.getElementById('last-name').value;
   const email = document.getElementById('email').value;
@@ -70,9 +70,9 @@ function validateSignUpForm() {
     password: d,
     confirmPassword: { isValid: e, message: `Passwords didn't match !` }
   };
-}
+};
 
-function validateSignInForm() {
+const validateSignInForm = () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
@@ -84,16 +84,16 @@ function validateSignInForm() {
     email: a,
     password: b
   };
-}
+};
 
-function validatePasswordResetForm() {
+const validatePasswordResetForm = () => {
   const email = document.getElementById('email').value;
 
   const a = validateEmail(email);
   // console.log(a);
 
   return a;
-}
+};
 
 export {
   validateName,
