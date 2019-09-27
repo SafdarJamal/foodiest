@@ -258,7 +258,7 @@ const AppBar = props => {
 };
 
 AppBar.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   isLanding: PropTypes.bool.isRequired,
   toggleDrawer: PropTypes.func.isRequired,
   Loading: PropTypes.func.isRequired,

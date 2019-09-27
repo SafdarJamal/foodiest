@@ -279,7 +279,7 @@ const Drawer = props => {
 };
 
 Drawer.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   isOpen: PropTypes.bool.isRequired,
   toggleDrawer: PropTypes.func.isRequired
 };
