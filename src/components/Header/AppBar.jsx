@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
@@ -42,14 +43,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AppBar = props => {
-  const {
-    user,
-    isLanding,
-    toggleDrawer,
-    Loading,
-    firebase,
-    SignOutAction
-  } = props;
+  const { user, isLanding, toggleDrawer, Loading, firebase, SignOut } = props;
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -85,7 +79,7 @@ const AppBar = props => {
       firebase
         .signOut()
         .then(() => {
-          SignOutAction();
+          SignOut();
           Loading({ isLoading: false });
         })
         .catch(error => {
@@ -261,6 +255,15 @@ const AppBar = props => {
       {renderMenu}
     </div>
   );
+};
+
+AppBar.propTypes = {
+  user: PropTypes.object.isRequired,
+  isLanding: PropTypes.bool.isRequired,
+  toggleDrawer: PropTypes.func.isRequired,
+  Loading: PropTypes.func.isRequired,
+  firebase: PropTypes.object.isRequired,
+  SignOut: PropTypes.func.isRequired
 };
 
 export default AppBar;

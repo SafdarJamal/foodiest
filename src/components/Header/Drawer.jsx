@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
@@ -275,6 +276,12 @@ const Drawer = props => {
       </DrawerUI>
     </div>
   );
+};
+
+Drawer.propTypes = {
+  user: PropTypes.object.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  toggleDrawer: PropTypes.func.isRequired
 };
 
 export default Drawer;
