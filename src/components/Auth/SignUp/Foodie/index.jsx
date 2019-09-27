@@ -18,7 +18,7 @@ import {
   validateName,
   validateEmail,
   validatePassword,
-  validateFoodieSignUpForm
+  validateSignUpForm
 } from '../../../../utils/validate';
 
 class SignUpFoodie extends Component {
@@ -35,7 +35,6 @@ class SignUpFoodie extends Component {
       emailError: null,
       passwordError: null,
       confirmPasswordError: null,
-
       isProcessing: false,
       signUpError: null
     };
@@ -106,7 +105,7 @@ class SignUpFoodie extends Component {
   signMeUp() {
     this.setState({ isProcessing: true });
 
-    const result = validateFoodieSignUpForm();
+    const result = validateSignUpForm();
     // console.log(result);
 
     let fName = true;

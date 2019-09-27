@@ -18,7 +18,7 @@ import {
   validateName,
   validateEmail,
   validatePassword,
-  validateRestaurateurSignUpForm
+  validateSignUpForm
 } from '../../../../utils/validate';
 
 class SignUpRestaurateur extends Component {
@@ -28,12 +28,10 @@ class SignUpRestaurateur extends Component {
     this.state = {
       fName: null,
       lName: null,
-      rName: null,
       email: null,
       password: null,
       fNameError: null,
       lNameError: null,
-      rNameError: null,
       emailError: null,
       passwordError: null,
       confirmPasswordError: null,
@@ -43,7 +41,6 @@ class SignUpRestaurateur extends Component {
 
     this.validateFName = this.validateFName.bind(this);
     this.validateLName = this.validateLName.bind(this);
-    this.validateRName = this.validateRName.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
     this.validatePassword = this.validatePassword.bind(this);
     this.confirmPassword = this.confirmPassword.bind(this);
@@ -70,17 +67,6 @@ class SignUpRestaurateur extends Component {
       this.setState({ lNameError: result.message });
     } else {
       this.setState({ lNameError: null, lName: value });
-    }
-  }
-
-  validateRName(value) {
-    const result = validateName(value);
-    // console.log(result);
-
-    if (result.isValid !== true) {
-      this.setState({ rNameError: result.message });
-    } else {
-      this.setState({ rNameError: null, rName: value });
     }
   }
 
@@ -119,7 +105,7 @@ class SignUpRestaurateur extends Component {
   signMeUp() {
     this.setState({ isProcessing: true });
 
-    const result = validateRestaurateurSignUpForm();
+    const result = validateSignUpForm();
     // console.log(result);
 
     let fName = true;
@@ -127,9 +113,6 @@ class SignUpRestaurateur extends Component {
 
     let lName = true;
     let lNameError = null;
-
-    let rName = true;
-    let rNameError = null;
 
     let email = true;
     let emailError = null;
@@ -147,10 +130,6 @@ class SignUpRestaurateur extends Component {
     if (result.lName.isValid !== true) {
       lName = false;
       lNameError = result.lName.message;
-    }
-    if (result.rName.isValid !== true) {
-      rName = false;
-      rNameError = result.rName.message;
     }
     if (result.email.isValid !== true) {
       email = false;
@@ -171,7 +150,6 @@ class SignUpRestaurateur extends Component {
     if (
       fName === false ||
       lName === false ||
-      rName === false ||
       email === false ||
       password === false ||
       confirmPassword === false
@@ -179,7 +157,6 @@ class SignUpRestaurateur extends Component {
       this.setState({
         fNameError,
         lNameError,
-        rNameError,
         emailError,
         passwordError,
         confirmPasswordError,
@@ -192,7 +169,7 @@ class SignUpRestaurateur extends Component {
 
     setTimeout(() => {
       const { firebase } = this.props;
-      const { fName, lName, rName, email, password } = this.state;
+      const { fName, lName, email, password } = this.state;
 
       firebase
         .signUp(email, password)
@@ -203,7 +180,6 @@ class SignUpRestaurateur extends Component {
           const userData = {
             fName,
             lName,
-            rName,
             email,
             type: USER_TYPES.RESTAURATEUR
           };
@@ -215,7 +191,6 @@ class SignUpRestaurateur extends Component {
           this.setState({
             fName: null,
             lName: null,
-            rName: null,
             email: null,
             password: null,
             signUpError: null,
@@ -244,7 +219,6 @@ class SignUpRestaurateur extends Component {
     const {
       fNameError,
       lNameError,
-      rNameError,
       emailError,
       passwordError,
       confirmPasswordError,
@@ -307,15 +281,6 @@ class SignUpRestaurateur extends Component {
                   type="text"
                   validate={this.validateLName}
                   errorMessage={lNameError}
-                  disabled={isProcessing}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <InputField
-                  label="Restaurant Name"
-                  type="text"
-                  validate={this.validateRName}
-                  errorMessage={rNameError}
                   disabled={isProcessing}
                 />
               </Grid>

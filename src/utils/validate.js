@@ -49,34 +49,7 @@ function validatePassword(value) {
   }
 }
 
-function validateRestaurateurSignUpForm() {
-  const fName = document.getElementById('first-name').value;
-  const lName = document.getElementById('last-name').value;
-  const rName = document.getElementById('restaurant-name').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const confirmPassword = document.getElementById('confirm-password').value;
-
-  const a = validateName(fName);
-  const b = validateName(lName);
-  const c = validateName(rName);
-  const d = validateEmail(email);
-  const e = validatePassword(password);
-  const f = d.isValid ? confirmPassword === password : undefined;
-
-  // console.log(a, b, c, d, e);
-
-  return {
-    fName: a,
-    lName: b,
-    rName: c,
-    email: d,
-    password: e,
-    confirmPassword: { isValid: f, message: `Passwords didn't match !` }
-  };
-}
-
-function validateFoodieSignUpForm() {
+function validateSignUpForm() {
   const fName = document.getElementById('first-name').value;
   const lName = document.getElementById('last-name').value;
   const email = document.getElementById('email').value;
@@ -88,7 +61,6 @@ function validateFoodieSignUpForm() {
   const c = validateEmail(email);
   const d = validatePassword(password);
   const e = d.isValid ? confirmPassword === password : undefined;
-
   // console.log(a, b, c, d, e);
 
   return {
@@ -106,7 +78,6 @@ function validateSignInForm() {
 
   const a = validateEmail(email);
   const b = validatePassword(password);
-
   // console.log(a, b);
 
   return {
@@ -119,7 +90,6 @@ function validatePasswordResetForm() {
   const email = document.getElementById('email').value;
 
   const a = validateEmail(email);
-
   // console.log(a);
 
   return a;
@@ -129,8 +99,7 @@ export {
   validateName,
   validateEmail,
   validatePassword,
-  validateRestaurateurSignUpForm,
-  validateFoodieSignUpForm,
+  validateSignUpForm,
   validateSignInForm,
   validatePasswordResetForm
 };
