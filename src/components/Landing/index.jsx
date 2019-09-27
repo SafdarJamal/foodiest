@@ -24,7 +24,7 @@ const Landing = () => {
             </Typography>
 
             <br />
-            <Link to={ROUTES.SIGNUP_TYPE} style={{ textDecoration: 'none' }}>
+            <Link to={ROUTES.SIGNUP} style={{ textDecoration: 'none' }}>
               <CustomButton variant="contained" type="primary" size="large">
                 Get Started
               </CustomButton>

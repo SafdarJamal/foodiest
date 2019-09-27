@@ -45,7 +45,7 @@ const Drawer = props => {
 
   const publicList = () => {
     const iconList = [<HomeIcon />, <ProfileIcon />, <SignUpIcon />];
-    const linkList = [ROUTES.LANDING, ROUTES.SIGNIN, ROUTES.SIGNUP_TYPE];
+    const linkList = [ROUTES.LANDING, ROUTES.SIGNIN, ROUTES.SIGNUP];
 
     return (
       <div

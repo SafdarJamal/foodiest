@@ -233,10 +233,7 @@ const AppBar = props => {
                       </CustomButton>
                     </Link>
                   </div>
-                  <Link
-                    to={ROUTES.SIGNUP_TYPE}
-                    style={{ textDecoration: 'none' }}
-                  >
+                  <Link to={ROUTES.SIGNUP} style={{ textDecoration: 'none' }}>
                     <CustomButton
                       variant="contained"
                       size="large"

@@ -1,6 +1,6 @@
 /* ---------- Public ---------- */
 const LANDING = '/';
-const SIGNUP_TYPE = '/signup/type';
+const SIGNUP = '/signup';
 const SIGNUP_RESTAURATEUR = '/signup/restaurateur';
 const SIGNUP_FOODIE = '/signup/foodie';
 const SIGNIN = '/signin';
@@ -11,7 +11,7 @@ const VERIFICATION = '/verification';
 
 /* ---------- Private ---------- */
 // Restaurateur
-const DASHBOARD = '/dashboard/';
+const DASHBOARD = '/dashboard';
 const DASHBOARD_PRODUCTS = '/dashboard/products';
 const DASHBOARD_ORDERS = '/dashboard/orders';
 const DASHBOARD_CHATS = '/dashboard/chats';
@@ -19,7 +19,7 @@ const DASHBOARD_PROFILE = '/dashboard/profile';
 const DASHBOARD_SETTINGS = '/dashboard/settings';
 
 // Foodie
-const HOME = '/home/';
+const HOME = '/home';
 const HOME_RESTAURANTS = '/home/restaurants';
 const HOME_ORDERS = '/home/orders';
 const HOME_CHATS = '/home/chats';
@@ -28,7 +28,7 @@ const HOME_SETTINGS = '/home/settings';
 
 export {
   LANDING,
-  SIGNUP_TYPE,
+  SIGNUP,
   SIGNUP_RESTAURATEUR,
   SIGNUP_FOODIE,
   SIGNIN,

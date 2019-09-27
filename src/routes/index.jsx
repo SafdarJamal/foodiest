@@ -23,7 +23,7 @@ const Routes = () => {
       <Route path={ROUTES.LANDING} component={Landing} exact />
       <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
       <Route path={ROUTES.HOME} component={Foodie} />
-      <Route path={ROUTES.SIGNUP_TYPE} component={SignUpType} />
+      <Route path={ROUTES.SIGNUP} component={SignUpType} exact />
       <Route path={ROUTES.SIGNUP_RESTAURATEUR} component={SignUpRestaurateur} />
       <Route path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodie} />
       <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
