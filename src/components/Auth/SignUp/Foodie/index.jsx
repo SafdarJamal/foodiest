@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
 import { withFirebase } from '../../../../services/firebase';
-import { withRouter, Link } from 'react-router-dom';
+import { SignIn } from '../../../../actions';
+import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../../../constants/routes';
 import * as USER_TYPES from '../../../../constants/userTypes';
@@ -25,6 +27,8 @@ class SignUpFoodie extends Component {
   constructor(props) {
     super(props);
 
+    this._isMounted = false;
+
     this.state = {
       fName: null,
       lName: null,
@@ -46,6 +50,14 @@ class SignUpFoodie extends Component {
     this.confirmPassword = this.confirmPassword.bind(this);
     this.signMeUp = this.signMeUp.bind(this);
     this.dismissError = this.dismissError.bind(this);
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   validateFName(value) {
@@ -168,7 +180,7 @@ class SignUpFoodie extends Component {
     // console.log(this.state.email, this.state.password);
 
     setTimeout(() => {
-      const { firebase } = this.props;
+      const { firebase, SignIn } = this.props;
       const { fName, lName, email, password } = this.state;
 
       firebase
@@ -188,16 +200,27 @@ class SignUpFoodie extends Component {
         })
         .then(() => firebase.verifyEmail())
         .then(() => {
-          this.setState({
-            fName: null,
-            lName: null,
-            email: null,
-            password: null,
-            signUpError: null,
-            isProcessing: false
-          });
+          return firebase
+            .getUser(firebase.auth.currentUser.uid)
+            .then(querySnapshot => {
+              const userData = querySnapshot.data();
+              userData.uid = firebase.auth.currentUser.uid;
+              userData.isVerified = firebase.auth.currentUser.emailVerified;
 
-          this.props.history.push(ROUTES.VERIFICATION);
+              SignIn(userData);
+            });
+        })
+        .then(() => {
+          if (this._isMounted) {
+            this.setState({
+              fName: null,
+              lName: null,
+              email: null,
+              password: null,
+              signUpError: null,
+              isProcessing: false
+            });
+          }
         })
         .catch(error => {
           const errorMessage = error.message;
@@ -351,7 +374,14 @@ class SignUpFoodie extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return { user: state.auth.user };
+};
+
 export default compose(
-  withFirebase,
-  withRouter
+  connect(
+    mapStateToProps,
+    { SignIn }
+  ),
+  withFirebase
 )(SignUpFoodie);
