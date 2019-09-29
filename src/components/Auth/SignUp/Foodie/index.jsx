@@ -377,13 +377,9 @@ class SignUpFoodie extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { user: state.auth.user };
-};
-
 export default compose(
   connect(
-    mapStateToProps,
+    null,
     { Loading, SignIn }
   ),
   withFirebase
