@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
-import { withFirebase } from '../../../../services/firebase';
-import { withRouter, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withFirebase } from '../../../services/firebase';
+import { Loading, SignIn } from '../../../actions';
+import { Link, withRouter } from 'react-router-dom';
 
-import * as ROUTES from '../../../../constants/routes';
-import * as USER_TYPES from '../../../../constants/userTypes';
+import * as ROUTES from '../../../constants/routes';
+import * as USER_TYPES from '../../../constants/userTypes';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../../../UI/Paper';
+import Paper from '../../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import InputField from '../../../UI/InputField';
-import CustomButton from '../../../UI/CustomButton';
-import Progress from '../../../UI/Progress';
+import InputField from '../../UI/InputField';
+import CustomButton from '../../UI/CustomButton';
+import Progress from '../../UI/Progress';
 
 import {
   validateName,
   validateEmail,
   validatePassword,
   validateSignUpForm
-} from '../../../../utils/validate';
+} from '../../../utils/validate';
 
-class SignUpRestaurateur extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
+
+    this._isMounted = false;
 
     this.state = {
       fName: null,
@@ -46,6 +50,14 @@ class SignUpRestaurateur extends Component {
     this.confirmPassword = this.confirmPassword.bind(this);
     this.signMeUp = this.signMeUp.bind(this);
     this.dismissError = this.dismissError.bind(this);
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   validateFName(value) {
@@ -168,7 +180,7 @@ class SignUpRestaurateur extends Component {
     // console.log(this.state.email, this.state.password);
 
     setTimeout(() => {
-      const { firebase } = this.props;
+      const { firebase, Loading, SignIn } = this.props;
       const { fName, lName, email, password } = this.state;
 
       firebase
@@ -181,23 +193,37 @@ class SignUpRestaurateur extends Component {
             fName,
             lName,
             email,
-            type: USER_TYPES.RESTAURATEUR
+            type: USER_TYPES.FOODIE
           };
 
           return firebase.addUser(user.uid, userData);
         })
         .then(() => firebase.verifyEmail())
         .then(() => {
-          this.setState({
-            fName: null,
-            lName: null,
-            email: null,
-            password: null,
-            signUpError: null,
-            isProcessing: false
-          });
+          if (this._isMounted) {
+            this.setState({
+              fName: null,
+              lName: null,
+              email: null,
+              password: null,
+              signUpError: null,
+              isProcessing: false
+            });
+          }
 
-          this.props.history.push(ROUTES.VERIFICATION);
+          Loading({ isLoading: true });
+
+          return firebase.getUser(firebase.auth.currentUser.uid);
+        })
+        .then(querySnapshot => {
+          const userData = querySnapshot.data();
+          userData.uid = firebase.auth.currentUser.uid;
+          userData.isVerified = firebase.auth.currentUser.emailVerified;
+
+          setTimeout(() => {
+            SignIn(userData);
+            Loading({ isLoading: false });
+          }, 2000);
         })
         .catch(error => {
           const errorMessage = error.message;
@@ -225,6 +251,8 @@ class SignUpRestaurateur extends Component {
       isProcessing,
       signUpError
     } = this.state;
+
+    console.log(this.props.match);
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
@@ -352,6 +380,10 @@ class SignUpRestaurateur extends Component {
 }
 
 export default compose(
+  connect(
+    null,
+    { Loading, SignIn }
+  ),
   withFirebase,
   withRouter
-)(SignUpRestaurateur);
+)(SignUp);
