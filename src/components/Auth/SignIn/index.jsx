@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../../services/firebase';
-import { SignIn as SignInAction } from '../../../actions';
-import { Redirect, Link as RouterLink } from 'react-router-dom';
+import { Loading, SignIn as SignInAction } from '../../../actions';
+import { Link as RouterLink } from 'react-router-dom';
 
 import * as ROUTES from '../../../constants/routes';
-import * as USER_TYPES from '../../../constants/userTypes';
 
 import Container from '@material-ui/core/Container';
 import Paper from '../../UI/Paper';
@@ -35,8 +34,7 @@ class SignIn extends Component {
       emailError: null,
       passwordError: null,
       isProcessing: false,
-      signInError: null,
-      redirectToReferrer: false
+      signInError: null
     };
 
     this.validateEmail = this.validateEmail.bind(this);
@@ -108,7 +106,7 @@ class SignIn extends Component {
     // console.log(this.state.email, this.state.password);
 
     setTimeout(() => {
-      const { firebase, SignInAction } = this.props;
+      const { firebase, Loading, SignInAction } = this.props;
       const { email, password } = this.state;
 
       firebase
@@ -117,26 +115,28 @@ class SignIn extends Component {
           const user = success.user;
           // console.log(user);
 
-          return firebase.getUser(user.uid).then(querySnapshot => {
-            // console.log(querySnapshot.data());
-
-            const userData = querySnapshot.data();
-            userData.uid = user.uid;
-            userData.isVerified = user.emailVerified;
-
-            SignInAction(userData);
-          });
-        })
-        .then(() => {
           if (this._isMounted) {
             this.setState({
               email: null,
               password: null,
               signInError: null,
-              isProcessing: false,
-              redirectToReferrer: true
+              isProcessing: false
             });
           }
+
+          Loading({ isLoading: true });
+
+          return firebase.getUser(user.uid);
+        })
+        .then(querySnapshot => {
+          const userData = querySnapshot.data();
+          userData.uid = firebase.auth.currentUser.uid;
+          userData.isVerified = firebase.auth.currentUser.emailVerified;
+
+          setTimeout(() => {
+            SignInAction(userData);
+            Loading({ isLoading: false });
+          }, 2000);
         })
         .catch(error => {
           const errorMessage = error.message;
@@ -155,24 +155,7 @@ class SignIn extends Component {
   }
 
   render() {
-    const {
-      emailError,
-      passwordError,
-      isProcessing,
-      signInError,
-      redirectToReferrer
-    } = this.state;
-
-    const { user } = this.props;
-    console.log(user);
-
-    if (redirectToReferrer) {
-      if (user.type === USER_TYPES.RESTAURATEUR) {
-        return <Redirect to={ROUTES.DASHBOARD} />;
-      } else if (user.type === USER_TYPES.FOODIE) {
-        return <Redirect to={ROUTES.HOME} />;
-      }
-    }
+    const { emailError, passwordError, isProcessing, signInError } = this.state;
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
@@ -288,14 +271,10 @@ class SignIn extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { user: state.auth.user };
-};
-
 export default compose(
   connect(
-    mapStateToProps,
-    { SignInAction }
+    null,
+    { Loading, SignInAction }
   ),
   withFirebase
 )(SignIn);
