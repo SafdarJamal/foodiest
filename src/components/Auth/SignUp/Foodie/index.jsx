@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../../../services/firebase';
-import { SignIn } from '../../../../actions';
+import { Loading, SignIn } from '../../../../actions';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../../../constants/routes';
@@ -180,7 +180,7 @@ class SignUpFoodie extends Component {
     // console.log(this.state.email, this.state.password);
 
     setTimeout(() => {
-      const { firebase, SignIn } = this.props;
+      const { firebase, Loading, SignIn } = this.props;
       const { fName, lName, email, password } = this.state;
 
       firebase
@@ -200,17 +200,6 @@ class SignUpFoodie extends Component {
         })
         .then(() => firebase.verifyEmail())
         .then(() => {
-          return firebase
-            .getUser(firebase.auth.currentUser.uid)
-            .then(querySnapshot => {
-              const userData = querySnapshot.data();
-              userData.uid = firebase.auth.currentUser.uid;
-              userData.isVerified = firebase.auth.currentUser.emailVerified;
-
-              SignIn(userData);
-            });
-        })
-        .then(() => {
           if (this._isMounted) {
             this.setState({
               fName: null,
@@ -221,6 +210,20 @@ class SignUpFoodie extends Component {
               isProcessing: false
             });
           }
+
+          Loading({ isLoading: true });
+
+          return firebase.getUser(firebase.auth.currentUser.uid);
+        })
+        .then(querySnapshot => {
+          const userData = querySnapshot.data();
+          userData.uid = firebase.auth.currentUser.uid;
+          userData.isVerified = firebase.auth.currentUser.emailVerified;
+
+          setTimeout(() => {
+            SignIn(userData);
+            Loading({ isLoading: false });
+          }, 2000);
         })
         .catch(error => {
           const errorMessage = error.message;
@@ -381,7 +384,7 @@ const mapStateToProps = state => {
 export default compose(
   connect(
     mapStateToProps,
-    { SignIn }
+    { Loading, SignIn }
   ),
   withFirebase
 )(SignUpFoodie);
