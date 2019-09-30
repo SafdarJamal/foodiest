@@ -27,6 +27,19 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
 
+    this.type = null;
+
+    switch (props.location.pathname) {
+      case ROUTES.SIGNUP_RESTAURATEUR:
+        this.type = USER_TYPES.RESTAURATEUR;
+        break;
+      case ROUTES.SIGNUP_FOODIE:
+        this.type = USER_TYPES.FOODIE;
+        break;
+      default:
+        break;
+    }
+
     this._isMounted = false;
 
     this.state = {
@@ -193,7 +206,7 @@ class SignUp extends Component {
             fName,
             lName,
             email,
-            type: USER_TYPES.FOODIE
+            type: this.type
           };
 
           return firebase.addUser(user.uid, userData);
@@ -251,8 +264,6 @@ class SignUp extends Component {
       isProcessing,
       signUpError
     } = this.state;
-
-    console.log(this.props.match);
 
     return (
       <Container style={{ marginTop: 125, width: 600 }}>
