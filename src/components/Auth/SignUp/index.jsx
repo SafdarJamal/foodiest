@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './style.module.css';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../../services/firebase';
@@ -266,32 +267,18 @@ class SignUp extends Component {
     } = this.state;
 
     return (
-      <Container style={{ marginTop: 125, width: 600 }}>
+      <Container className={styles.container}>
         {isProcessing && <Progress />}
         <Paper className="root">
           <form noValidate autoComplete="off">
             <Grid container spacing={1}>
               <Grid item xs={12}>
-                <Typography
-                  variant="h1"
-                  align="center"
-                  style={{ marginBottom: 20 }}
-                >
+                <Typography variant="h1" className={styles.title}>
                   Sign Up
                 </Typography>
               </Grid>
               {signUpError && (
-                <Grid
-                  item
-                  xs={12}
-                  style={{
-                    backgroundColor: '#EAF0F1',
-                    border: '1px solid red',
-                    textAlign: 'center',
-                    margin: 10,
-                    borderRadius: 2
-                  }}
-                >
+                <Grid item xs={12} className={styles.error}>
                   <Typography variant="overline">
                     {signUpError}
                     <CustomButton
@@ -350,13 +337,10 @@ class SignUp extends Component {
                   disabled={isProcessing}
                 />
               </Grid>
-              <Grid
-                container
-                style={{ marginTop: 25, marginLeft: 12, marginRight: 12 }}
-              >
+              <Grid container className={styles.btnWrapper}>
                 <Grid item xs={6}>
-                  <div style={{ textAlign: 'left' }}>
-                    <Link to={ROUTES.SIGNIN} style={{ textDecoration: 'none' }}>
+                  <div className={styles.btnWrapperChild1}>
+                    <Link to={ROUTES.SIGNIN} className={styles.link}>
                       <CustomButton
                         variant="outlined"
                         // type="secondary"
@@ -369,7 +353,7 @@ class SignUp extends Component {
                   </div>
                 </Grid>
                 <Grid item xs={6}>
-                  <div style={{ textAlign: 'right' }}>
+                  <div className={styles.btnWrapperChild2}>
                     <CustomButton
                       variant="contained"
                       type="primary"
