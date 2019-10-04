@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from './style.module.css';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
@@ -54,23 +55,12 @@ const Drawer = props => {
         onClick={toggleDrawer(false)}
         onKeyDown={toggleDrawer(false)}
       >
-        <div
-          style={{
-            backgroundColor: '#eaeff1',
-            padding: 20
-          }}
-        >
-          <Link
-            to={ROUTES.LANDING}
-            style={{
-              textDecoration: 'none',
-              cursor: 'pointer'
-            }}
-          >
+        <div className={styles.drawerTitle}>
+          <Link to={ROUTES.LANDING} className={styles.link}>
             <img
               src={logo}
+              className={styles.logo}
               alt="Foodiest"
-              height="58"
               title="We Love Foodies"
             />
           </Link>
@@ -80,13 +70,7 @@ const Drawer = props => {
 
         <List>
           {['Home', 'Sign In', 'Sign Up'].map((text, index) => (
-            <Link
-              key={text}
-              to={linkList[index]}
-              style={{
-                textDecoration: 'none'
-              }}
-            >
+            <Link key={text} to={linkList[index]} className={styles.link}>
               <ListItem
                 button
                 selected={selectedIndex === index}
@@ -128,23 +112,12 @@ const Drawer = props => {
         onClick={toggleDrawer(false)}
         onKeyDown={toggleDrawer(false)}
       >
-        <div
-          style={{
-            backgroundColor: '#eaeff1',
-            padding: 20
-          }}
-        >
-          <Link
-            to={ROUTES.DASHBOARD}
-            style={{
-              textDecoration: 'none',
-              cursor: 'pointer'
-            }}
-          >
+        <div className={styles.drawerTitle}>
+          <Link to={ROUTES.DASHBOARD} className={styles.link}>
             <img
               src={logo}
+              className={styles.logo}
               alt="Foodiest"
-              height="58"
               title="We Love Foodies"
             />
           </Link>
@@ -161,13 +134,7 @@ const Drawer = props => {
             'Profile',
             'Settings'
           ].map((text, index) => (
-            <Link
-              key={text}
-              to={linkList[index]}
-              style={{
-                textDecoration: 'none'
-              }}
-            >
+            <Link key={text} to={linkList[index]} className={styles.link}>
               <ListItem
                 button
                 selected={selectedIndex === index}
@@ -209,23 +176,12 @@ const Drawer = props => {
         onClick={toggleDrawer(false)}
         onKeyDown={toggleDrawer(false)}
       >
-        <div
-          style={{
-            backgroundColor: '#eaeff1',
-            padding: 20
-          }}
-        >
-          <Link
-            to={ROUTES.HOME}
-            style={{
-              textDecoration: 'none',
-              cursor: 'pointer'
-            }}
-          >
+        <div className={styles.drawerTitle}>
+          <Link to={ROUTES.HOME} className={styles.link}>
             <img
               src={logo}
+              className={styles.logo}
               alt="Foodiest"
-              height="58"
               title="We Love Foodies"
             />
           </Link>
@@ -242,13 +198,7 @@ const Drawer = props => {
             'Profile',
             'Settings'
           ].map((text, index) => (
-            <Link
-              key={text}
-              to={linkList[index]}
-              style={{
-                textDecoration: 'none'
-              }}
-            >
+            <Link key={text} to={linkList[index]} className={styles.link}>
               <ListItem
                 button
                 selected={selectedIndex === index}

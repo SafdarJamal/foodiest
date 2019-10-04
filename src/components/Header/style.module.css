@@ -1,0 +1,16 @@
+.title {
+  cursor: pointer;
+}
+
+.logo {
+  height: 58px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.drawerTitle {
+  background-color: #eaeff1;
+  padding: 20px;
+}

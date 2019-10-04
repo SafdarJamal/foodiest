@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from './style.module.css';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
@@ -160,7 +161,7 @@ const AppBar = props => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography style={{ cursor: 'pointer' }} variant="h2" noWrap>
+          <Typography className={styles.title} variant="h2" noWrap>
             <Link
               to={
                 user
@@ -172,8 +173,8 @@ const AppBar = props => {
             >
               <img
                 src={logo}
+                className={styles.logo}
                 alt="Foodiest"
-                height="58"
                 title="We Love Foodies"
               />
             </Link>
@@ -223,7 +224,7 @@ const AppBar = props => {
               {isLanding && (
                 <div className={classes.sectionDesktop}>
                   <div className={classes.menuButton}>
-                    <Link to={ROUTES.SIGNIN} style={{ textDecoration: 'none' }}>
+                    <Link to={ROUTES.SIGNIN} className={styles.link}>
                       <CustomButton
                         variant="outlined"
                         size="large"
@@ -233,7 +234,7 @@ const AppBar = props => {
                       </CustomButton>
                     </Link>
                   </div>
-                  <Link to={ROUTES.SIGNUP} style={{ textDecoration: 'none' }}>
+                  <Link to={ROUTES.SIGNUP} className={styles.link}>
                     <CustomButton
                       variant="contained"
                       size="large"
