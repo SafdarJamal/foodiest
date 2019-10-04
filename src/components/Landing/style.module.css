@@ -1,0 +1,24 @@
+.container {
+  margin-top: 125px;
+}
+
+.titleWrapper {
+  margin-left: 25px;
+}
+
+.title {
+  margin-top: 150px;
+}
+
+.subTitle {
+  margin-top: 50px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.heroImg {
+  height: 650px;
+  width: 111%;
+}
