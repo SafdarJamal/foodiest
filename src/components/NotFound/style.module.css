@@ -1,0 +1,23 @@
+.container {
+  margin-top: 125px;
+  width: 600px;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ghostImg {
+  height: 400px;
+  width: 100%;
+}
+
+.btnWrapper {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+}

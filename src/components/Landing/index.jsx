@@ -32,7 +32,7 @@ const Landing = () => {
             </Link>
           </Grid>
           <Grid item xs={7}>
-            <img src={heroImg} alt="BurgerImage" className={styles.heroImg} />
+            <img src={heroImg} className={styles.heroImg} alt="BurgerImage" />
           </Grid>
         </Grid>
       </Paper>

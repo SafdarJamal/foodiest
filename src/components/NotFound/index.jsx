@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './style.module.css';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
@@ -12,24 +13,24 @@ import ghostImg from '../../assets/images/ghost.png';
 
 const NotFound = () => {
   return (
-    <Container style={{ marginTop: 125, width: 600 }}>
+    <Container className={styles.container}>
       <Paper className="root">
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <Typography
-              variant="h1"
-              align="center"
-              style={{ marginBottom: 20 }}
-            >
+            <Typography variant="h1" className={styles.title}>
               {/* 404 - Not Found */}
               This Page is a Ghost
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <img src={ghostImg} width="100%" height="400" alt="Ghost Screen" />
+            <img
+              src={ghostImg}
+              className={styles.ghostImg}
+              alt="Ghost Screen"
+            />
           </Grid>
-          <Grid item xs={12} style={{ marginTop: 25, textAlign: 'center' }}>
-            <Link to={ROUTES.LANDING} style={{ textDecoration: 'none' }}>
+          <Grid item xs={12} className={styles.btnWrapper}>
+            <Link to={ROUTES.LANDING} className={styles.link}>
               <CustomButton variant="contained" type="primary" size="large">
                 Back to Home
               </CustomButton>
