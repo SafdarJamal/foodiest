@@ -1,0 +1,12 @@
+.container {
+  margin-top: 125px;
+  width: 600px;
+}
+
+.cardImg {
+  height: 150px;
+}
+
+.link {
+  text-decoration: none;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './style.module.css';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../../constants/routes';
@@ -31,7 +32,7 @@ const SignUpType = () => {
   const classes = useStyles();
 
   return (
-    <Container style={{ marginTop: 125, width: 600 }}>
+    <Container className={styles.container}>
       <Paper className="root">
         <Typography variant="h1" align="center">
           Who is this account for?
@@ -42,15 +43,12 @@ const SignUpType = () => {
           <Grid item xs={6}>
             <Card className={classes.card0}>
               <CardActionArea>
-                <Link
-                  to={ROUTES.SIGNUP_RESTAURATEUR}
-                  style={{ textDecoration: 'none' }}
-                >
+                <Link to={ROUTES.SIGNUP_RESTAURATEUR} className={styles.link}>
                   <CardMedia
                     component="img"
-                    alt="Restaurateur"
-                    height="150"
                     image={restaurateur}
+                    className={styles.cardImg}
+                    alt="Restaurateur"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -72,15 +70,12 @@ const SignUpType = () => {
           <Grid item xs={6}>
             <Card className={classes.card1}>
               <CardActionArea>
-                <Link
-                  to={ROUTES.SIGNUP_FOODIE}
-                  style={{ textDecoration: 'none' }}
-                >
+                <Link to={ROUTES.SIGNUP_FOODIE} className={styles.link}>
                   <CardMedia
                     component="img"
-                    alt="Foodie"
-                    height="150"
                     image={foodie}
+                    className={styles.cardImg}
+                    alt="Foodie"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
