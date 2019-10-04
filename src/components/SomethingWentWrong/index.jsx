@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './style.module.css';
 
 import Container from '@material-ui/core/Container';
 import Paper from '../UI/Paper';
@@ -9,27 +10,22 @@ import boatLeakImg from '../../assets/images/boat-leak.png';
 
 const SomethingWentWrong = () => {
   return (
-    <Container style={{ marginTop: 125, width: 600 }}>
+    <Container className={styles.container}>
       <Paper className="root">
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <Typography
-              variant="h1"
-              align="center"
-              style={{ marginBottom: 20 }}
-            >
+            <Typography variant="h1" className={styles.title}>
               Something Went Wrong
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <img
               src={boatLeakImg}
-              width="100%"
-              height="400"
+              className={styles.boatLeakImg}
               alt="Boat leak Screen"
             />
           </Grid>
-          <Grid item xs={12} style={{ marginTop: 25, textAlign: 'center' }}>
+          <Grid item xs={12} className={styles.btnWrapper}>
             <CustomButton
               variant="contained"
               type="primary"
