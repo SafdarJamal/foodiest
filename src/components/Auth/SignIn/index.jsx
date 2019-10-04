@@ -188,6 +188,7 @@ class SignIn extends Component {
                     {signInError}
                     <CustomButton
                       // type="secondary"
+                      disableRipple={true}
                       onClick={this.dismissError}
                     >
                       Dismiss

@@ -92,6 +92,7 @@ class EmailVerification extends Component {
                   {successMessage ? successMessage : errorMessage}
                   <CustomButton
                     // type="secondary"
+                    disableRipple={true}
                     onClick={this.dismissMessage}
                   >
                     Dismiss
