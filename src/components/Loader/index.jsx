@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from './style.module.css';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Loader = () => {
   return (
-    <div style={{ textAlign: 'center', paddingTop: '25%' }}>
+    <div className={styles.container}>
       <CircularProgress size={100} />
     </div>
   );
