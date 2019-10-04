@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './style.module.css';
 
 import Container from '@material-ui/core/Container';
 import Paper from '../../UI/Paper';
@@ -7,15 +8,11 @@ import Typography from '@material-ui/core/Typography';
 
 const Dashboard = () => {
   return (
-    <Container style={{ marginTop: 125, width: 600 }}>
+    <Container className={styles.container}>
       <Paper className="root">
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <Typography
-              variant="h1"
-              align="center"
-              style={{ marginBottom: 20 }}
-            >
+            <Typography variant="h1" className={styles.title}>
               Dashboard
             </Typography>
           </Grid>
