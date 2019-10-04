@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './style.module.css';
 import { withFirebase } from '../../../services/firebase';
 import { Link } from 'react-router-dom';
 
@@ -105,16 +106,12 @@ class PasswordReset extends Component {
     } = this.state;
 
     return (
-      <Container style={{ marginTop: 100, width: 600 }}>
+      <Container className={styles.container}>
         {isProcessing && <Progress />}
         <Paper className="root">
           <Grid container spacing={1}>
             <Grid item xs={12}>
-              <Typography
-                variant="h1"
-                align="center"
-                style={{ marginBottom: 20 }}
-              >
+              <Typography variant="h1" className={styles.title}>
                 Forgot your Password?
               </Typography>
             </Grid>
@@ -122,13 +119,7 @@ class PasswordReset extends Component {
               <Grid
                 item
                 xs={12}
-                style={{
-                  backgroundColor: '#EAF0F1',
-                  border: `1px solid ${successMessage ? 'green' : 'red'}`,
-                  textAlign: 'center',
-                  margin: 10,
-                  borderRadius: 2
-                }}
+                className={successMessage ? styles.success : styles.error}
               >
                 <Typography variant="overline">
                   {successMessage ? successMessage : errorMessage}
@@ -157,13 +148,10 @@ class PasswordReset extends Component {
                 We'll send you a link to reset your password.
               </Typography>
             </Grid>
-            <Grid
-              container
-              style={{ marginTop: 25, marginLeft: 12, marginRight: 12 }}
-            >
+            <Grid container className={styles.btnWrapper}>
               <Grid item xs={6}>
-                <div style={{ textAlign: 'left' }}>
-                  <Link to="/signin" style={{ textDecoration: 'none' }}>
+                <div className={styles.btnWrapperChild1}>
+                  <Link to="/signin" className={styles.link}>
                     <CustomButton
                       variant="outlined"
                       // type="secondary"
@@ -176,7 +164,7 @@ class PasswordReset extends Component {
                 </div>
               </Grid>
               <Grid item xs={6}>
-                <div style={{ textAlign: 'right' }}>
+                <div className={styles.btnWrapperChild2}>
                   <CustomButton
                     variant="contained"
                     type="primary"

@@ -1,0 +1,44 @@
+.container {
+  margin-top: 125px;
+  width: 600px;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.message {
+  background-color: #eaf0f1;
+  text-align: center;
+  margin: 10px;
+  border-radius: 2px;
+}
+
+.success {
+  composes: message;
+  border: 1px solid green;
+}
+
+.error {
+  composes: message;
+  border: 1px solid red;
+}
+
+.btnWrapper {
+  margin-top: 25px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.btnWrapperChild1 {
+  text-align: left;
+}
+
+.btnWrapperChild2 {
+  text-align: right;
+}
+
+.link {
+  text-decoration: none;
+}
