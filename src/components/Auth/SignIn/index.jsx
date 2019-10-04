@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './style.module.css';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../../services/firebase';
@@ -158,32 +159,18 @@ class SignIn extends Component {
     const { emailError, passwordError, isProcessing, signInError } = this.state;
 
     return (
-      <Container style={{ marginTop: 125, width: 600 }}>
+      <Container className={styles.container}>
         {isProcessing && <Progress />}
         <Paper className="root">
           <form noValidate autoComplete="off">
             <Grid container spacing={1}>
               <Grid item xs={12}>
-                <Typography
-                  variant="h1"
-                  align="center"
-                  style={{ marginBottom: 20 }}
-                >
+                <Typography variant="h1" className={styles.title}>
                   Sign In
                 </Typography>
               </Grid>
               {signInError && (
-                <Grid
-                  item
-                  xs={12}
-                  style={{
-                    backgroundColor: '#EAF0F1',
-                    border: '1px solid red',
-                    textAlign: 'center',
-                    margin: 10,
-                    borderRadius: 2
-                  }}
-                >
+                <Grid item xs={12} className={styles.error}>
                   <Typography variant="overline">
                     {signInError}
                     <CustomButton
@@ -215,29 +202,15 @@ class SignIn extends Component {
                   disabled={isProcessing}
                 />
               </Grid>
-              <Grid
-                item
-                xs={12}
-                style={{
-                  textAlign: 'right',
-                  marginRight: 10,
-                  cursor: 'pointer'
-                }}
-              >
-                <Link component={RouterLink} to="/signin/password-reset">
+              <Grid item xs={12} className={styles.passwordResetLink}>
+                <Link component={RouterLink} to={ROUTES.PASSWORD_RESET}>
                   <Typography variant="subtitle1">Forgot Password?</Typography>
                 </Link>
               </Grid>
-              <Grid
-                container
-                style={{ marginTop: 25, marginLeft: 12, marginRight: 12 }}
-              >
+              <Grid container className={styles.btnWrapper}>
                 <Grid item xs={6}>
-                  <div style={{ textAlign: 'left' }}>
-                    <RouterLink
-                      to={ROUTES.SIGNUP}
-                      style={{ textDecoration: 'none' }}
-                    >
+                  <div className={styles.btnWrapperChild1}>
+                    <RouterLink to={ROUTES.SIGNUP} className={styles.link}>
                       <CustomButton
                         variant="outlined"
                         // type="secondary"
@@ -250,7 +223,7 @@ class SignIn extends Component {
                   </div>
                 </Grid>
                 <Grid item xs={6}>
-                  <div style={{ textAlign: 'right' }}>
+                  <div className={styles.btnWrapperChild2}>
                     <CustomButton
                       variant="contained"
                       type="primary"

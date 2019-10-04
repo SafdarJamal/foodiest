@@ -3,6 +3,8 @@ import styles from './style.module.css';
 import { withFirebase } from '../../../services/firebase';
 import { Link } from 'react-router-dom';
 
+import * as ROUTES from '../../../constants/routes';
+
 import Container from '@material-ui/core/Container';
 import Paper from '../../UI/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -151,7 +153,7 @@ class PasswordReset extends Component {
             <Grid container className={styles.btnWrapper}>
               <Grid item xs={6}>
                 <div className={styles.btnWrapperChild1}>
-                  <Link to="/signin" className={styles.link}>
+                  <Link to={ROUTES.SIGNIN} className={styles.link}>
                     <CustomButton
                       variant="outlined"
                       // type="secondary"

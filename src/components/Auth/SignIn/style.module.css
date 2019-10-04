@@ -1,0 +1,40 @@
+.container {
+  margin-top: 125px;
+  width: 600px;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.error {
+  background-color: #eaf0f1;
+  text-align: center;
+  margin: 10px;
+  border: 1px solid red;
+  border-radius: 2px;
+}
+
+.passwordResetLink {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.btnWrapper {
+  margin-top: 25px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.btnWrapperChild1 {
+  text-align: left;
+}
+
+.btnWrapperChild2 {
+  text-align: right;
+}
+
+.link {
+  text-decoration: none;
+}
