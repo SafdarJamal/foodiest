@@ -45,11 +45,9 @@ const styles = {
   }
 };
 
-/**
- * Material design search bar
- * @see [Search patterns](https://material.io/guidelines/patterns/search.html)
- */
 class SearchBar extends Component {
+  inputRef = React.createRef();
+
   constructor(props) {
     super(props);
     this.state = {
@@ -59,10 +57,11 @@ class SearchBar extends Component {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.value !== nextProps.value) {
-      this.setState({ ...this.state, value: nextProps.value });
+  static getDerivedStateFromProps(props, state) {
+    if (props.value !== state.value) {
+      return { value: props.value };
     }
+    return null;
   }
 
   handleFocus = e => {
@@ -116,6 +115,22 @@ class SearchBar extends Component {
     }
   };
 
+  /**
+   * @public
+   * Focus the input component.
+   */
+  focus = () => {
+    this.inputRef.current.focus();
+  };
+
+  /**
+   * @public
+   * Blur the input component.
+   */
+  blur = () => {
+    this.inputRef.current.blur();
+  };
+
   render() {
     const { value } = this.state;
     const {
@@ -136,6 +151,7 @@ class SearchBar extends Component {
         <div className={classes.searchContainer}>
           <Input
             {...inputProps}
+            inputRef={this.inputRef}
             onBlur={this.handleBlur}
             value={value}
             onChange={this.handleInput}
@@ -180,16 +196,6 @@ class SearchBar extends Component {
   }
 }
 
-SearchBar.defaultProps = {
-  className: '',
-  closeIcon: <ClearIcon style={{ color: grey[500] }} />,
-  disabled: false,
-  placeholder: 'Search',
-  searchIcon: <SearchIcon style={{ color: grey[500] }} />,
-  style: null,
-  value: ''
-};
-
 SearchBar.propTypes = {
   /** Whether to clear search on escape */
   cancelOnEscape: PropTypes.bool,
@@ -215,6 +221,16 @@ SearchBar.propTypes = {
   style: PropTypes.object,
   /** The value of the text field. */
   value: PropTypes.string
+};
+
+SearchBar.defaultProps = {
+  className: '',
+  closeIcon: <ClearIcon style={{ color: grey[500] }} />,
+  disabled: false,
+  placeholder: 'Search',
+  searchIcon: <SearchIcon style={{ color: grey[500] }} />,
+  style: null,
+  value: ''
 };
 
 export default withStyles(styles)(SearchBar);
