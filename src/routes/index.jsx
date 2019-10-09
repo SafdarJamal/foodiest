@@ -1,34 +1,45 @@
 import React, { lazy } from 'react';
-
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
+import pMinDelay from 'p-min-delay';
 
-// Routes handling
-const Landing = lazy(() => import('./public/Landing'));
-const Restaurateur = lazy(() => import('./private/Restaurateur'));
-const Foodie = lazy(() => import('./private/Foodie'));
-const SignUpType = lazy(() => import('./public/SignUpType'));
-const SignUp = lazy(() => import('./public/SignUp'));
-const EmailVerification = lazy(() =>
-  import('./verification/EmailVerification')
+import PrivateRestaurateur from './private/Restaurateur';
+import PrivateFoodie from './private/Foodie';
+import Public from './public/Public';
+
+const Landing = lazy(() =>
+  pMinDelay(import('../screens/Landing/Landing'), 1000)
 );
-const SignIn = lazy(() => import('./public/SignIn'));
-const PasswordReset = lazy(() => import('./public/PasswordReset'));
-const NotFound = lazy(() => import('../components/NotFound'));
+const Restaurateur = lazy(() =>
+  pMinDelay(import('../screens/Restaurateur/Dashboard'), 1000)
+);
+const Foodie = lazy(() => pMinDelay(import('../screens/Foodie/Home'), 1000));
+const SignUpType = lazy(() =>
+  pMinDelay(import('../screens/Auth/SignUpType'), 1000)
+);
+const SignUp = lazy(() => pMinDelay(import('../screens/Auth/SignUp'), 1000));
+const EmailVerification = lazy(() =>
+  pMinDelay(import('../screens/Auth/EmailVerification'), 1000)
+);
+const SignIn = lazy(() => pMinDelay(import('../screens/Auth/SignIn'), 1000));
+const PasswordReset = lazy(() =>
+  pMinDelay(import('../screens/Auth/PasswordReset'), 1000)
+);
+const NotFound = lazy(() => pMinDelay(import('../components/NotFound'), 1000));
 
 const Routes = () => {
   return (
     <Switch>
-      <Route path={ROUTES.LANDING} component={Landing} exact />
-      <Route path={ROUTES.DASHBOARD} component={Restaurateur} />
-      <Route path={ROUTES.HOME} component={Foodie} />
-      <Route path={ROUTES.SIGNUP} component={SignUpType} exact />
-      <Route path={ROUTES.SIGNUP_RESTAURATEUR} component={SignUp} />
-      <Route path={ROUTES.SIGNUP_FOODIE} component={SignUp} />
-      <Route path={ROUTES.VERIFICATION} component={EmailVerification} />
-      <Route path={ROUTES.SIGNIN} component={SignIn} exact />
-      <Route path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
-      <Route component={NotFound} />
+      <Public path={ROUTES.LANDING} component={Landing} exact />
+      <PrivateRestaurateur path={ROUTES.DASHBOARD} component={Restaurateur} />
+      <PrivateFoodie path={ROUTES.HOME} component={Foodie} />
+      <Public path={ROUTES.SIGNUP} component={SignUpType} exact />
+      <Public path={ROUTES.SIGNUP_RESTAURATEUR} component={SignUp} />
+      <Public path={ROUTES.SIGNUP_FOODIE} component={SignUp} />
+      <Public path={ROUTES.VERIFICATION} component={EmailVerification} />
+      <Public path={ROUTES.SIGNIN} component={SignIn} exact />
+      <Public path={ROUTES.PASSWORD_RESET} component={PasswordReset} />
+      <Public component={NotFound} />
     </Switch>
   );
 };
