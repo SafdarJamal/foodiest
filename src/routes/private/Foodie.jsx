@@ -1,36 +1,23 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes';
+import { Route, Redirect } from 'react-router-dom';
 import * as USER_TYPES from '../../constants/userTypes';
-import pMinDelay from 'p-min-delay';
 
-const Home = lazy(() => pMinDelay(import('../../screens/Foodie/Home'), 2000));
-const NotFound = lazy(() => import('../../components/NotFound'));
-
-const FoodieRoute = ({ user }) => {
-  if (user) {
-    if (user.isVerified) {
-      if (user.type === USER_TYPES.FOODIE) {
-        return (
-          <Switch>
-            <Route path={ROUTES.HOME} component={Home} exact />
-            <Route component={NotFound} />
-          </Switch>
-        );
-      } else {
-        return <Redirect to={ROUTES.LANDING} />;
-      }
-    } else {
-      return <Redirect to={ROUTES.VERIFICATION} />;
+const Foodie = ({ user, component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      user && user.isVerified && user.type === USER_TYPES.FOODIE ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/" />
+      )
     }
-  } else {
-    return <Redirect to={ROUTES.SIGNIN} />;
-  }
-};
+  />
+);
 
 const mapStateToProps = state => {
   return { user: state.auth.user };
 };
 
-export default connect(mapStateToProps)(FoodieRoute);
+export default connect(mapStateToProps)(Foodie);
