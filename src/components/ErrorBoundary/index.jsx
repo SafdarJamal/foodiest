@@ -10,7 +10,7 @@ import boatLeakImg from '../../assets/images/boat-leak.png';
 
 const ErrorBoundary = () => {
   return (
-    <Container className={styles.container}>
+    <Container className={styles.container} style={{ width: 600 }}>
       <Paper className="root">
         <Grid container spacing={1}>
           <Grid item xs={12}>
