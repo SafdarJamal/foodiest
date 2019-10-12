@@ -8,7 +8,7 @@ import { Route } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 
-import ErrorBoundary from '../../components/ErrorBoundary';
+import ErrorBoundaryContainer from '../ErrorBoundaryContainer';
 import Header from '../../components/Header';
 import Loader from '../../components/Loader';
 
@@ -35,7 +35,7 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <ErrorBoundary>
+        <ErrorBoundaryContainer>
           <Route component={Header} />
           <Suspense
             fallback={
@@ -46,7 +46,7 @@ class App extends Component {
           >
             <Routes />
           </Suspense>
-        </ErrorBoundary>
+        </ErrorBoundaryContainer>
       </ThemeProvider>
     );
   }
