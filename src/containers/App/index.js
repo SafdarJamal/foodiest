@@ -3,13 +3,12 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../services/firebase';
 import { Loading, SignIn } from '../../actions';
-import { Route } from 'react-router-dom';
 
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 
 import ErrorBoundaryContainer from '../ErrorBoundaryContainer';
-import Header from '../../components/Header';
+import HeaderContainer from '../HeaderContainer';
 import Loader from '../../components/Loader';
 
 import Routes from '../../routes';
@@ -36,7 +35,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <ErrorBoundaryContainer>
-          <Route component={Header} />
+          <HeaderContainer />
           <Suspense
             fallback={
               <div>
