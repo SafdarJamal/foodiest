@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import styles from './style.module.css';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../../UI/Paper';
+import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import CustomButton from '../../UI/CustomButton';
-import Progress from '../../UI/Progress';
+import CustomButton from '../UI/CustomButton';
+import Progress from '../UI/Progress';
 
 const EmailVerification = props => {
   const {

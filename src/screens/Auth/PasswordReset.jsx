@@ -1,6 +1,6 @@
 import React from 'react';
-import PasswordReset from '../../components/Auth/PasswordReset';
+import PasswordResetContainer from '../../containers/PasswordResetContainer';
 
 export default () => {
-  return <PasswordReset />;
+  return <PasswordResetContainer />;
 };

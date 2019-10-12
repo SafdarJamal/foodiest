@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withFirebase } from '../../services/firebase';
 import { validateEmail, validatePasswordResetForm } from '../../utils/validate';
 
-import PasswordReset from '../../components/Auth/PasswordReset';
+import PasswordReset from '../../components/PasswordReset';
 
 class PasswordResetContainer extends Component {
   constructor(props) {

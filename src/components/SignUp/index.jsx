@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.module.css';
 import { Link } from 'react-router-dom';
-import * as ROUTES from '../../../constants/routes';
+import * as ROUTES from '../../constants/routes';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../../UI/Paper';
+import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import InputField from '../../UI/InputField';
-import CustomButton from '../../UI/CustomButton';
-import Progress from '../../UI/Progress';
+import InputField from '../UI/InputField';
+import CustomButton from '../UI/CustomButton';
+import Progress from '../UI/Progress';
 
 const SignUp = props => {
   const {

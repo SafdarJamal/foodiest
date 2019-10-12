@@ -1,28 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.module.css';
-import { Link as RouterLink } from 'react-router-dom';
-import * as ROUTES from '../../../constants/routes';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../../UI/Paper';
+import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import InputField from '../../UI/InputField';
-import CustomButton from '../../UI/CustomButton';
-import Progress from '../../UI/Progress';
-import Link from '@material-ui/core/Link';
+import InputField from '../UI/InputField';
+import CustomButton from '../UI/CustomButton';
+import Progress from '../UI/Progress';
 
-const SignIn = props => {
+const PasswordReset = props => {
   const {
     validateEmail,
-    validatePassword,
-    signMeIn,
+    sendEmail,
     emailError,
-    passwordError,
     isProcessing,
-    signInError,
-    dismissError
+    successMessage,
+    errorMessage,
+    dismissMessage
   } = props;
 
   return (
@@ -33,17 +31,21 @@ const SignIn = props => {
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Typography variant="h1" className={styles.title}>
-                Sign In
+                Forgot your Password?
               </Typography>
             </Grid>
-            {signInError && (
-              <Grid item xs={12} className={styles.error}>
+            {(successMessage || errorMessage) && (
+              <Grid
+                item
+                xs={12}
+                className={successMessage ? styles.success : styles.error}
+              >
                 <Typography variant="overline">
-                  {signInError}
+                  {successMessage ? successMessage : errorMessage}
                   <CustomButton
                     // type="secondary"
                     disableRipple={true}
-                    onClick={dismissError}
+                    onClick={dismissMessage}
                   >
                     Dismiss
                   </CustomButton>
@@ -61,32 +63,23 @@ const SignIn = props => {
               />
             </Grid>
             <Grid item xs={12}>
-              <InputField
-                label="Password"
-                type="password"
-                validate={validatePassword}
-                errorMessage={passwordError}
-                disabled={isProcessing}
-              />
-            </Grid>
-            <Grid item xs={12} className={styles.passwordResetLink}>
-              <Link component={RouterLink} to={ROUTES.PASSWORD_RESET}>
-                <Typography variant="subtitle1">Forgot Password?</Typography>
-              </Link>
+              <Typography variant="subtitle1" align="center">
+                We'll send you a link to reset your password.
+              </Typography>
             </Grid>
             <Grid container className={styles.btnWrapper}>
               <Grid item xs={6}>
                 <div className={styles.btnWrapperChild1}>
-                  <RouterLink to={ROUTES.SIGNUP} className={styles.link}>
+                  <Link to={ROUTES.SIGNIN} className={styles.link}>
                     <CustomButton
                       variant="outlined"
                       // type="secondary"
                       size="large"
                       disabled={isProcessing}
                     >
-                      Create Account
+                      Back to Sign In
                     </CustomButton>
-                  </RouterLink>
+                  </Link>
                 </div>
               </Grid>
               <Grid item xs={6}>
@@ -95,10 +88,10 @@ const SignIn = props => {
                     variant="contained"
                     type="primary"
                     size="large"
-                    onClick={signMeIn}
+                    onClick={sendEmail}
                     disabled={isProcessing}
                   >
-                    Sign Me In
+                    Email me Reset Link
                   </CustomButton>
                 </div>
               </Grid>
@@ -110,15 +103,14 @@ const SignIn = props => {
   );
 };
 
-SignIn.propTypes = {
+PasswordReset.propTypes = {
   validateEmail: PropTypes.func.isRequired,
-  validatePassword: PropTypes.func.isRequired,
-  signMeIn: PropTypes.func.isRequired,
+  sendEmail: PropTypes.func.isRequired,
   emailError: PropTypes.string.isRequired,
-  passwordError: PropTypes.string.isRequired,
   isProcessing: PropTypes.bool.isRequired,
-  signInError: PropTypes.string.isRequired,
-  dismissError: PropTypes.func.isRequired
+  successMessage: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  dismissMessage: PropTypes.func.isRequired
 };
 
-export default SignIn;
+export default PasswordReset;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../services/firebase';
 
-import EmailVerification from '../../components/Auth/EmailVerification';
+import EmailVerification from '../../components/EmailVerification';
 
 class EmailVerificationContainer extends Component {
   constructor(props) {

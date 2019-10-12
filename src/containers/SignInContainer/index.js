@@ -9,7 +9,7 @@ import {
   validateSignInForm
 } from '../../utils/validate';
 
-import SignIn from '../../components/Auth/SignIn';
+import SignIn from '../../components/SignIn';
 
 class SignInContainer extends Component {
   constructor(props) {

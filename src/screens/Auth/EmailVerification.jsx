@@ -1,6 +1,6 @@
 import React from 'react';
-import EmailVerification from '../../components/Auth/EmailVerification';
+import EmailVerificationContainer from '../../containers/EmailVerificationContainer';
 
 export default () => {
-  return <EmailVerification />;
+  return <EmailVerificationContainer />;
 };

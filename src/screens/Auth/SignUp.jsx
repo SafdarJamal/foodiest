@@ -1,6 +1,6 @@
 import React from 'react';
-import SignUp from '../../components/Auth/SignUp';
+import SignUpContainer from '../../containers/SignUpContainer';
 
 export default () => {
-  return <SignUp />;
+  return <SignUpContainer />;
 };

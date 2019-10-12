@@ -1,6 +1,6 @@
 import React from 'react';
-import SignIn from '../../components/Auth/SignIn';
+import SignInContainer from '../../containers/SignInContainer';
 
 export default () => {
-  return <SignIn />;
+  return <SignInContainer />;
 };

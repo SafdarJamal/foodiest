@@ -13,7 +13,7 @@ import {
   validateSignUpForm
 } from '../../utils/validate';
 
-import SignUp from '../../components/Auth/SignUp';
+import SignUp from '../../components/SignUp';
 
 class SignUpContainer extends Component {
   constructor(props) {
