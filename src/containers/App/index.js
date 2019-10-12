@@ -8,9 +8,9 @@ import { Route } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 
-import ErrorBoundary from '../ErrorBoundary';
-import Header from '../Header';
-import Loader from '../Loader';
+import ErrorBoundary from '../../components/ErrorBoundary';
+import Header from '../../components/Header';
+import Loader from '../../components/Loader';
 
 import Routes from '../../routes';
 import { authStateObserver } from '../../utils/authStateObserver';
