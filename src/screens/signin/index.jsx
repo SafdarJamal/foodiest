@@ -1,6 +1,8 @@
 import React from 'react';
 import SignInContainer from '../../containers/SignInContainer';
 
-export default () => {
+const SignInScreen = () => {
   return <SignInContainer />;
 };
+
+export default SignInScreen;

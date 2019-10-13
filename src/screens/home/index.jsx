@@ -8,7 +8,7 @@ const NotFound = lazy(() =>
   pMinDelay(import('../../components/NotFound'), 1000)
 );
 
-export default () => {
+const HomeScreen = () => {
   return (
     <Switch>
       <Route path={ROUTES.HOME} component={Home} exact />
@@ -16,3 +16,5 @@ export default () => {
     </Switch>
   );
 };
+
+export default HomeScreen;

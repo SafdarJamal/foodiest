@@ -1,6 +1,8 @@
 import React from 'react';
 import EmailVerificationContainer from '../../containers/EmailVerificationContainer';
 
-export default () => {
+const VerificationScreen = () => {
   return <EmailVerificationContainer />;
 };
+
+export default VerificationScreen;
