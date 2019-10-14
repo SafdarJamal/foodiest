@@ -144,13 +144,13 @@ SignUp.propTypes = {
   validatePassword: PropTypes.func.isRequired,
   confirmPassword: PropTypes.func.isRequired,
   signMeUp: PropTypes.func.isRequired,
-  fNameError: PropTypes.string.isRequired,
-  lNameError: PropTypes.string.isRequired,
-  emailError: PropTypes.string.isRequired,
-  passwordError: PropTypes.string.isRequired,
-  confirmPasswordError: PropTypes.string.isRequired,
+  fNameError: PropTypes.string,
+  lNameError: PropTypes.string,
+  emailError: PropTypes.string,
+  passwordError: PropTypes.string,
+  confirmPasswordError: PropTypes.string,
   isProcessing: PropTypes.bool.isRequired,
-  signUpError: PropTypes.string.isRequired,
+  signUpError: PropTypes.string,
   dismissError: PropTypes.func.isRequired
 };
 

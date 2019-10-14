@@ -114,10 +114,10 @@ SignIn.propTypes = {
   validateEmail: PropTypes.func.isRequired,
   validatePassword: PropTypes.func.isRequired,
   signMeIn: PropTypes.func.isRequired,
-  emailError: PropTypes.string.isRequired,
-  passwordError: PropTypes.string.isRequired,
+  emailError: PropTypes.string,
+  passwordError: PropTypes.string,
   isProcessing: PropTypes.bool.isRequired,
-  signInError: PropTypes.string.isRequired,
+  signInError: PropTypes.string,
   dismissError: PropTypes.func.isRequired
 };
 

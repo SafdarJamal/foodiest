@@ -106,10 +106,10 @@ const PasswordReset = props => {
 PasswordReset.propTypes = {
   validateEmail: PropTypes.func.isRequired,
   sendEmail: PropTypes.func.isRequired,
-  emailError: PropTypes.string.isRequired,
+  emailError: PropTypes.string,
   isProcessing: PropTypes.bool.isRequired,
-  successMessage: PropTypes.string.isRequired,
-  errorMessage: PropTypes.string.isRequired,
+  successMessage: PropTypes.string,
+  errorMessage: PropTypes.string,
   dismissMessage: PropTypes.func.isRequired
 };
 

@@ -73,8 +73,8 @@ const EmailVerification = props => {
 EmailVerification.propTypes = {
   resendEmail: PropTypes.func.isRequired,
   isProcessing: PropTypes.bool.isRequired,
-  successMessage: PropTypes.string.isRequired,
-  errorMessage: PropTypes.string.isRequired,
+  successMessage: PropTypes.string,
+  errorMessage: PropTypes.string,
   dismissMessage: PropTypes.func.isRequired
 };
 

@@ -3,16 +3,14 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../services/firebase';
 import { Loading, SignIn } from '../../actions';
-
+import { authStateObserver } from '../../utils/authStateObserver';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
 
 import ErrorBoundaryContainer from '../ErrorBoundaryContainer';
 import HeaderContainer from '../HeaderContainer';
 import Loader from '../../components/Loader';
-
 import Routes from '../../routes/Routes';
-import { authStateObserver } from '../../utils/authStateObserver';
 
 class App extends Component {
   componentDidMount() {
@@ -27,7 +25,9 @@ class App extends Component {
     if (isLoading) {
       return (
         <ThemeProvider theme={theme}>
-          <Loader />;
+          <ErrorBoundaryContainer>
+            <Loader />;
+          </ErrorBoundaryContainer>
         </ThemeProvider>
       );
     }
@@ -36,13 +36,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <ErrorBoundaryContainer>
           <HeaderContainer />
-          <Suspense
-            fallback={
-              <div>
-                <Loader />
-              </div>
-            }
-          >
+          <Suspense fallback={<Loader />}>
             <Routes />
           </Suspense>
         </ErrorBoundaryContainer>
