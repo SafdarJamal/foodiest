@@ -8,26 +8,40 @@ import { PrivateFoodie } from './private';
 import { Public } from './public';
 
 const DashboardScreen = lazy(() =>
-  pMinDelay(import('../screens/dashboard'), 1000)
+  pMinDelay(import('../screens/dashboard/DashboardScreen'), 1000)
 );
-const HomeScreen = lazy(() => pMinDelay(import('../screens/home'), 1000));
-const LandingScreen = lazy(() => pMinDelay(import('../screens'), 1000));
-const SignUpScreen = lazy(() => pMinDelay(import('../screens/signup'), 1000));
+const HomeScreen = lazy(() =>
+  pMinDelay(import('../screens/home/HomeScreen'), 1000)
+);
+const LandingScreen = lazy(() =>
+  pMinDelay(import('../screens/LandingScreen'), 1000)
+);
+const SignUpScreen = lazy(() =>
+  pMinDelay(import('../screens/signup/SignUpScreen'), 1000)
+);
 const SignUpRestaurateurScreen = lazy(() =>
-  pMinDelay(import('../screens/signup/restaurateur'), 1000)
+  pMinDelay(
+    import('../screens/signup/restaurateur/SignUpRestaurateurScreen'),
+    1000
+  )
 );
 const SignUpFoodieScreen = lazy(() =>
-  pMinDelay(import('../screens/signup/foodie'), 1000)
+  pMinDelay(import('../screens/signup/foodie/SignUpFoodieScreen'), 1000)
 );
 const VerificationScreen = lazy(() =>
-  pMinDelay(import('../screens/verification'), 1000)
+  pMinDelay(import('../screens/verification/VerificationScreen'), 1000)
 );
-const SignInScreen = lazy(() => pMinDelay(import('../screens/signin'), 1000));
+const SignInScreen = lazy(() =>
+  pMinDelay(import('../screens/signin/SignInScreen'), 1000)
+);
 const PasswordResetScreen = lazy(() =>
-  pMinDelay(import('../screens/signin/password-reset'), 1000)
+  pMinDelay(
+    import('../screens/signin/password-reset/PasswordResetScreen'),
+    1000
+  )
 );
 const NotFoundScreen = lazy(() =>
-  pMinDelay(import('../components/NotFound'), 1000)
+  pMinDelay(import('../screens/NotFoundScreen'), 1000)
 );
 
 const Routes = () => {
