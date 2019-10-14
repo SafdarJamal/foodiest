@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-.ghostImg {
+.boatLeakImg {
   height: 400px;
   width: 100%;
 }
@@ -15,8 +15,4 @@
 .btnWrapper {
   margin-top: 25px;
   text-align: center;
-}
-
-.link {
-  text-decoration: none;
 }

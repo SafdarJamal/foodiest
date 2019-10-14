@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './style.module.css';
 import { Link } from 'react-router-dom';
-
 import * as ROUTES from '../../constants/routes';
 
 import Container from '@material-ui/core/Container';

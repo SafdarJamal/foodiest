@@ -1,33 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
+import styles from './style.module.css';
 
-import SomethingWentWrong from '../SomethingWentWrong';
+import Container from '@material-ui/core/Container';
+import Paper from '../UI/Paper';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import CustomButton from '../UI/CustomButton';
+import boatLeakImg from '../../assets/images/boat-leak.png';
 
-class ErrorBoundary extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, info) {
-    // You can also log the error to an error reporting service
-    // logErrorToMyService(error, info);
-    console.log(error, info);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      // Render any custom fallback UI
-      return <SomethingWentWrong />;
-    }
-
-    return this.props.children;
-  }
-}
+const ErrorBoundary = () => {
+  return (
+    <Container className={styles.container} style={{ width: 600 }}>
+      <Paper className="root">
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <Typography variant="h1" className={styles.title}>
+              Something Went Wrong
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <img
+              src={boatLeakImg}
+              className={styles.boatLeakImg}
+              alt="Boat leak Screen"
+            />
+          </Grid>
+          <Grid item xs={12} className={styles.btnWrapper}>
+            <CustomButton
+              variant="contained"
+              type="primary"
+              size="large"
+              onClick={() => window.location.reload()}
+            >
+              Reload this Page
+            </CustomButton>
+          </Grid>
+        </Grid>
+      </Paper>
+    </Container>
+  );
+};
 
 export default ErrorBoundary;

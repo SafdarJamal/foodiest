@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './style.module.css';
 import { Link } from 'react-router-dom';
-
 import * as ROUTES from '../../constants/routes';
 
 import Container from '@material-ui/core/Container';
@@ -13,7 +12,7 @@ import ghostImg from '../../assets/images/ghost.png';
 
 const NotFound = () => {
   return (
-    <Container className={styles.container}>
+    <Container className={styles.container} style={{ width: 600 }}>
       <Paper className="root">
         <Grid container spacing={1}>
           <Grid item xs={12}>
