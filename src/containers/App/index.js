@@ -11,7 +11,7 @@ import ErrorBoundaryContainer from '../ErrorBoundaryContainer';
 import HeaderContainer from '../HeaderContainer';
 import Loader from '../../components/Loader';
 
-import Routes from '../../routes';
+import Routes from '../../routes/Routes';
 import { authStateObserver } from '../../utils/authStateObserver';
 
 class App extends Component {

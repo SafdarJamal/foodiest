@@ -3,9 +3,9 @@ import { Switch } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import pMinDelay from 'p-min-delay';
 
-import { PrivateRestaurateur } from './private';
-import { PrivateFoodie } from './private';
-import { Public } from './public';
+import PrivateRestaurateurRoute from './PrivateRoute/PrivateRestaurateurRoute';
+import PrivateFoodieRoute from './PrivateRoute/PrivateFoodieRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
 
 const DashboardScreen = lazy(() =>
   pMinDelay(import('../screens/dashboard/DashboardScreen'), 1000)
@@ -47,22 +47,25 @@ const NotFoundScreen = lazy(() =>
 const Routes = () => {
   return (
     <Switch>
-      <PrivateRestaurateur
+      <PrivateRestaurateurRoute
         path={ROUTES.DASHBOARD}
         component={DashboardScreen}
       />
-      <PrivateFoodie path={ROUTES.HOME} component={HomeScreen} />
-      <Public path={ROUTES.LANDING} component={LandingScreen} exact />
-      <Public path={ROUTES.SIGNUP} component={SignUpScreen} exact />
-      <Public
+      <PrivateFoodieRoute path={ROUTES.HOME} component={HomeScreen} />
+      <PublicRoute path={ROUTES.LANDING} component={LandingScreen} exact />
+      <PublicRoute path={ROUTES.SIGNUP} component={SignUpScreen} exact />
+      <PublicRoute
         path={ROUTES.SIGNUP_RESTAURATEUR}
         component={SignUpRestaurateurScreen}
       />
-      <Public path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodieScreen} />
-      <Public path={ROUTES.VERIFICATION} component={VerificationScreen} />
-      <Public path={ROUTES.SIGNIN} component={SignInScreen} exact />
-      <Public path={ROUTES.PASSWORD_RESET} component={PasswordResetScreen} />
-      <Public component={NotFoundScreen} />
+      <PublicRoute path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodieScreen} />
+      <PublicRoute path={ROUTES.VERIFICATION} component={VerificationScreen} />
+      <PublicRoute path={ROUTES.SIGNIN} component={SignInScreen} exact />
+      <PublicRoute
+        path={ROUTES.PASSWORD_RESET}
+        component={PasswordResetScreen}
+      />
+      <PublicRoute component={NotFoundScreen} />
     </Switch>
   );
 };

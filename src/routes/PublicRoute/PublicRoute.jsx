@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 import * as USER_TYPES from '../../constants/userTypes';
 import * as ROUTES from '../../constants/routes';
 
-const Public = ({ user, component: Component, ...rest }) => (
+const PublicRoute = ({ user, component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
@@ -27,4 +27,4 @@ const mapStateToProps = state => {
   return { user: state.auth.user };
 };
 
-export default connect(mapStateToProps)(Public);
+export default connect(mapStateToProps)(PublicRoute);
