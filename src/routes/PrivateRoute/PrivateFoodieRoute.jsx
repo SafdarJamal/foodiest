@@ -11,7 +11,7 @@ const PrivateFoodieRoute = ({ user, component: Component, ...rest }) => (
       user && user.isVerified && user.type === USER_TYPES.FOODIE ? (
         <Component {...props} />
       ) : (
-        <Redirect to={ROUTES.LANDING} />
+        <Redirect to={ROUTES.SIGNIN} />
       )
     }
   />
