@@ -3,9 +3,9 @@ import { Switch } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import pMinDelay from 'p-min-delay';
 
-import PrivateRestaurateurRoute from './PrivateRoute/PrivateRestaurateurRoute';
-import PrivateFoodieRoute from './PrivateRoute/PrivateFoodieRoute';
-import PublicRoute from './PublicRoute/PublicRoute';
+import { RestaurateurRoute, FoodieRoute } from './private';
+import PublicRoute from './public';
+import VerificationRoute from './verification';
 
 const DashboardScreen = lazy(() =>
   pMinDelay(import('../screens/dashboard/DashboardScreen'), 1000)
@@ -47,11 +47,8 @@ const NotFoundScreen = lazy(() =>
 const Routes = () => {
   return (
     <Switch>
-      <PrivateRestaurateurRoute
-        path={ROUTES.DASHBOARD}
-        component={DashboardScreen}
-      />
-      <PrivateFoodieRoute path={ROUTES.HOME} component={HomeScreen} />
+      <RestaurateurRoute path={ROUTES.DASHBOARD} component={DashboardScreen} />
+      <FoodieRoute path={ROUTES.HOME} component={HomeScreen} />
       <PublicRoute path={ROUTES.LANDING} component={LandingScreen} exact />
       <PublicRoute path={ROUTES.SIGNUP} component={SignUpScreen} exact />
       <PublicRoute
@@ -59,7 +56,10 @@ const Routes = () => {
         component={SignUpRestaurateurScreen}
       />
       <PublicRoute path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodieScreen} />
-      <PublicRoute path={ROUTES.VERIFICATION} component={VerificationScreen} />
+      <VerificationRoute
+        path={ROUTES.VERIFICATION}
+        component={VerificationScreen}
+      />
       <PublicRoute path={ROUTES.SIGNIN} component={SignInScreen} exact />
       <PublicRoute
         path={ROUTES.PASSWORD_RESET}
