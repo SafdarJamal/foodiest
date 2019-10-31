@@ -22,7 +22,7 @@ class ErrorBoundaryContainer extends Component {
 
   render() {
     if (this.state.hasError) {
-      // Render any custom fallback UI
+      // Render fallback UI
       return <ErrorBoundary />;
     }
 

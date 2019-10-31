@@ -3,9 +3,10 @@ import { Switch } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import pMinDelay from 'p-min-delay';
 
-import { RestaurateurRoute, FoodieRoute } from './private';
-import PublicRoute from './public';
-import VerificationRoute from './verification';
+import RestaurateurRoute from './RestaurateurRoute';
+import FoodieRoute from './FoodieRoute';
+import PublicRoute from './PublicRoute';
+import VerificationRoute from './VerificationRoute';
 
 const DashboardScreen = lazy(() =>
   pMinDelay(import('../screens/dashboard'), 1000)

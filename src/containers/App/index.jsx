@@ -10,7 +10,7 @@ import theme from '../../theme';
 import ErrorBoundaryContainer from '../ErrorBoundaryContainer';
 import HeaderContainer from '../HeaderContainer';
 import Loader from '../../components/Loader';
-import Routes from '../../routes/Routes';
+import Routes from '../../routes';
 
 class App extends Component {
   componentDidMount() {
