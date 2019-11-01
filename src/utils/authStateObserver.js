@@ -3,7 +3,7 @@ const authStateObserver = (firebase, Loading, SignIn) => {
     if (user) {
       unsubscribe();
 
-      return firebase
+      firebase
         .getUser(user.uid)
         .then(querySnapshot => {
           // console.log(querySnapshot.data());
@@ -20,6 +20,8 @@ const authStateObserver = (firebase, Loading, SignIn) => {
         .catch(error => {
           const errorMessage = error.message;
           console.log(errorMessage);
+
+          Loading({ isLoading: false });
         });
     } else {
       unsubscribe();
