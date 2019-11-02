@@ -10,6 +10,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import Chip from '@material-ui/core/Chip';
 import foodie from '../../../assets/images/foodie.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -57,8 +58,8 @@ const Home = props => {
             'Jamba Juice',
             'The Halal Guys',
             'Starbucks®'
-          ].map((item) => (
-            <Grid item xs={4}>
+          ].map((item, i) => (
+            <Grid item xs={4} key={i}>
               <Card className={classes.card}>
                 <CardActionArea>
                   <CardMedia
@@ -79,6 +80,12 @@ const Home = props => {
                       A foodie is a person who has an ardent or refined interest
                       in food.
                     </Typography>
+                    <br />
+                    <Chip label="Coffee & Tea" />
+                    <Chip label="Burgers" />
+                    <Chip label="Fast Food" />
+                    <Chip label="Breakfast & Brunch" />
+                    <Chip label="Salads" />
                   </CardContent>
                 </CardActionArea>
               </Card>
