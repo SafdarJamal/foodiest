@@ -1,4 +1,4 @@
-const authStateObserver = (firebase, Loading, setUser) => {
+const authStateObserver = (firebase, stopLoading, setUser) => {
   const unsubscribe = firebase.auth.onAuthStateChanged(user => {
     if (user) {
       unsubscribe();
@@ -15,18 +15,18 @@ const authStateObserver = (firebase, Loading, setUser) => {
           setUser(userData);
         })
         .then(() => {
-          Loading({ isLoading: false });
+          stopLoading();
         })
         .catch(error => {
           const errorMessage = error.message;
           console.log(errorMessage);
 
-          Loading({ isLoading: false });
+          stopLoading();
         });
     } else {
       unsubscribe();
 
-      Loading({ isLoading: false });
+      stopLoading();
     }
   });
 };

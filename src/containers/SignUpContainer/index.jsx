@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../services/firebase';
 import { withRouter } from 'react-router-dom';
-import { Loading, setUser } from '../../actions';
+import { startLoading, stopLoading, setUser } from '../../actions';
 import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
 import {
@@ -185,7 +185,7 @@ class SignUpContainer extends Component {
     // console.log(this.state.email, this.state.password);
 
     setTimeout(() => {
-      const { firebase, Loading, setUser } = this.props;
+      const { firebase, startLoading, stopLoading, setUser } = this.props;
       const { fName, lName, email, password } = this.state;
 
       firebase
@@ -216,7 +216,7 @@ class SignUpContainer extends Component {
             });
           }
 
-          Loading({ isLoading: true });
+          startLoading();
 
           return firebase.getUser(firebase.auth.currentUser.uid);
         })
@@ -227,7 +227,7 @@ class SignUpContainer extends Component {
 
           setTimeout(() => {
             setUser(userData);
-            Loading({ isLoading: false });
+            stopLoading();
           }, 2000);
         })
         .catch(error => {
@@ -281,7 +281,7 @@ class SignUpContainer extends Component {
 export default compose(
   connect(
     null,
-    { Loading, setUser }
+    { startLoading, stopLoading, setUser }
   ),
   withFirebase,
   withRouter

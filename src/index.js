@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App';
-import './index.css';
 import { Provider } from 'react-redux';
 import store from './store';
 import Firebase, { FirebaseContext } from './services/firebase';
 import { BrowserRouter as Router } from 'react-router-dom';
+import './index.css';
+import App from './containers/App';
 
 ReactDOM.render(
   <Provider store={store}>

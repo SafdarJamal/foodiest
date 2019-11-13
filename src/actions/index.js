@@ -1,4 +1,4 @@
-import Loading from './loading';
+import { startLoading, stopLoading } from './isLoading';
 import { setUser, removeUser } from './user';
 
-export { Loading, setUser, removeUser };
+export { startLoading, stopLoading, setUser, removeUser };

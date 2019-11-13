@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import loadingReducer from './loadingReducer';
-import userReducer from './userReducer';
+import isLoading from './isLoading';
+import user from './user';
 
-export default combineReducers({
-  loading: loadingReducer,
-  user: userReducer
+const reducers = combineReducers({
+  isLoading,
+  user
 });
+
+export default reducers;

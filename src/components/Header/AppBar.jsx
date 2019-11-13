@@ -44,11 +44,12 @@ const useStyles = makeStyles(theme => ({
 
 const AppBar = props => {
   const {
-    user,
     isLanding,
     toggleDrawer,
-    Loading,
+    user,
     firebase,
+    startLoading,
+    stopLoading,
     removeUser
   } = props;
 
@@ -80,14 +81,14 @@ const AppBar = props => {
     setAnchorEl(null);
     handleMobileMenuClose();
 
-    Loading({ isLoading: true });
+    startLoading();
 
     setTimeout(() => {
       firebase
         .signOut()
         .then(() => {
           removeUser();
-          Loading({ isLoading: false });
+          stopLoading();
         })
         .catch(error => {
           const errorMessage = error.message;
@@ -262,11 +263,12 @@ const AppBar = props => {
 };
 
 AppBar.propTypes = {
-  user: PropTypes.object,
   isLanding: PropTypes.bool.isRequired,
   toggleDrawer: PropTypes.func.isRequired,
-  Loading: PropTypes.func.isRequired,
+  user: PropTypes.object,
   firebase: PropTypes.object.isRequired,
+  startLoading: PropTypes.func.isRequired,
+  stopLoading: PropTypes.func.isRequired,
   removeUser: PropTypes.func.isRequired
 };
 
