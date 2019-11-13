@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../services/firebase';
 import { withRouter } from 'react-router-dom';
-import { Loading, SignOut } from '../../actions';
+import { Loading, removeUser } from '../../actions';
 
 import { AppBar } from '../../components/Header';
 import { Drawer } from '../../components/Header';
@@ -29,7 +29,7 @@ class Header extends Component {
   };
 
   render() {
-    const { location, user, Loading, firebase, SignOut } = this.props;
+    const { location, user, Loading, firebase, removeUser } = this.props;
 
     let isLanding = true;
     if (location.pathname !== '/') {
@@ -44,7 +44,7 @@ class Header extends Component {
           toggleDrawer={this.toggleDrawer}
           Loading={Loading}
           firebase={firebase}
-          SignOut={SignOut}
+          removeUser={removeUser}
         />
         <Drawer
           user={user}
@@ -57,13 +57,13 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
-  return { user: state.auth.user };
+  return { user: state.user };
 };
 
 export default compose(
   connect(
     mapStateToProps,
-    { Loading, SignOut }
+    { Loading, removeUser }
   ),
   withFirebase,
   withRouter

@@ -1,5 +1,5 @@
 const LOADING = 'LOADING';
-const SIGN_IN = 'SIGN_IN';
-const SIGN_OUT = 'SIGN_OUT';
+const SET_USER = 'SET_USER';
+const REMOVE_USER = 'REMOVE_USER';
 
-export { LOADING, SIGN_IN, SIGN_OUT };
+export { LOADING, SET_USER, REMOVE_USER };

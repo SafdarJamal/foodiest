@@ -1,4 +1,4 @@
-const authStateObserver = (firebase, Loading, SignIn) => {
+const authStateObserver = (firebase, Loading, setUser) => {
   const unsubscribe = firebase.auth.onAuthStateChanged(user => {
     if (user) {
       unsubscribe();
@@ -12,7 +12,7 @@ const authStateObserver = (firebase, Loading, SignIn) => {
           userData.uid = user.uid;
           userData.isVerified = user.emailVerified;
 
-          SignIn(userData);
+          setUser(userData);
         })
         .then(() => {
           Loading({ isLoading: false });

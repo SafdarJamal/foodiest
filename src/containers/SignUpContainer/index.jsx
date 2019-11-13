@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../services/firebase';
 import { withRouter } from 'react-router-dom';
-import { Loading, SignIn } from '../../actions';
+import { Loading, setUser } from '../../actions';
 import * as ROUTES from '../../constants/routes';
 import * as USER_TYPES from '../../constants/userTypes';
 import {
@@ -19,7 +19,7 @@ class SignUpContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.type = null;
+    this._type = null;
 
     switch (props.location.pathname) {
       case ROUTES.SIGNUP_RESTAURATEUR:
@@ -185,7 +185,7 @@ class SignUpContainer extends Component {
     // console.log(this.state.email, this.state.password);
 
     setTimeout(() => {
-      const { firebase, Loading, SignIn } = this.props;
+      const { firebase, Loading, setUser } = this.props;
       const { fName, lName, email, password } = this.state;
 
       firebase
@@ -198,7 +198,7 @@ class SignUpContainer extends Component {
             fName,
             lName,
             email,
-            type: this.type
+            type: this._type
           };
 
           return firebase.addUser(user.uid, userData);
@@ -226,7 +226,7 @@ class SignUpContainer extends Component {
           userData.isVerified = firebase.auth.currentUser.emailVerified;
 
           setTimeout(() => {
-            SignIn(userData);
+            setUser(userData);
             Loading({ isLoading: false });
           }, 2000);
         })
@@ -281,7 +281,7 @@ class SignUpContainer extends Component {
 export default compose(
   connect(
     null,
-    { Loading, SignIn }
+    { Loading, setUser }
   ),
   withFirebase,
   withRouter

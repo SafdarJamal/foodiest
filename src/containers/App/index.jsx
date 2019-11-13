@@ -2,7 +2,7 @@ import React, { Component, Suspense } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../services/firebase';
-import { Loading, SignIn } from '../../actions';
+import { Loading, setUser } from '../../actions';
 import { authStateObserver } from '../../utils/authStateObserver';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../../theme';
@@ -14,8 +14,8 @@ import Routes from '../../routes';
 
 class App extends Component {
   componentDidMount() {
-    const { firebase, Loading, SignIn } = this.props;
-    authStateObserver(firebase, Loading, SignIn);
+    const { firebase, Loading, setUser } = this.props;
+    authStateObserver(firebase, Loading, setUser);
   }
 
   render() {
@@ -46,13 +46,13 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return { isLoading: state.loading.isLoading, user: state.auth.user };
+  return { isLoading: state.loading.isLoading, user: state.user };
 };
 
 export default compose(
   connect(
     mapStateToProps,
-    { Loading, SignIn }
+    { Loading, setUser }
   ),
   withFirebase
 )(App);

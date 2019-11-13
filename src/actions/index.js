@@ -1,5 +1,4 @@
-import Loading from './Loading';
-import SignIn from './SignIn';
-import SignOut from './SignOut';
+import Loading from './loading';
+import { setUser, removeUser } from './user';
 
-export { Loading, SignIn, SignOut };
+export { Loading, setUser, removeUser };

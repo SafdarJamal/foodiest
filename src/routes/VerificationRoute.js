@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes';
+import * as ROUTES from '../constants/routes';
 
 const VerificationRoute = ({ user, component: Component, ...rest }) => (
   <Route
@@ -14,14 +14,14 @@ const VerificationRoute = ({ user, component: Component, ...rest }) => (
           <Redirect to={ROUTES.LANDING} />
         )
       ) : (
-        <Redirect to={ROUTES.SIGNIN} />
+        <Redirect to={ROUTES.LANDING} />
       )
     }
   />
 );
 
 const mapStateToProps = state => {
-  return { user: state.auth.user };
+  return { user: state.user };
 };
 
 export default connect(mapStateToProps)(VerificationRoute);

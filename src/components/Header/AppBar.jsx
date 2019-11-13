@@ -43,7 +43,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AppBar = props => {
-  const { user, isLanding, toggleDrawer, Loading, firebase, SignOut } = props;
+  const {
+    user,
+    isLanding,
+    toggleDrawer,
+    Loading,
+    firebase,
+    removeUser
+  } = props;
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -79,7 +86,7 @@ const AppBar = props => {
       firebase
         .signOut()
         .then(() => {
-          SignOut();
+          removeUser();
           Loading({ isLoading: false });
         })
         .catch(error => {
@@ -260,7 +267,7 @@ AppBar.propTypes = {
   toggleDrawer: PropTypes.func.isRequired,
   Loading: PropTypes.func.isRequired,
   firebase: PropTypes.object.isRequired,
-  SignOut: PropTypes.func.isRequired
+  removeUser: PropTypes.func.isRequired
 };
 
 export default AppBar;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withFirebase } from '../../services/firebase';
-import { Loading, SignIn as SignInAction } from '../../actions';
+import { Loading, setUser } from '../../actions';
 import {
   validateEmail,
   validatePassword,
@@ -95,7 +95,7 @@ class SignInContainer extends Component {
     // console.log(this.state.email, this.state.password);
 
     setTimeout(() => {
-      const { firebase, Loading, SignInAction } = this.props;
+      const { firebase, Loading, setUser } = this.props;
       const { email, password } = this.state;
 
       firebase
@@ -123,7 +123,7 @@ class SignInContainer extends Component {
           userData.isVerified = firebase.auth.currentUser.emailVerified;
 
           setTimeout(() => {
-            SignInAction(userData);
+            setUser(userData);
             Loading({ isLoading: false });
           }, 2000);
         })
@@ -164,7 +164,7 @@ class SignInContainer extends Component {
 export default compose(
   connect(
     null,
-    { Loading, SignInAction }
+    { Loading, setUser }
   ),
   withFirebase
 )(SignInContainer);
