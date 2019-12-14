@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import pMinDelay from 'p-min-delay';
 
-import Dashboard from '../../components/Restaurateur/Dashboard';
+import Dashboard from '../../components/Dashboard';
 const NotFound = lazy(() =>
   pMinDelay(import('../../components/NotFound'), 1000)
 );

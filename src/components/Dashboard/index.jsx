@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './style.module.css';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../../UI/Paper';
+import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 

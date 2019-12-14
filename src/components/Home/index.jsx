@@ -2,16 +2,16 @@ import React, { Fragment } from 'react';
 import styles from './style.module.css';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../../UI/Paper';
+import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import SearchBar from '../../UI/SearchBar';
+import SearchBar from '../UI/SearchBar';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Chip from '@material-ui/core/Chip';
-import foodie from '../../../assets/images/foodie.jpg';
+import foodie from '../../assets/images/foodie.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
