@@ -34,4 +34,4 @@ npm start
 
 ## License
 
-This is an open source software [licensed as MIT](https://github.com/SafdarJamal/foodiest/blob/master/LICENSE).
+Foodiest is open source software [licensed as MIT](https://github.com/SafdarJamal/foodiest/blob/master/LICENSE).
