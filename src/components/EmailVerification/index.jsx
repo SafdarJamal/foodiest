@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import CustomButton from '../UI/CustomButton';
+import Button from '@material-ui/core/Button';
 import Progress from '../UI/Progress';
 
 const EmailVerification = props => {
@@ -36,13 +36,13 @@ const EmailVerification = props => {
             >
               <Typography variant="overline">
                 {successMessage ? successMessage : errorMessage}
-                <CustomButton
-                  // type="secondary"
+                <Button
+                  // color="secondary"
                   disableRipple={true}
                   onClick={dismissMessage}
                 >
                   Dismiss
-                </CustomButton>
+                </Button>
               </Typography>
             </Grid>
           )}
@@ -54,15 +54,15 @@ const EmailVerification = props => {
             </Typography>
           </Grid>
           <Grid item xs={12} className={styles.btnWrapper}>
-            <CustomButton
+            <Button
               variant="contained"
-              type="primary"
+              color="primary"
               size="large"
               onClick={resendEmail}
               disabled={isProcessing}
             >
               Resend
-            </CustomButton>
+            </Button>
           </Grid>
         </Grid>
       </Paper>

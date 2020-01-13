@@ -9,7 +9,7 @@ import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import InputField from '../UI/InputField';
-import CustomButton from '../UI/CustomButton';
+import Button from '@material-ui/core/Button';
 import Progress from '../UI/Progress';
 
 const PasswordReset = props => {
@@ -42,13 +42,13 @@ const PasswordReset = props => {
               >
                 <Typography variant="overline">
                   {successMessage ? successMessage : errorMessage}
-                  <CustomButton
+                  <Button
                     // type="secondary"
                     disableRipple={true}
                     onClick={dismissMessage}
                   >
                     Dismiss
-                  </CustomButton>
+                  </Button>
                 </Typography>
               </Grid>
             )}
@@ -71,28 +71,28 @@ const PasswordReset = props => {
               <Grid item xs={6}>
                 <div className={styles.btnWrapperChild1}>
                   <Link to={ROUTES.SIGNIN} className={styles.link}>
-                    <CustomButton
+                    <Button
                       variant="outlined"
-                      // type="secondary"
+                      // color="secondary"
                       size="large"
                       disabled={isProcessing}
                     >
                       Back to Sign In
-                    </CustomButton>
+                    </Button>
                   </Link>
                 </div>
               </Grid>
               <Grid item xs={6}>
                 <div className={styles.btnWrapperChild2}>
-                  <CustomButton
+                  <Button
                     variant="contained"
-                    type="primary"
+                    color="primary"
                     size="large"
                     onClick={sendEmail}
                     disabled={isProcessing}
                   >
                     Email me Reset Link
-                  </CustomButton>
+                  </Button>
                 </div>
               </Grid>
             </Grid>

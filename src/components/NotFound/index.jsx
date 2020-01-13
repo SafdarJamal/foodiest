@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import CustomButton from '../UI/CustomButton';
+import Button from '@material-ui/core/Button';
 import ghostImg from '../../assets/images/ghost.png';
 
 const NotFound = () => {
@@ -30,9 +30,9 @@ const NotFound = () => {
           </Grid>
           <Grid item xs={12} className={styles.btnWrapper}>
             <Link to={ROUTES.LANDING} className={styles.link}>
-              <CustomButton variant="contained" type="primary" size="large">
+              <Button variant="contained" color="primary" size="large">
                 Back to Home
-              </CustomButton>
+              </Button>
             </Link>
           </Grid>
         </Grid>

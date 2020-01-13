@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import CustomButton from '../UI/CustomButton';
+import Button from '@material-ui/core/Button';
 import heroImg from '../../assets/images/eats.jpg';
 
 const Landing = () => {
@@ -25,9 +25,9 @@ const Landing = () => {
 
             <br />
             <Link to={ROUTES.SIGNUP} className={styles.link}>
-              <CustomButton variant="contained" type="primary" size="large">
+              <Button variant="contained" color="primary" size="large">
                 Get Started
-              </CustomButton>
+              </Button>
             </Link>
           </Grid>
           <Grid item xs={7}>

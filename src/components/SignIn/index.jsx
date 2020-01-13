@@ -9,7 +9,7 @@ import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import InputField from '../UI/InputField';
-import CustomButton from '../UI/CustomButton';
+import Button from '@material-ui/core/Button';
 import Progress from '../UI/Progress';
 import Link from '@material-ui/core/Link';
 
@@ -40,13 +40,13 @@ const SignIn = props => {
               <Grid item xs={12} className={styles.error}>
                 <Typography variant="overline">
                   {signInError}
-                  <CustomButton
-                    // type="secondary"
+                  <Button
+                    // color="secondary"
                     disableRipple={true}
                     onClick={dismissError}
                   >
                     Dismiss
-                  </CustomButton>
+                  </Button>
                 </Typography>
               </Grid>
             )}
@@ -78,28 +78,28 @@ const SignIn = props => {
               <Grid item xs={6}>
                 <div className={styles.btnWrapperChild1}>
                   <RouterLink to={ROUTES.SIGNUP} className={styles.link}>
-                    <CustomButton
+                    <Button
                       variant="outlined"
-                      // type="secondary"
+                      // color="secondary"
                       size="large"
                       disabled={isProcessing}
                     >
                       Create Account
-                    </CustomButton>
+                    </Button>
                   </RouterLink>
                 </div>
               </Grid>
               <Grid item xs={6}>
                 <div className={styles.btnWrapperChild2}>
-                  <CustomButton
+                  <Button
                     variant="contained"
-                    type="primary"
+                    color="primary"
                     size="large"
                     onClick={signMeIn}
                     disabled={isProcessing}
                   >
                     Sign Me In
-                  </CustomButton>
+                  </Button>
                 </div>
               </Grid>
             </Grid>

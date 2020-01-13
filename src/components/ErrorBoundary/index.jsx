@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import CustomButton from '../UI/CustomButton';
+import Button from '@material-ui/core/Button';
 import boatLeakImg from '../../assets/images/boat-leak.png';
 
 const ErrorBoundary = () => {
@@ -26,14 +26,14 @@ const ErrorBoundary = () => {
             />
           </Grid>
           <Grid item xs={12} className={styles.btnWrapper}>
-            <CustomButton
+            <Button
               variant="contained"
-              type="primary"
+              color="primary"
               size="large"
               onClick={() => window.location.reload()}
             >
               Reload this Page
-            </CustomButton>
+            </Button>
           </Grid>
         </Grid>
       </Paper>

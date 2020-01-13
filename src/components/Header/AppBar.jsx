@@ -18,7 +18,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '../../assets/images/logo.png';
-import CustomButton from '../UI/CustomButton';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -232,23 +232,19 @@ const AppBar = props => {
                 <div className={classes.sectionDesktop}>
                   <div className={classes.menuButton}>
                     <Link to={ROUTES.SIGNIN} className={styles.link}>
-                      <CustomButton
+                      <Button
                         variant="outlined"
+                        // color="secondary"
                         size="large"
-                        // type="secondary"
                       >
                         Sign In
-                      </CustomButton>
+                      </Button>
                     </Link>
                   </div>
                   <Link to={ROUTES.SIGNUP} className={styles.link}>
-                    <CustomButton
-                      variant="contained"
-                      size="large"
-                      type="primary"
-                    >
+                    <Button variant="contained" color="primary" size="large">
                       Sign Up
-                    </CustomButton>
+                    </Button>
                   </Link>
                 </div>
               )}
