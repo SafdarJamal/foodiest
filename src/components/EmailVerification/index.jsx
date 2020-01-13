@@ -7,7 +7,7 @@ import Paper from '../UI/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Progress from '../UI/Progress';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const EmailVerification = props => {
   const {
@@ -20,7 +20,7 @@ const EmailVerification = props => {
 
   return (
     <Container className={styles.container}>
-      {isProcessing && <Progress />}
+      {isProcessing && <LinearProgress />}
       <Paper className="root">
         <Grid container spacing={1}>
           <Grid item xs={12}>

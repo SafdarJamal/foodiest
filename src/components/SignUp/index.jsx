@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import InputField from '../UI/InputField';
 import Button from '@material-ui/core/Button';
-import Progress from '../UI/Progress';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const SignUp = props => {
   const {
@@ -32,7 +32,7 @@ const SignUp = props => {
 
   return (
     <Container className={styles.container}>
-      {isProcessing && <Progress />}
+      {isProcessing && <LinearProgress />}
       <Paper className="root">
         <form noValidate autoComplete="off">
           <Grid container spacing={1}>
