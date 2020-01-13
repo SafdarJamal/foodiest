@@ -4,16 +4,25 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../UI/Paper';
+import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ghostImg from '../../assets/images/ghost.png';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(5, 3)
+  }
+}));
 
 const NotFound = () => {
+  const classes = useStyles();
+
   return (
     <Container className={styles.container} style={{ width: 600 }}>
-      <Paper className="root">
+      <Paper elevation={2} className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <Typography variant="h1" className={styles.title}>

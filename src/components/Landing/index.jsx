@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../UI/Paper';
+import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -13,7 +13,7 @@ import heroImg from '../../assets/images/eats.jpg';
 const Landing = () => {
   return (
     <Container className={styles.container}>
-      <Paper>
+      <Paper elevation={2}>
         <Grid container>
           <Grid item xs={4} className={styles.titleWrapper}>
             <Typography variant="h1" className={styles.title}>

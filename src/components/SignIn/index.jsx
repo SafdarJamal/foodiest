@@ -5,13 +5,20 @@ import { Link as RouterLink } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../UI/Paper';
+import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import InputField from '../UI/InputField';
 import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Link from '@material-ui/core/Link';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(5, 3)
+  }
+}));
 
 const SignIn = props => {
   const {
@@ -25,10 +32,12 @@ const SignIn = props => {
     dismissError
   } = props;
 
+  const classes = useStyles();
+
   return (
     <Container className={styles.container}>
       {isProcessing && <LinearProgress />}
-      <Paper className="root">
+      <Paper elevation={2} className={classes.root}>
         <form noValidate autoComplete="off">
           <Grid container spacing={1}>
             <Grid item xs={12}>

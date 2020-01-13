@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../UI/Paper';
+import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
@@ -17,7 +17,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    padding: theme.spacing(5, 3)
   },
   card0: {
     marginRight: theme.spacing(1)
@@ -32,7 +33,7 @@ const SignUpType = () => {
 
   return (
     <Container className={styles.container}>
-      <Paper className="root">
+      <Paper elevation={2} className={classes.root}>
         <Typography variant="h1" align="center">
           Who is this account for?
         </Typography>

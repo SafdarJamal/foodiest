@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import styles from './style.module.css';
 
 import Container from '@material-ui/core/Container';
-import Paper from '../UI/Paper';
+import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import SearchBar from '../UI/SearchBar';
@@ -16,7 +16,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    padding: theme.spacing(5, 3)
   },
   card: {
     margin: theme.spacing(2)
@@ -29,7 +30,7 @@ const Home = props => {
   return (
     <Fragment>
       <Container className={styles.container}>
-        <Paper className="root">
+        <Paper elevation={2} className={classes.root}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Typography variant="h1" className={styles.title}>
