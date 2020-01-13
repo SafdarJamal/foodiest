@@ -9,7 +9,7 @@ import theme from '../../theme';
 
 import ErrorBoundaryContainer from '../ErrorBoundaryContainer';
 import HeaderContainer from '../HeaderContainer';
-import Loader from '../../components/Loader';
+import Loader from '../../components/UI/Loader';
 import Routes from '../../routes';
 
 class App extends Component {
@@ -50,9 +50,6 @@ const mapStateToProps = state => {
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { stopLoading, setUser }
-  ),
+  connect(mapStateToProps, { stopLoading, setUser }),
   withFirebase
 )(App);
