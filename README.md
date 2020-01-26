@@ -1,6 +1,6 @@
 # Foodiest
 
-Restaurant Finder and Food Delivery App
+Restaurant finder and food delivery app.
 
 ## Development
 
