@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const PasswordReset = props => {
+const ResetPassword = props => {
   const {
     validateEmail,
     sendEmail,
@@ -112,7 +112,7 @@ const PasswordReset = props => {
   );
 };
 
-PasswordReset.propTypes = {
+ResetPassword.propTypes = {
   validateEmail: PropTypes.func.isRequired,
   sendEmail: PropTypes.func.isRequired,
   emailError: PropTypes.string,
@@ -122,4 +122,4 @@ PasswordReset.propTypes = {
   dismissMessage: PropTypes.func.isRequired
 };
 
-export default PasswordReset;
+export default ResetPassword;

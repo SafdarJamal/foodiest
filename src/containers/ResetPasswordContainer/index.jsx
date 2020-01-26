@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { withFirebase } from '../../services/firebase';
 import { validateEmail, validatePasswordResetForm } from '../../utils/validate';
 
-import PasswordReset from '../../components/PasswordReset';
+import ResetPassword from '../../components/ResetPassword';
 
-class PasswordResetContainer extends Component {
+class ResetPasswordContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -94,7 +94,7 @@ class PasswordResetContainer extends Component {
     } = this.state;
 
     return (
-      <PasswordReset
+      <ResetPassword
         validateEmail={this.validateEmail}
         sendEmail={this.sendEmail}
         emailError={emailError}
@@ -107,4 +107,4 @@ class PasswordResetContainer extends Component {
   }
 }
 
-export default withFirebase(PasswordResetContainer);
+export default withFirebase(ResetPasswordContainer);

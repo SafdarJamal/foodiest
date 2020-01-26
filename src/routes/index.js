@@ -24,8 +24,8 @@ const VerificationScreen = lazy(() =>
   pMinDelay(import('../screens/verification'), 1000)
 );
 const SignInScreen = lazy(() => pMinDelay(import('../screens/signin'), 1000));
-const PasswordResetScreen = lazy(() =>
-  pMinDelay(import('../screens/signin/password-reset'), 1000)
+const ResetPasswordScreen = lazy(() =>
+  pMinDelay(import('../screens/signin/reset-password'), 1000)
 );
 const NotFoundScreen = lazy(() => pMinDelay(import('../screens/404'), 1000));
 
@@ -48,7 +48,7 @@ const Routes = () => {
       <PublicRoute path={ROUTES.SIGNIN} component={SignInScreen} exact />
       <PublicRoute
         path={ROUTES.PASSWORD_RESET}
-        component={PasswordResetScreen}
+        component={ResetPasswordScreen}
       />
       <PublicRoute component={NotFoundScreen} />
     </Switch>
