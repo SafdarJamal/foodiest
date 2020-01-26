@@ -16,7 +16,7 @@ const FoodieRoute = ({ user, component: Component, ...rest }) => (
             <Redirect to={ROUTES.DASHBOARD} />
           )
         ) : (
-          <Redirect to={ROUTES.VERIFICATION} />
+          <Redirect to={ROUTES.EMAIL_VERIFICATION} />
         )
       ) : (
         <Redirect to={ROUTES.SIGNIN} />

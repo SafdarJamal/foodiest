@@ -79,7 +79,7 @@ const SignIn = props => {
               />
             </Grid>
             <Grid item xs={12} className={styles.passwordResetLink}>
-              <Link component={RouterLink} to={ROUTES.PASSWORD_RESET}>
+              <Link component={RouterLink} to={ROUTES.RESET_PASSWORD}>
                 <Typography variant="subtitle1">Forgot Password?</Typography>
               </Link>
             </Grid>

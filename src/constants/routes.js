@@ -1,15 +1,11 @@
-/* ---------- Public ---------- */
 const LANDING = '/';
 const SIGNUP = '/signup';
 const SIGNUP_RESTAURATEUR = '/signup/restaurateur';
 const SIGNUP_FOODIE = '/signup/foodie';
+const EMAIL_VERIFICATION = '/signup/email-verification';
 const SIGNIN = '/signin';
-const PASSWORD_RESET = '/signin/password-reset';
+const RESET_PASSWORD = '/signin/reset-password';
 
-/* ---------- Verification ---------- */
-const VERIFICATION = '/verification';
-
-/* ---------- Private ---------- */
 // Restaurateur
 const DASHBOARD = '/dashboard';
 const DASHBOARD_PRODUCTS = '/dashboard/products';
@@ -31,9 +27,9 @@ export {
   SIGNUP,
   SIGNUP_RESTAURATEUR,
   SIGNUP_FOODIE,
+  EMAIL_VERIFICATION,
   SIGNIN,
-  PASSWORD_RESET,
-  VERIFICATION,
+  RESET_PASSWORD,
   DASHBOARD,
   DASHBOARD_PRODUCTS,
   DASHBOARD_ORDERS,

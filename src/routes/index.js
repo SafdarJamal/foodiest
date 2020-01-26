@@ -42,12 +42,12 @@ const Routes = () => {
       />
       <PublicRoute path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodieScreen} />
       <EmailVerificationRoute
-        path={ROUTES.VERIFICATION}
+        path={ROUTES.EMAIL_VERIFICATION}
         component={EmailVerificationScreen}
       />
       <PublicRoute path={ROUTES.SIGNIN} component={SignInScreen} exact />
       <PublicRoute
-        path={ROUTES.PASSWORD_RESET}
+        path={ROUTES.RESET_PASSWORD}
         component={ResetPasswordScreen}
       />
       <PublicRoute component={NotFoundScreen} />

@@ -17,7 +17,7 @@ const PublicRoute = ({ user, component: Component, ...rest }) => (
           <Redirect to={ROUTES.HOME} />
         )
       ) : (
-        <Redirect to={ROUTES.VERIFICATION} />
+        <Redirect to={ROUTES.EMAIL_VERIFICATION} />
       )
     }
   />
