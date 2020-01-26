@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
-const VerificationRoute = ({ user, component: Component, ...rest }) => (
+const EmailVerificationRoute = ({ user, component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
@@ -24,4 +24,4 @@ const mapStateToProps = state => {
   return { user: state.user };
 };
 
-export default connect(mapStateToProps)(VerificationRoute);
+export default connect(mapStateToProps)(EmailVerificationRoute);

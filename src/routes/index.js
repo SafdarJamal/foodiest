@@ -6,7 +6,7 @@ import pMinDelay from 'p-min-delay';
 import RestaurateurRoute from './RestaurateurRoute';
 import FoodieRoute from './FoodieRoute';
 import PublicRoute from './PublicRoute';
-import VerificationRoute from './VerificationRoute';
+import EmailVerificationRoute from './EmailVerificationRoute';
 
 const DashboardScreen = lazy(() =>
   pMinDelay(import('../screens/dashboard'), 1000)
@@ -20,8 +20,8 @@ const SignUpRestaurateurScreen = lazy(() =>
 const SignUpFoodieScreen = lazy(() =>
   pMinDelay(import('../screens/signup/foodie'), 1000)
 );
-const VerificationScreen = lazy(() =>
-  pMinDelay(import('../screens/verification'), 1000)
+const EmailVerificationScreen = lazy(() =>
+  pMinDelay(import('../screens/signup/email-verification'), 1000)
 );
 const SignInScreen = lazy(() => pMinDelay(import('../screens/signin'), 1000));
 const ResetPasswordScreen = lazy(() =>
@@ -41,9 +41,9 @@ const Routes = () => {
         component={SignUpRestaurateurScreen}
       />
       <PublicRoute path={ROUTES.SIGNUP_FOODIE} component={SignUpFoodieScreen} />
-      <VerificationRoute
+      <EmailVerificationRoute
         path={ROUTES.VERIFICATION}
-        component={VerificationScreen}
+        component={EmailVerificationScreen}
       />
       <PublicRoute path={ROUTES.SIGNIN} component={SignInScreen} exact />
       <PublicRoute
