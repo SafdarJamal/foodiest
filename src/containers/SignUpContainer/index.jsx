@@ -203,7 +203,7 @@ class SignUpContainer extends Component {
 
           return firebase.addUser(user.uid, userData);
         })
-        .then(() => firebase.verifyEmail())
+        .then(() => firebase.sendEmailVerification())
         .then(() => {
           if (this._isMounted) {
             this.setState({
@@ -279,10 +279,7 @@ class SignUpContainer extends Component {
 }
 
 export default compose(
-  connect(
-    null,
-    { startLoading, stopLoading, setUser }
-  ),
+  connect(null, { startLoading, stopLoading, setUser }),
   withFirebase,
   withRouter
 )(SignUpContainer);

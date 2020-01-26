@@ -16,7 +16,7 @@ class Firebase {
   signUp = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
-  verifyEmail = () =>
+  sendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
       url: process.env.REACT_APP_EMAIL_CONFIRMATION_REDIRECT
     });
@@ -24,9 +24,9 @@ class Firebase {
   signIn = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
-  passwordReset = email => this.auth.sendPasswordResetEmail(email);
+  resetPassword = email => this.auth.sendPasswordResetEmail(email);
 
-  passwordUpdate = password => this.auth.currentUser.updatePassword(password);
+  updatePassword = password => this.auth.currentUser.updatePassword(password);
 
   signOut = () => this.auth.signOut();
 

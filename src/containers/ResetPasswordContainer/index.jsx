@@ -59,7 +59,7 @@ class ResetPasswordContainer extends Component {
       const { firebase } = this.props;
 
       firebase
-        .passwordReset(this.state.email)
+        .resetPassword(this.state.email)
         .then(() => {
           this.setState({
             successMessage:

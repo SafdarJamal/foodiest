@@ -69,10 +69,7 @@ const mapStateToProps = state => {
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    { startLoading, stopLoading, removeUser }
-  ),
+  connect(mapStateToProps, { startLoading, stopLoading, removeUser }),
   withFirebase,
   withRouter
 )(Header);

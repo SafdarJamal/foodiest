@@ -162,9 +162,6 @@ class SignInContainer extends Component {
 }
 
 export default compose(
-  connect(
-    null,
-    { startLoading, stopLoading, setUser }
-  ),
+  connect(null, { startLoading, stopLoading, setUser }),
   withFirebase
 )(SignInContainer);
