@@ -56,19 +56,31 @@ const validateSignUpForm = () => {
   const password = document.getElementById('password').value;
   const confirmPassword = document.getElementById('confirm-password').value;
 
-  const a = validateName(fName);
-  const b = validateName(lName);
-  const c = validateEmail(email);
-  const d = validatePassword(password);
-  const e = d.isValid ? confirmPassword === password : undefined;
-  // console.log(a, b, c, d, e);
+  const fNameResult = validateName(fName);
+  const lNameResult = validateName(lName);
+  const emailResult = validateEmail(email);
+  const passwordResult = validatePassword(password);
+  const confirmPasswordResult = passwordResult.isValid
+    ? confirmPassword === password
+    : undefined;
+
+  // console.log(
+  //   fNameResult,
+  //   lNameResult,
+  //   emailResult,
+  //   passwordResult,
+  //   confirmPasswordResult
+  // );
 
   return {
-    fName: a,
-    lName: b,
-    email: c,
-    password: d,
-    confirmPassword: { isValid: e, message: `Passwords didn't match !` }
+    fName: fNameResult,
+    lName: lNameResult,
+    email: emailResult,
+    password: passwordResult,
+    confirmPassword: {
+      isValid: confirmPasswordResult,
+      message: `Passwords didn't match !`
+    }
   };
 };
 
@@ -76,23 +88,23 @@ const validateSignInForm = () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-  const a = validateEmail(email);
-  const b = validatePassword(password);
-  // console.log(a, b);
+  const emailResult = validateEmail(email);
+  const passwordResult = validatePassword(password);
+  // console.log(emailResult, passwordResult);
 
   return {
-    email: a,
-    password: b
+    email: emailResult,
+    password: passwordResult
   };
 };
 
 const validatePasswordResetForm = () => {
   const email = document.getElementById('email').value;
 
-  const a = validateEmail(email);
-  // console.log(a);
+  const emailResult = validateEmail(email);
+  // console.log(emailResult);
 
-  return a;
+  return emailResult;
 };
 
 export {
