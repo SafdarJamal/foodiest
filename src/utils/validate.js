@@ -1,7 +1,6 @@
 const validateName = value => {
   const regex = /^[A-Za-z]?([ ]?[A-Za-z])+$/;
   const field = value;
-  // console.log(value);
 
   if (field === '') {
     return { isValid: false, message: 'Please fill out this field !' };
@@ -17,7 +16,6 @@ const validateName = value => {
 const validateEmail = value => {
   const regex = /^\w+([.-]?\w+)*@[a-zA-Z0-9]([.-]?[a-zA-Z0-9])*(\.[a-zA-Z]{2,4})+$/;
   const field = value;
-  // console.log(value);
 
   if (!field.match(regex)) {
     if (field === '') {
@@ -33,7 +31,6 @@ const validateEmail = value => {
 const validatePassword = value => {
   const regex = /^[a-zA-Z0-9.-_#*+/$@%,-?!]([.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
   const field = value;
-  // console.log(value);
 
   if (!field.match(regex)) {
     if (field === '') {
@@ -64,14 +61,6 @@ const validateSignUpForm = () => {
     ? confirmPassword === password
     : undefined;
 
-  // console.log(
-  //   fNameResult,
-  //   lNameResult,
-  //   emailResult,
-  //   passwordResult,
-  //   confirmPasswordResult
-  // );
-
   return {
     fName: fNameResult,
     lName: lNameResult,
@@ -90,7 +79,6 @@ const validateSignInForm = () => {
 
   const emailResult = validateEmail(email);
   const passwordResult = validatePassword(password);
-  // console.log(emailResult, passwordResult);
 
   return {
     email: emailResult,
@@ -102,7 +90,6 @@ const validatePasswordResetForm = () => {
   const email = document.getElementById('email').value;
 
   const emailResult = validateEmail(email);
-  // console.log(emailResult);
 
   return emailResult;
 };
