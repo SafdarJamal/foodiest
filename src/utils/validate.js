@@ -1,12 +1,11 @@
 const validateName = value => {
   const regex = /^[A-Za-z]?([ ]?[A-Za-z])+$/;
-  const field = value;
 
-  if (field === '') {
+  if (value === '') {
     return { isValid: false, message: 'Please fill out this field !' };
-  } else if (field.indexOf(' ') === 0) {
+  } else if (value.indexOf(' ') === 0) {
     return { isValid: false, message: 'Invalid name !' };
-  } else if (!field.match(regex)) {
+  } else if (!value.match(regex)) {
     return { isValid: false, message: 'Invalid name !' };
   } else {
     return { isValid: true };
@@ -15,10 +14,9 @@ const validateName = value => {
 
 const validateEmail = value => {
   const regex = /^\w+([.-]?\w+)*@[a-zA-Z0-9]([.-]?[a-zA-Z0-9])*(\.[a-zA-Z]{2,4})+$/;
-  const field = value;
 
-  if (!field.match(regex)) {
-    if (field === '') {
+  if (!value.match(regex)) {
+    if (value === '') {
       return { isValid: false, message: 'Please fill out this field !' };
     } else {
       return { isValid: false, message: 'Invalid email address !' };
@@ -30,14 +28,13 @@ const validateEmail = value => {
 
 const validatePassword = value => {
   const regex = /^[a-zA-Z0-9.-_#*+/$@%,-?!]([.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
-  const field = value;
 
-  if (!field.match(regex)) {
-    if (field === '') {
+  if (!value.match(regex)) {
+    if (value === '') {
       return { isValid: false, message: 'Please fill out this field !' };
-    } else if (field.indexOf(' ') !== -1) {
+    } else if (value.indexOf(' ') !== -1) {
       return { isValid: false, message: 'Can not contain spaces !' };
-    } else if (field.length < 8) {
+    } else if (value.length < 8) {
       return { isValid: false, message: 'At least 8 characters long !' };
     }
     return { isValid: false, message: 'Invalid characters !' };
