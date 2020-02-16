@@ -226,7 +226,7 @@ class SignUpContainer extends Component {
           userData.isVerified = firebase.auth.currentUser.emailVerified;
 
           setTimeout(() => {
-            setUser(userData);
+            setUser({ user: userData });
             stopLoading();
           }, 2000);
         })

@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Firebase, { FirebaseContext } from './services/firebase';
 import { BrowserRouter as Router } from 'react-router-dom';
-import './index.css';
 import App from './containers/App';
+import './index.css';
 
 ReactDOM.render(
   <Provider store={store}>

@@ -12,7 +12,7 @@ const authStateObserver = (firebase, stopLoading, setUser) => {
           userData.uid = user.uid;
           userData.isVerified = user.emailVerified;
 
-          setUser(userData);
+          setUser({ user: userData });
         })
         .then(() => {
           stopLoading();
