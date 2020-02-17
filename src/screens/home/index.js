@@ -4,7 +4,7 @@ import * as ROUTES from '../../constants/routes';
 import pMinDelay from 'p-min-delay';
 
 import Head from '../../components/Head';
-import Home from '../../containers/HomeContainer';
+import Home from '../../components/Home';
 const NotFound = lazy(() =>
   pMinDelay(import('../../components/NotFound'), 1000)
 );

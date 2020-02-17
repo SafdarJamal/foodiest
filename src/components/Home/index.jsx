@@ -36,13 +36,7 @@ const Home = props => {
               <Typography variant="h1" className={styles.title}>
                 Home
               </Typography>
-              <SearchBar
-                placeholder="What are you craving?"
-                value={props.value}
-                onChange={props.onChange}
-                onRequestSearch={props.onRequestSearch}
-                onCancelSearch={props.onCancelSearch}
-              />
+              <SearchBar placeholder="What are you craving?" />
             </Grid>
           </Grid>
         </Paper>

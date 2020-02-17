@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 const Head = ({ title }) => {
   return (
     <Helmet>
-      <title>{title} | Foodiest</title>
+      <title>{title} – Foodiest</title>
     </Helmet>
   );
 };
