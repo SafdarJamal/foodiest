@@ -1,10 +1,12 @@
 import palette from '../palette';
 
-export default {
+const MuiIconButton = {
   root: {
     color: palette.icon,
     '&:hover': {
-      backgroundColor: 'rgba(0, 0, 0, 0.03)'
-    }
-  }
+      backgroundColor: 'rgba(0, 0, 0, 0.03)',
+    },
+  },
 };
+
+export default MuiIconButton;
