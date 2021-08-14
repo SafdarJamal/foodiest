@@ -6,7 +6,6 @@ import Firebase, { FirebaseContext } from './services/firebase';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './containers/App';
 import './index.css';
-import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -18,5 +17,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-serviceWorker.unregister();
