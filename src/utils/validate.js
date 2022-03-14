@@ -13,7 +13,8 @@ const validateName = value => {
 };
 
 const validateEmail = value => {
-  const regex = /^\w+([.-]?\w+)*@[a-zA-Z0-9]([.-]?[a-zA-Z0-9])*(\.[a-zA-Z]{2,4})+$/;
+  const regex =
+    /^\w+([.-]?\w+)*@[a-zA-Z0-9]([.-]?[a-zA-Z0-9])*(\.[a-zA-Z]{2,4})+$/;
 
   if (!value.match(regex)) {
     if (value === '') {
@@ -27,7 +28,8 @@ const validateEmail = value => {
 };
 
 const validatePassword = value => {
-  const regex = /^[a-zA-Z0-9.-_#*+/$@%,-?!]([.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
+  const regex =
+    /^[a-zA-Z0-9.-_#*+/$@%,-?!]([.]?[a-zA-Z0-9.-_#*+/$@%,-?!]{7,63})$/;
 
   if (!value.match(regex)) {
     if (value === '') {
@@ -65,8 +67,8 @@ const validateSignUpForm = () => {
     password: passwordResult,
     confirmPassword: {
       isValid: confirmPasswordResult,
-      message: `Passwords didn't match !`
-    }
+      message: `Passwords didn't match !`,
+    },
   };
 };
 
@@ -79,7 +81,7 @@ const validateSignInForm = () => {
 
   return {
     email: emailResult,
-    password: passwordResult
+    password: passwordResult,
   };
 };
 
@@ -97,5 +99,5 @@ export {
   validatePassword,
   validateSignUpForm,
   validateSignInForm,
-  validatePasswordResetForm
+  validatePasswordResetForm,
 };

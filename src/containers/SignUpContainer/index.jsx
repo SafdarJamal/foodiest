@@ -10,7 +10,7 @@ import {
   validateName,
   validateEmail,
   validatePassword,
-  validateSignUpForm
+  validateSignUpForm,
 } from '../../utils/validate';
 
 import SignUp from '../../components/SignUp';
@@ -45,7 +45,7 @@ class SignUpContainer extends Component {
       passwordError: null,
       confirmPasswordError: null,
       isProcessing: false,
-      signUpError: null
+      signUpError: null,
     };
 
     this.validateFName = this.validateFName.bind(this);
@@ -177,7 +177,7 @@ class SignUpContainer extends Component {
         emailError,
         passwordError,
         confirmPasswordError,
-        isProcessing: false
+        isProcessing: false,
       });
       return false;
     }
@@ -198,7 +198,7 @@ class SignUpContainer extends Component {
             fName,
             lName,
             email,
-            type: this._type
+            type: this._type,
           };
 
           return firebase.addUser(user.uid, userData);
@@ -212,7 +212,7 @@ class SignUpContainer extends Component {
               email: null,
               password: null,
               signUpError: null,
-              isProcessing: false
+              isProcessing: false,
             });
           }
 
@@ -236,7 +236,7 @@ class SignUpContainer extends Component {
 
           this.setState({
             isProcessing: false,
-            signUpError: errorMessage
+            signUpError: errorMessage,
           });
         });
     }, 3000);
@@ -254,7 +254,7 @@ class SignUpContainer extends Component {
       passwordError,
       confirmPasswordError,
       isProcessing,
-      signUpError
+      signUpError,
     } = this.state;
 
     return (

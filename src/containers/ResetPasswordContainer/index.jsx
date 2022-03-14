@@ -13,7 +13,7 @@ class ResetPasswordContainer extends Component {
       emailError: null,
       isProcessing: false,
       successMessage: null,
-      errorMessage: null
+      errorMessage: null,
     };
 
     this.validateEmail = this.validateEmail.bind(this);
@@ -34,7 +34,7 @@ class ResetPasswordContainer extends Component {
 
   sendEmail() {
     this.setState({
-      isProcessing: true
+      isProcessing: true,
     });
 
     const result = validatePasswordResetForm();
@@ -50,7 +50,7 @@ class ResetPasswordContainer extends Component {
     if (email === false) {
       this.setState({
         emailError,
-        isProcessing: false
+        isProcessing: false,
       });
       return false;
     }
@@ -65,7 +65,7 @@ class ResetPasswordContainer extends Component {
             successMessage:
               'Password reset link has been send to your provided email address, check you mailbox.',
             errorMessage: null,
-            isProcessing: false
+            isProcessing: false,
           });
         })
         .catch(error => {
@@ -75,7 +75,7 @@ class ResetPasswordContainer extends Component {
           this.setState({
             successMessage: null,
             errorMessage,
-            isProcessing: false
+            isProcessing: false,
           });
         });
     }, 3000);
@@ -86,12 +86,8 @@ class ResetPasswordContainer extends Component {
   }
 
   render() {
-    const {
-      emailError,
-      isProcessing,
-      successMessage,
-      errorMessage
-    } = this.state;
+    const { emailError, isProcessing, successMessage, errorMessage } =
+      this.state;
 
     return (
       <ResetPassword

@@ -18,14 +18,14 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    padding: theme.spacing(5, 3)
+    padding: theme.spacing(5, 3),
   },
   card0: {
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   card1: {
-    marginLeft: theme.spacing(1)
-  }
+    marginLeft: theme.spacing(1),
+  },
 }));
 
 const SignUpType = () => {

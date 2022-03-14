@@ -18,7 +18,7 @@ class Firebase {
 
   sendEmailVerification = () =>
     this.auth.currentUser.sendEmailVerification({
-      url: process.env.REACT_APP_EMAIL_CONFIRMATION_REDIRECT
+      url: process.env.REACT_APP_EMAIL_CONFIRMATION_REDIRECT,
     });
 
   signIn = (email, password) =>
@@ -32,16 +32,9 @@ class Firebase {
 
   // Database API
   addUser = (uid, userData) =>
-    this.db
-      .collection('users')
-      .doc(uid)
-      .set(userData);
+    this.db.collection('users').doc(uid).set(userData);
 
-  getUser = uid =>
-    this.db
-      .collection('users')
-      .doc(uid)
-      .get();
+  getUser = uid => this.db.collection('users').doc(uid).get();
 }
 
 export default Firebase;

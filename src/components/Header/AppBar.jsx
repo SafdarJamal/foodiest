@@ -23,23 +23,23 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
-      display: 'flex'
-    }
+      display: 'flex',
+    },
   },
   sectionMobile: {
     display: 'flex',
     [theme.breakpoints.up('md')]: {
-      display: 'none'
-    }
-  }
+      display: 'none',
+    },
+  },
 }));
 
 const AppBar = props => {
@@ -50,7 +50,7 @@ const AppBar = props => {
     firebase,
     startLoading,
     stopLoading,
-    removeUser
+    removeUser,
   } = props;
 
   const classes = useStyles();
@@ -265,7 +265,7 @@ AppBar.propTypes = {
   firebase: PropTypes.object.isRequired,
   startLoading: PropTypes.func.isRequired,
   stopLoading: PropTypes.func.isRequired,
-  removeUser: PropTypes.func.isRequired
+  removeUser: PropTypes.func.isRequired,
 };
 
 export default AppBar;

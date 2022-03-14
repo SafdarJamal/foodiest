@@ -5,7 +5,7 @@ import user from './user';
 
 const reducers = combineReducers({
   isLoading,
-  user
+  user,
 });
 
 export default reducers;

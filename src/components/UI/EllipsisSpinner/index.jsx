@@ -75,13 +75,13 @@ const Ellipsis = ({ color, size, sizeUnit }) => (
 Ellipsis.propTypes = {
   size: PropTypes.number,
   color: PropTypes.string,
-  sizeUnit: PropTypes.string
+  sizeUnit: PropTypes.string,
 };
 
 Ellipsis.defaultProps = {
   size: 64,
   color: '#45B880',
-  sizeUnit: 'px'
+  sizeUnit: 'px',
 };
 
 export default Ellipsis;
