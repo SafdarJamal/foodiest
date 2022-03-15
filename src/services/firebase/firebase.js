@@ -1,4 +1,4 @@
-import app from 'firebase/compat/app';
+import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -14,7 +14,7 @@ import firebaseConfig from './config';
 
 class Firebase {
   constructor() {
-    app.initializeApp(firebaseConfig);
+    initializeApp(firebaseConfig);
 
     this.auth = getAuth();
     this.db = getFirestore();
