@@ -23,10 +23,10 @@ class SignUpContainer extends Component {
 
     switch (props.location.pathname) {
       case ROUTES.SIGNUP_RESTAURATEUR:
-        this.type = USER_TYPES.RESTAURATEUR;
+        this._type = USER_TYPES.RESTAURATEUR;
         break;
       case ROUTES.SIGNUP_FOODIE:
-        this.type = USER_TYPES.FOODIE;
+        this._type = USER_TYPES.FOODIE;
         break;
       default:
         break;
