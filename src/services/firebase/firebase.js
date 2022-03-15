@@ -1,5 +1,14 @@
 import app from 'firebase/compat/app';
-import 'firebase/compat/auth';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  sendEmailVerification,
+  sendPasswordResetEmail,
+  updatePassword,
+} from 'firebase/auth';
+// import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 import firebaseConfig from './config';
@@ -8,27 +17,27 @@ class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
 
-    this.auth = app.auth();
+    this.auth = getAuth();
     this.db = app.firestore();
   }
 
   // Auth API
   signUp = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
+    createUserWithEmailAndPassword(this.auth, email, password);
 
   sendEmailVerification = () =>
-    this.auth.currentUser.sendEmailVerification({
+    sendEmailVerification(this.auth.currentUser, {
       url: process.env.REACT_APP_EMAIL_CONFIRMATION_REDIRECT,
     });
 
   signIn = (email, password) =>
-    this.auth.signInWithEmailAndPassword(email, password);
+    signInWithEmailAndPassword(this.auth, email, password);
 
-  resetPassword = email => this.auth.sendPasswordResetEmail(email);
+  resetPassword = email => sendPasswordResetEmail(this.auth, email);
 
-  updatePassword = password => this.auth.currentUser.updatePassword(password);
+  updatePassword = password => updatePassword(this.auth.currentUser, password);
 
-  signOut = () => this.auth.signOut();
+  signOut = () => signOut(this.auth);
 
   // Database API
   addUser = (uid, userData) =>
