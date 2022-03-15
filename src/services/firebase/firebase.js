@@ -8,8 +8,7 @@ import {
   sendPasswordResetEmail,
   updatePassword,
 } from 'firebase/auth';
-// import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 
 import firebaseConfig from './config';
 
@@ -18,7 +17,7 @@ class Firebase {
     app.initializeApp(firebaseConfig);
 
     this.auth = getAuth();
-    this.db = app.firestore();
+    this.db = getFirestore();
   }
 
   // Auth API
@@ -40,10 +39,9 @@ class Firebase {
   signOut = () => signOut(this.auth);
 
   // Database API
-  addUser = (uid, userData) =>
-    this.db.collection('users').doc(uid).set(userData);
+  addUser = (uid, data) => setDoc(doc(this.db, 'users', uid), data);
 
-  getUser = uid => this.db.collection('users').doc(uid).get();
+  getUser = uid => getDoc(doc(this.db, 'users', uid));
 }
 
 export default Firebase;
