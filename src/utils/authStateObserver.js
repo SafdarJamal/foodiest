@@ -1,5 +1,7 @@
+import { onAuthStateChanged } from 'firebase/auth';
+
 const authStateObserver = (firebase, stopLoading, setUser) => {
-  const unsubscribe = firebase.auth.onAuthStateChanged(user => {
+  const unsubscribe = onAuthStateChanged(firebase.auth, user => {
     if (user) {
       unsubscribe();
 
