@@ -17,7 +17,7 @@ class Firebase {
     initializeApp(firebaseConfig);
 
     this.auth = getAuth();
-    this.db = getFirestore();
+    this.firestore = getFirestore();
   }
 
   // Auth API
@@ -39,9 +39,9 @@ class Firebase {
   signOut = () => signOut(this.auth);
 
   // Database API
-  addUser = (uid, data) => setDoc(doc(this.db, 'users', uid), data);
+  addUser = (uid, data) => setDoc(doc(this.firestore, 'users', uid), data);
 
-  getUser = uid => getDoc(doc(this.db, 'users', uid));
+  getUser = uid => getDoc(doc(this.firestore, 'users', uid));
 }
 
 export default Firebase;
