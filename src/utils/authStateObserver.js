@@ -27,7 +27,6 @@ const authStateObserver = (firebase, stopLoading, setUser) => {
         });
     } else {
       unsubscribe();
-
       stopLoading();
     }
   });
