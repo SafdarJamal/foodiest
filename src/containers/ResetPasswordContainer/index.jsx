@@ -32,10 +32,9 @@ class ResetPasswordContainer extends Component {
     }
   }
 
-  sendEmail() {
-    this.setState({
-      isProcessing: true,
-    });
+  sendEmail(event) {
+    event.preventDefault();
+    this.setState({ isProcessing: true });
 
     const result = validatePasswordResetForm();
 

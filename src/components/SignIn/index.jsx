@@ -38,7 +38,7 @@ const SignIn = props => {
     <Container className={styles.container}>
       {isProcessing && <LinearProgress />}
       <Paper elevation={2} className={classes.root}>
-        <form noValidate autoComplete="off">
+        <form noValidate autoComplete="off" onSubmit={signMeIn}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Typography variant="h1" className={styles.title}>
@@ -101,6 +101,7 @@ const SignIn = props => {
               <Grid item xs={6}>
                 <div className={styles.btnWrapperChild2}>
                   <Button
+                    type="submit"
                     variant="contained"
                     color="primary"
                     size="large"

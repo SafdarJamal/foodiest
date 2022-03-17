@@ -119,7 +119,8 @@ class SignUpContainer extends Component {
     }
   }
 
-  signMeUp() {
+  signMeUp(event) {
+    event.preventDefault();
     this.setState({ isProcessing: true });
 
     const result = validateSignUpForm();

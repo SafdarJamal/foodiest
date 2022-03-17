@@ -62,7 +62,8 @@ class SignInContainer extends Component {
     }
   }
 
-  signMeIn() {
+  signMeIn(event) {
+    event.preventDefault();
     this.setState({ isProcessing: true });
 
     const result = validateSignInForm();
