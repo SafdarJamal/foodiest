@@ -2,13 +2,13 @@ import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
   sendEmailVerification,
+  signInWithEmailAndPassword,
   sendPasswordResetEmail,
   updatePassword,
+  signOut,
 } from 'firebase/auth';
-import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+import { getFirestore, setDoc, getDoc, doc } from 'firebase/firestore';
 
 import firebaseConfig from './config';
 
