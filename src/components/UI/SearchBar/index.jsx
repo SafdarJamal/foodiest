@@ -13,36 +13,36 @@ const styles = {
   root: {
     height: 48,
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   iconButton: {
     opacity: 0.54,
     transform: 'scale(1, 1)',
-    transition: 'transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)'
+    transition: 'transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   },
   iconButtonHidden: {
     transform: 'scale(0, 0)',
     '& > $icon': {
-      opacity: 0
-    }
+      opacity: 0,
+    },
   },
   iconButtonDisabled: {
-    opacity: 0.38
+    opacity: 0.38,
   },
   searchIconButton: {
-    marginRight: -48
+    marginRight: -48,
   },
   icon: {
     opacity: 0.54,
-    transition: 'opacity 200ms cubic-bezier(0.4, 0.0, 0.2, 1)'
+    transition: 'opacity 200ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   },
   input: {
-    width: '100%'
+    width: '100%',
   },
   searchContainer: {
     margin: 'auto 16px',
-    width: 'calc(100% - 48px - 32px)' // 48px button + 32px margin
-  }
+    width: 'calc(100% - 48px - 32px)', // 48px button + 32px margin
+  },
 };
 
 class SearchBar extends Component {
@@ -53,7 +53,7 @@ class SearchBar extends Component {
     this.state = {
       focus: false,
       value: this.props.value,
-      active: false
+      active: false,
     };
   }
 
@@ -167,28 +167,28 @@ class SearchBar extends Component {
           onClick={this.handleRequestSearch}
           classes={{
             root: classNames(classes.iconButton, classes.searchIconButton, {
-              [classes.iconButtonHidden]: value !== ''
+              [classes.iconButtonHidden]: value !== '',
             }),
-            disabled: classes.iconButtonDisabled
+            disabled: classes.iconButtonDisabled,
           }}
           disabled={disabled}
         >
           {React.cloneElement(searchIcon, {
-            classes: { root: classes.icon }
+            classes: { root: classes.icon },
           })}
         </IconButton>
         <IconButton
           onClick={this.handleCancel}
           classes={{
             root: classNames(classes.iconButton, {
-              [classes.iconButtonHidden]: value === ''
+              [classes.iconButtonHidden]: value === '',
             }),
-            disabled: classes.iconButtonDisabled
+            disabled: classes.iconButtonDisabled,
           }}
           disabled={disabled}
         >
           {React.cloneElement(closeIcon, {
-            classes: { root: classes.icon }
+            classes: { root: classes.icon },
           })}
         </IconButton>
       </Paper>
@@ -220,7 +220,7 @@ SearchBar.propTypes = {
   /** Override the inline-styles of the root element. */
   style: PropTypes.object,
   /** The value of the text field. */
-  value: PropTypes.string
+  value: PropTypes.string,
 };
 
 SearchBar.defaultProps = {
@@ -230,7 +230,7 @@ SearchBar.defaultProps = {
   placeholder: 'Search',
   searchIcon: <SearchIcon style={{ color: grey[500] }} />,
   style: null,
-  value: ''
+  value: '',
 };
 
 export default withStyles(styles)(SearchBar);

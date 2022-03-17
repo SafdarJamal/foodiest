@@ -17,11 +17,11 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    padding: theme.spacing(5, 3)
+    padding: theme.spacing(5, 3),
   },
   card: {
-    margin: theme.spacing(2)
-  }
+    margin: theme.spacing(2),
+  },
 }));
 
 const Home = props => {
@@ -52,7 +52,7 @@ const Home = props => {
             'Turo Cafe & Grill',
             'Jamba Juice',
             'The Halal Guys',
-            'Starbucks®'
+            'Starbucks®',
           ].map((item, i) => (
             <Grid item xs={4} key={i}>
               <Card className={classes.card}>

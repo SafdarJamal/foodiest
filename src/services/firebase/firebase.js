@@ -1,47 +1,47 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  updatePassword,
+  signOut,
+} from 'firebase/auth';
+import { getFirestore, setDoc, getDoc, doc } from 'firebase/firestore';
 
-import firebaseConfig from '../../config/firebaseConfig';
+import firebaseConfig from './config';
 
 class Firebase {
   constructor() {
-    app.initializeApp(firebaseConfig);
+    initializeApp(firebaseConfig);
 
-    this.auth = app.auth();
-    this.db = app.firestore();
+    this.auth = getAuth();
+    this.firestore = getFirestore();
   }
 
   // Auth API
   signUp = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
+    createUserWithEmailAndPassword(this.auth, email, password);
 
   sendEmailVerification = () =>
-    this.auth.currentUser.sendEmailVerification({
-      url: process.env.REACT_APP_EMAIL_CONFIRMATION_REDIRECT
+    sendEmailVerification(this.auth.currentUser, {
+      url: process.env.REACT_APP_EMAIL_CONFIRMATION_REDIRECT,
     });
 
   signIn = (email, password) =>
-    this.auth.signInWithEmailAndPassword(email, password);
+    signInWithEmailAndPassword(this.auth, email, password);
 
-  resetPassword = email => this.auth.sendPasswordResetEmail(email);
+  resetPassword = email => sendPasswordResetEmail(this.auth, email);
 
-  updatePassword = password => this.auth.currentUser.updatePassword(password);
+  updatePassword = password => updatePassword(this.auth.currentUser, password);
 
-  signOut = () => this.auth.signOut();
+  signOut = () => signOut(this.auth);
 
   // Database API
-  addUser = (uid, userData) =>
-    this.db
-      .collection('users')
-      .doc(uid)
-      .set(userData);
+  addUser = (uid, data) => setDoc(doc(this.firestore, 'users', uid), data);
 
-  getUser = uid =>
-    this.db
-      .collection('users')
-      .doc(uid)
-      .get();
+  getUser = uid => getDoc(doc(this.firestore, 'users', uid));
 }
 
 export default Firebase;

@@ -6,7 +6,7 @@ import { startLoading, stopLoading, setUser } from '../../actions';
 import {
   validateEmail,
   validatePassword,
-  validateSignInForm
+  validateSignInForm,
 } from '../../utils/validate';
 
 import SignIn from '../../components/SignIn';
@@ -23,7 +23,7 @@ class SignInContainer extends Component {
       emailError: null,
       passwordError: null,
       isProcessing: false,
-      signInError: null
+      signInError: null,
     };
 
     this.validateEmail = this.validateEmail.bind(this);
@@ -87,7 +87,7 @@ class SignInContainer extends Component {
       this.setState({
         emailError,
         passwordError,
-        isProcessing: false
+        isProcessing: false,
       });
       return false;
     }
@@ -109,7 +109,7 @@ class SignInContainer extends Component {
               email: null,
               password: null,
               signInError: null,
-              isProcessing: false
+              isProcessing: false,
             });
           }
 
@@ -133,7 +133,7 @@ class SignInContainer extends Component {
 
           this.setState({
             isProcessing: false,
-            signInError: 'Email or password is incorrect.'
+            signInError: 'Email or password is incorrect.',
           });
         });
     }, 3000);

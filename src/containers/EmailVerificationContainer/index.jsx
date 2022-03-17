@@ -10,7 +10,7 @@ class EmailVerificationContainer extends Component {
     this.state = {
       isProcessing: false,
       successMessage: null,
-      errorMessage: null
+      errorMessage: null,
     };
 
     this.resendEmail = this.resendEmail.bind(this);
@@ -19,7 +19,7 @@ class EmailVerificationContainer extends Component {
 
   resendEmail() {
     this.setState({
-      isProcessing: true
+      isProcessing: true,
     });
 
     setTimeout(() => {
@@ -34,7 +34,7 @@ class EmailVerificationContainer extends Component {
             successMessage:
               'Verification link has been send to your provided email address, check you mailbox.',
             errorMessage: null,
-            isProcessing: false
+            isProcessing: false,
           });
         })
         .catch(error => {
@@ -44,7 +44,7 @@ class EmailVerificationContainer extends Component {
           this.setState({
             successMessage: null,
             errorMessage,
-            isProcessing: false
+            isProcessing: false,
           });
         });
     }, 3000);

@@ -11,28 +11,21 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   textField: {
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1)
-  }
+    marginRight: theme.spacing(1),
+  },
 }));
 
 const InputField = props => {
-  const {
-    focus,
-    label,
-    type,
-    helperText,
-    required,
-    errorMessage,
-    disabled
-  } = props;
+  const { focus, label, type, helperText, required, errorMessage, disabled } =
+    props;
 
   const classes = useStyles();
   const [values, setValues] = useState({
-    inputValue: ''
+    inputValue: '',
   });
 
   const handleChange = propName => event => {
@@ -78,7 +71,7 @@ const InputField = props => {
                       )}
                     </IconButton>
                   </InputAdornment>
-                )
+                ),
               }
             : null
         }
@@ -98,7 +91,7 @@ InputField.propTypes = {
   helperText: PropTypes.string,
   required: PropTypes.bool,
   errorMessage: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
 InputField.defaultProps = {
@@ -108,7 +101,7 @@ InputField.defaultProps = {
   helperText: '',
   required: false,
   errorMessage: '',
-  disabled: false
+  disabled: false,
 };
 
 export default InputField;

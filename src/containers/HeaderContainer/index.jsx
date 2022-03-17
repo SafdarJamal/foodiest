@@ -13,7 +13,7 @@ class Header extends Component {
     super(props);
 
     this.state = {
-      isDrawerOpen: false
+      isDrawerOpen: false,
     };
   }
 
@@ -29,14 +29,8 @@ class Header extends Component {
   };
 
   render() {
-    const {
-      location,
-      user,
-      firebase,
-      startLoading,
-      stopLoading,
-      removeUser
-    } = this.props;
+    const { location, user, firebase, startLoading, stopLoading, removeUser } =
+      this.props;
 
     let isLanding = true;
     if (location.pathname !== '/') {

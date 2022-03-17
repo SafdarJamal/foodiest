@@ -15,8 +15,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(5, 3)
-  }
+    padding: theme.spacing(5, 3),
+  },
 }));
 
 const ResetPassword = props => {
@@ -27,7 +27,7 @@ const ResetPassword = props => {
     isProcessing,
     successMessage,
     errorMessage,
-    dismissMessage
+    dismissMessage,
   } = props;
 
   const classes = useStyles();
@@ -119,7 +119,7 @@ ResetPassword.propTypes = {
   isProcessing: PropTypes.bool.isRequired,
   successMessage: PropTypes.string,
   errorMessage: PropTypes.string,
-  dismissMessage: PropTypes.func.isRequired
+  dismissMessage: PropTypes.func.isRequired,
 };
 
 export default ResetPassword;

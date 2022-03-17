@@ -15,8 +15,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(5, 3)
-  }
+    padding: theme.spacing(5, 3),
+  },
 }));
 
 const SignUp = props => {
@@ -34,7 +34,7 @@ const SignUp = props => {
     confirmPasswordError,
     isProcessing,
     signUpError,
-    dismissError
+    dismissError,
   } = props;
 
   const classes = useStyles();
@@ -160,7 +160,7 @@ SignUp.propTypes = {
   confirmPasswordError: PropTypes.string,
   isProcessing: PropTypes.bool.isRequired,
   signUpError: PropTypes.string,
-  dismissError: PropTypes.func.isRequired
+  dismissError: PropTypes.func.isRequired,
 };
 
 export default SignUp;

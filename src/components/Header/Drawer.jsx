@@ -26,11 +26,11 @@ import SettingIcon from '@material-ui/icons/Settings';
 
 const useStyles = makeStyles({
   list: {
-    width: 250
+    width: 250,
   },
   fullList: {
-    width: 'auto'
-  }
+    width: 'auto',
+  },
 });
 
 const Drawer = props => {
@@ -93,7 +93,7 @@ const Drawer = props => {
       <ShoppingCartIcon />,
       <ChatIcon />,
       <ProfileIcon />,
-      <SettingIcon />
+      <SettingIcon />,
     ];
     const linkList = [
       ROUTES.DASHBOARD,
@@ -101,7 +101,7 @@ const Drawer = props => {
       ROUTES.DASHBOARD_ORDERS,
       ROUTES.DASHBOARD_CHATS,
       ROUTES.DASHBOARD_PROFILE,
-      ROUTES.DASHBOARD_SETTINGS
+      ROUTES.DASHBOARD_SETTINGS,
     ];
 
     return (
@@ -131,7 +131,7 @@ const Drawer = props => {
             'Orders',
             'Chats',
             'Profile',
-            'Settings'
+            'Settings',
           ].map((text, index) => (
             <Link key={text} to={linkList[index]} className={styles.link}>
               <ListItem
@@ -157,7 +157,7 @@ const Drawer = props => {
       <ShoppingCartIcon />,
       <ChatIcon />,
       <ProfileIcon />,
-      <SettingIcon />
+      <SettingIcon />,
     ];
     const linkList = [
       ROUTES.HOME,
@@ -165,7 +165,7 @@ const Drawer = props => {
       ROUTES.HOME_ORDERS,
       ROUTES.HOME_CHATS,
       ROUTES.HOME_PROFILE,
-      ROUTES.HOME_SETTINGS
+      ROUTES.HOME_SETTINGS,
     ];
 
     return (
@@ -195,7 +195,7 @@ const Drawer = props => {
             'Orders',
             'Chats',
             'Profile',
-            'Settings'
+            'Settings',
           ].map((text, index) => (
             <Link key={text} to={linkList[index]} className={styles.link}>
               <ListItem
@@ -230,7 +230,7 @@ const Drawer = props => {
 Drawer.propTypes = {
   user: PropTypes.object,
   isOpen: PropTypes.bool.isRequired,
-  toggleDrawer: PropTypes.func.isRequired
+  toggleDrawer: PropTypes.func.isRequired,
 };
 
 export default Drawer;
